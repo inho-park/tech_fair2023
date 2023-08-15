@@ -1,5 +1,6 @@
 package com.icc.daelimbada.article.domain;
 
+import com.icc.daelimbada.common.domain.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +16,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article {
+public class Article extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

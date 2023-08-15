@@ -1,5 +1,6 @@
 package com.icc.daelimbada.reply.domain;
 
+import com.icc.daelimbada.common.domain.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +16,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reply {
+public class Reply extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
