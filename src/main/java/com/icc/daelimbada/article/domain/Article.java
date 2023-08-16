@@ -2,6 +2,7 @@ package com.icc.daelimbada.article.domain;
 
 import com.icc.daelimbada.common.domain.BaseTime;
 import com.icc.daelimbada.common.domain.BooleanToYNConverter;
+import com.icc.daelimbada.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,4 +37,7 @@ public class Article extends BaseTime {
     @Column
     @Convert(converter = BooleanToYNConverter.class)
     private boolean isSold;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

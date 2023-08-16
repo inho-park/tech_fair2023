@@ -1,15 +1,14 @@
 package com.icc.daelimbada.reply.domain;
 
+import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.common.domain.BaseTime;
+import com.icc.daelimbada.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -20,4 +19,13 @@ public class Reply extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 1000)
+    private String content;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Article article;
 }
