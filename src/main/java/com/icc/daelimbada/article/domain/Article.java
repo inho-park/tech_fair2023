@@ -25,16 +25,20 @@ public class Article extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
 
-    @Column
+    @Column(nullable = false)
     private Long price;
 
-    @Column(length = 1000)
+    @Column(nullable = false, length = 1000)
     private String content;
 
-    @Column
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Major major;
+
+    @Column(nullable = false)
     @Convert(converter = BooleanToYNConverter.class)
     private boolean isSold;
 
