@@ -21,7 +21,7 @@ public class ArticleRepositoryTests {
                         .content("알고리즘 공부 강추")
                         .price(30000l)
                         .isSold(false)
-                        .major(Major.getMajor(101))
+                        .major(Major.getMajor(120))
                         .user(userRepository.getReferenceById(1l))
                 .build()
         );

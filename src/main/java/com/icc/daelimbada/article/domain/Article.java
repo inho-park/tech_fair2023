@@ -7,14 +7,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 /**
  * 1. img 를 2개 이상 사용하려면 해당 ERD 구조로는 해겳 불가능
  * 2. major code 를 사용하려는 취지는 좋으나 불필요한 쿼리 연산을 또 실행하는 과정이 과연 효율적인지 의문
- * 3. likes 를 활용하려면 article 에도 카운트를 추가해서 보여주는 방식이 좋을 것으로 보임
+ *      (2번 문제는 Enum 으로 처리하는 방식이 효율적으로 보임)
  */
+
 @Data
 @Entity
 @Builder
