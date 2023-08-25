@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * 대댓글도 추가할건지 의논해봐야함
+ */
 @Data
 @Entity
 @Builder
