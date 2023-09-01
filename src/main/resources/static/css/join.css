@@ -1,0 +1,62 @@
+.join{
+  width: 300px;
+  margin: 100px auto;
+}
+
+.join .logo{
+  width: 300px;
+}
+
+.join form{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+}
+
+.join form div{
+  width: 280px;
+}
+
+.join form div label{
+  display: block;
+}
+
+.join form div button{
+  position: absolute;
+  top: 25px;
+  right: -70px;
+  width: 60px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #96B6C5;
+}
+
+.join form label{
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.join form input{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 25px;
+  background-color: #E9E9E9;
+  border: none;
+  border-radius: 5px;
+}
+
+.join form input:focus{
+  outline: 3px solid #96B6C5;
+}
+
+.join form .joinButton{
+  width: 100%;
+  background-color: #96B6C5;
+  padding: 10px 5px ;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+}

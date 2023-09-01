@@ -1,0 +1,143 @@
+#container{
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+/* 해더 */
+.header{
+  width: 1000px;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 3px #000;
+  z-index: 20;
+}
+.header_wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 16px;
+}
+.header_start{
+margin-left: 50px;   
+}
+.header_center{
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+.header_form{
+  display: flex;
+  max-width: 100%;
+}
+.header__input--text{
+  width: calc(100% - 60px);
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid #8f8f8f;
+  border-width: none;
+  border-radius: 40px;
+}
+.header__input--button{
+  width: 55px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+}
+.header_end{
+  width: 13%;
+  display: flex;
+  justify-content: space-between;
+}
+.header_end_login{
+  max-width: 50%;
+  font-size: 1rem;
+}
+.header_end_signup{
+  max-width: 50%;
+  font-size: 1rem;
+}
+.header_end_signup > a{
+  text-decoration: none;
+}
+.header_end_login > a{
+  text-decoration: none;
+}
+
+/* 전공 사이드바 */
+.major-list{
+  width: 180px;
+  position: relative;
+  display: block;
+  margin-top: 100px;
+}
+.major-list {
+  margin-bottom: 30px;
+}
+
+.major-list .major-name{
+  display: inline;
+  width: 100px;
+  font-size: 20px;
+  margin: 0 20px 5px 5px;
+  color: #11009E;
+ 
+}
+
+.major-list  button{
+  display: inline;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.major{
+  max-height: 400px;
+  transition: all 0.5s ease-out ;
+}
+.majors hr{
+  border-bottom: 1.5px solid black;
+}
+ .major.none{
+  max-height: 10px;
+  overflow: hidden;
+}
+
+.major-list div button.none {
+  display: none;
+}
+
+.major-list div .major li{
+  margin: 15px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* 상품리스트 */
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  height: 800px;
+  margin-left: 150px;
+  margin-top: 100px;
+  
+}
+
+.product-list .product{
+  width: 250px;
+}
+
+.product-list .product img{
+  width: 200px;
+}

@@ -1,0 +1,43 @@
+.login{
+  width: 300px;
+  margin: 5% auto;
+}
+
+.login .logo{
+  width: 300px;
+}
+
+.login form{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.login form input{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 25px;
+  background-color: #e9e9e9;
+  border: none;
+}
+
+.login form input:focus{
+  outline: 3px solid #C4B0FF;
+}
+
+.login form button{
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.login form button:first-of-type{
+  background-color: #C4B0FF;
+}
+
+.login form button:last-of-type{
+  background-color: #96B6C5;
+}
