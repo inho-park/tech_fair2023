@@ -16,6 +16,6 @@ public class ArticleController {
 
     @GetMapping("/main")
     public String index() {
-        return "/article/home.html";
+        return "/article/home";
     }
 }
