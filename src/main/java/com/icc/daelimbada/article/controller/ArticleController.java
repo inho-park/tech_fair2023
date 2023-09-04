@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ArticleController {
     private final ArticleService articleService;
 
-    @GetMapping({"/", "/index"})
+    @GetMapping("/main")
     public String index() {
-        return "redirect:/article/index";
+        return "/article/home.html";
     }
 }
