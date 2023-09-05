@@ -1,21 +1,21 @@
 #container{
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+
 }
 /* 해더 */
-.header{
-  width: 1000px;
-}
+
 .header{
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 70%;
   background-color: #fff;
   box-shadow: 0 0 3px #000;
   z-index: 20;
+  margin: 0 auto;
+
 }
 .header_wrapper{
   display: flex;
@@ -25,7 +25,7 @@
   padding: 0 16px;
 }
 .header_start{
-margin-left: 50px;   
+  margin-left: 50px;
 }
 .header_center{
   width: 60%;
@@ -41,7 +41,6 @@ margin-left: 50px;
   height: 30px;
   padding: 0 6px;
   border: 1px solid #8f8f8f;
-  border-width: none;
   border-radius: 40px;
 }
 .header__input--button{
@@ -87,7 +86,7 @@ margin-left: 50px;
   font-size: 20px;
   margin: 0 20px 5px 5px;
   color: #11009E;
- 
+
 }
 
 .major-list  button{
@@ -97,7 +96,7 @@ margin-left: 50px;
   background-color: #fff;
   border: none;
   cursor: pointer;
-  
+
 }
 
 .major{
@@ -107,7 +106,7 @@ margin-left: 50px;
 .majors hr{
   border-bottom: 1.5px solid black;
 }
- .major.none{
+.major.none{
   max-height: 10px;
   overflow: hidden;
 }
@@ -127,17 +126,43 @@ margin-left: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 650px;
   margin-left: 150px;
-  margin-top: 100px;
-  
+  margin-top: 150px;
+
 }
 
 .product-list .product{
   width: 250px;
 }
 
+.product-list .product .data{
+  width: 160px;
+  position: relative;
+  padding: 5px;
+
+}
+
 .product-list .product img{
-  width: 200px;
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.product-list .product p {
+  margin-bottom: 15px;
+}
+
+.product-list .product p:nth-child(2){
+  font-size: 12px;
+  color: #9d9d9d;
+}
+
+
+.product-list .product p:last-of-type {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  color: #9d9d9d;
+  font-size: 12px;
 }
