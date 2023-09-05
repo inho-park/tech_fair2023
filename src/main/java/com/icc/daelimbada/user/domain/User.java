@@ -1,15 +1,13 @@
 package com.icc.daelimbada.user.domain;
 
 import com.icc.daelimbada.common.domain.BaseTime;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+
 @Entity
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

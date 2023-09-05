@@ -8,25 +8,27 @@
 </head>
 <body>
   <div class="join">
-    <a href="."><img class="logo" src="../images/Logo.png"></a>
-      <form action="#" accept-charset="#" method="#">
+    <a href="#"><img class="logo" src="../images/Logo.png"></a>
+      <form action="/user/signup" method="post">
         <div>
-          <label for="e-mail">이메일</label>
-          <input id="e-mail" type="text"  required>
-          <button>인증</button>
+<!--          이메일 인증 알아보기-->
+          <label for="email">이메일
+            <input id="email" name="email" type="text"  required>
+          </label>
+<!--          <button>인증</button>-->
         </div>
-        <label for="pass">비밀번호</label>
-        <input id="pass" type="password" required>
+        <label for="password">비밀번호
+            <input id="password" name="password" type="password" required>
+        </label>
+<!--        <label for="repass">비밀번호 확인</label>-->
+<!--        <input id="repass" type="password"  required>-->
 
-        <label for="repass">비밀번호 확인</label>
-        <input id="repass" type="password"  required>
+        <label for="username">이름
+            <input id="username" name="username" type="text" required>
+        </label>
+<!--        <label for="nicName">닉이름</label>-->
+<!--        <input id="nicName" type="text" required>-->
 
-        <label for="name">이름</label>
-        <input id="name" type="text" required>
-
-        <label for="nicName">닉이름</label>
-        <input id="nicName" type="text" required>
-        
         <button class="joinButton" type="submit">회원가입</button>
       </form>
   </div>
