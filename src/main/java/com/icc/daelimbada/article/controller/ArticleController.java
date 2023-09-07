@@ -15,7 +15,7 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @GetMapping("/main")
-    public String index() {
+    public String home() {
         return "/article/home";
     }
 }

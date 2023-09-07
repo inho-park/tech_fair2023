@@ -1,6 +1,5 @@
 package com.icc.daelimbada.user.controller;
 
-import com.icc.daelimbada.user.domain.User;
 import com.icc.daelimbada.user.dto.JoinDTO;
 import com.icc.daelimbada.user.dto.LoginDTO;
 import com.icc.daelimbada.user.service.UserService;
@@ -34,9 +33,14 @@ public class UserController {
         return "/user/login";
     }
 
-    @PostMapping("/signin")
-    public String login(@RequestBody LoginDTO loginDTO) {
-
-        return "/home";
+    @PostMapping(value = "/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String login(LoginDTO loginDTO) {
+        try {
+            log.info(userService.register(loginDTO));
+            return "redirect:/article/main";
+        } catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
