@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <link rel="stylesheet" href="/css/addproduct.css">
+  <script defer src="/js/addProduct.js"></script>
+  <title>상품등록</title>
+</head>
+<body>
+  <div id="container">
+
+    <!--Header-->
+    <header class="header">
+      <div class="header_wrapper">
+        <h1 class="header_start">
+          <a href="/"><img class="header_logo" src="./images/logo.png" alt="logo" width="180px" height="auto"></a>
+        </h1>
+        <div class="header_center">
+          <form class="header_form" onsubmit="return false"></form>
+            <input class="header__input--text" type="text" placeholder="검색">
+            <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
+        </div>
+        <div class="header_end">
+          <h1 class="header_end_login"><a href="/user/login.html">로그인</a></h1>
+          <h1 class="header_end_signup"><a href="/user/join.html">회원가입</a></h1>
+          <h1 class="header_end_myPage"><a href="/user/mypage.html">마이페이지</a></h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="product">
+     <h1>기본정보</h1>
+     
+     <form action="" class="productData">
+      <div class="filebox">
+        <h2>상품이미지</h2>
+        <div>
+          <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+          <label for="file">파일찾기</label> 
+          <input type="file" id="file" readonly>
+        </div>
+      </div>
+
+      <div class="data">
+        <label for="productTitle">제목</label>
+        <input type="text" id="productTitle">
+      </div>
+
+      <div class="data">
+        <label for="productName">상품명</label>
+        <input type="text" id="productName">
+      </div>
+
+      <div class="data">
+        <label for="productPrice">가격</label>
+        <input type="text" id="productPrice">
+      </div>
+
+      <div class="data">
+        <label for="productLocation">거래위치</label>
+        <input type="text" id="productLocation">
+      </div>
+
+     <div class="data">
+      <label for="productTime">거래날짜</label>
+      <input type="date" id="productTime">
+     </div>
+
+     <div class="data">
+      <label for="classificationSelect">소속학과</label>
+      <div>
+          <select id="classificationSelect">
+              <!-- 대분류 옵션들은 여기서 생성됩니다 -->
+          </select>
+
+          <select id="majorSelect">
+              <!-- 소분류 옵션들은 여기서 생성됩니다 -->
+          </select>
+      </div>
+     </div>
+
+      <div class="data">
+        <label for="productExplanation">상품설명</label>
+        <textarea name="" id="productExplanation" cols="60" rows="10"></textarea>
+      </div>
+
+      <button type="submit">등록하기</button>
+     </form>
+    </div>
+
+
+  </div>
+</body>
+</html>
