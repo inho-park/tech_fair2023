@@ -18,10 +18,10 @@ public class ArticleController {
 
     @GetMapping("/")
     public String home() {
-        return "/article/home";
+        return "redirect:/article/list";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/list")
     public void list (PageRequestDTO pageRequestDTO, Model model) {
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }

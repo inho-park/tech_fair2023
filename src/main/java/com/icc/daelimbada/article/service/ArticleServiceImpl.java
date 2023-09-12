@@ -42,7 +42,7 @@ public class ArticleServiceImpl implements ArticleService {
                         (User) entity[1]
                 )
         );
-        Page<Object[]> result = articleRepository.getArticles(requestDTO.getPageable(Sort.by("id").descending()));
+        Page<Object[]> result = articleRepository.getArticlesBySold(requestDTO.getPageable(Sort.by("id").descending()), false);
 
         return new PageResultDTO<>(result, fn);
     }
