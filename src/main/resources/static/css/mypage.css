@@ -8,10 +8,10 @@
 .userName{
   display: flex;
   align-items: center;
- 
+
 }
 
-.userName .initial{ 
+.userName .initial{
   width: 80px;
   height: 80px;
   text-align: center;
@@ -24,7 +24,7 @@
 
 .userData{
   width: 100%;
-  
+
 }
 
 .data{
@@ -44,6 +44,10 @@
   margin-left: 100px;
 }
 
+.upLoadProduct, .likeProduct{
+  margin-top: 100px;
+}
+
 .data button{
   width: 100px;
   height: 30px;
@@ -52,4 +56,30 @@
   right: 0;
   background-color: #C4B0FF;
   border: none;
+}
+
+.upLoadProduct .title, .likeProduct .title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 2px solid #ccc;
+}
+
+.upLoadProduct .title button, .likeProduct .title button{
+  width: 150px;
+  height: 40px;
+  background-color: #C4B0FF;
+  border: none;
+}
+
+.productList{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+
+.productList .product img{
+  width: 130px;
 }
