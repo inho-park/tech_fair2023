@@ -8,6 +8,7 @@ import com.icc.daelimbada.article.dto.PageResultDTO;
 import com.icc.daelimbada.user.domain.User;
 
 public interface ArticleService {
+    void checkUser(Long articleId, Long userId);
     Long saveArticle(ArticleDTO articleDTO);
     ArticleDTO getArticle(Long articleId);
     PageResultDTO<ArticleDTO, Object[]> getList(PageRequestDTO requestDTO);
