@@ -2,7 +2,7 @@ package com.icc.daelimbada.article.service;
 
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.article.dto.ArticleDTO;
-import com.icc.daelimbada.article.dto.PageRequestDTO;
+import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.article.dto.PageResultDTO;
 import com.icc.daelimbada.article.repository.ArticleRepository;
 import com.icc.daelimbada.user.domain.User;
@@ -63,7 +63,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
-    public PageResultDTO<ArticleDTO, Object[]> getList(PageRequestDTO requestDTO) {
+    public PageResultDTO<ArticleDTO, Object[]> getList(ArticlePageRequestDTO requestDTO) {
         Function<Object[], ArticleDTO> fn = (
                 entity -> entityToDTO(
                         (Article) entity[0],
@@ -71,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
                 )
         );
         Page<Object[]> result = articleRepository.getArticlesBySold(requestDTO.getPageable(Sort.by("id").descending()), false);
-
+        log.info(result.toString());
         return new PageResultDTO<>(result, fn);
     }
 

@@ -1,6 +1,6 @@
 package com.icc.daelimbada.user.controller;
 
-import com.icc.daelimbada.article.dto.PageRequestDTO;
+import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.article.service.ArticleService;
 import com.icc.daelimbada.user.dto.JoinDTO;
 import com.icc.daelimbada.user.dto.LoginDTO;
@@ -30,7 +30,7 @@ public class UserController {
         return "/user/login";
     }
     @GetMapping("/mypage")
-    public String myPage(PageRequestDTO pageRequestDTO, Model model) {
+    public String myPage(ArticlePageRequestDTO pageRequestDTO, Model model) {
 //        model.addAttribute("result", articleService.get)
         return "/user/mypage";
     }
