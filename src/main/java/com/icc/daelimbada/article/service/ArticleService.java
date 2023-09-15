@@ -4,7 +4,7 @@ import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.article.domain.Major;
 import com.icc.daelimbada.article.dto.ArticleDTO;
 import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
-import com.icc.daelimbada.article.dto.PageResultDTO;
+import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.user.domain.User;
 
 public interface ArticleService {
