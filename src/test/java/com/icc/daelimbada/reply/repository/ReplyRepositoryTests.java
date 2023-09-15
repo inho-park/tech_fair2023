@@ -19,10 +19,10 @@ public class ReplyRepositoryTests {
     private ReplyRepository replyRepository;
     @Test
     public void 댓글_등록() {
-        for (long i = 0; i < 10; i++) {
-            User user = userRepository.findById(10 - i).orElseThrow();
+        for (long i = 1; i <= 10; i++) {
+            User user = userRepository.findById(11 - i).orElseThrow();
             Article article = articleRepository.findById(i).orElseThrow();
-            for (long j = 0; j < 10; j++) {
+            for (long j = 1; j <= 10; j++) {
                 replyRepository.save(Reply.builder()
                         .content("댓글 테스트 " + j)
                         .article(article)
