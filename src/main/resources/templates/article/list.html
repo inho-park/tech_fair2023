@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/index.css">
   <script defer src="/js/MajorList.js"></script>
+
   <title>Document</title>
 </head>
 <body>
+
 <div id="container">
   <!--Header-->
   <header class="header">
@@ -29,6 +31,7 @@
         <h1 class="header_end_login"><a href="/user/login">로그인</a></h1>
         <h1 class="header_end_signup"><a href="/user/join">회원가입</a></h1>
         <h1 class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
+        <h1 class="header_end_addProductPage"><a href="/user/addProduct">상품등록</a></h1>
       </div>
     </div>
   </header>
@@ -38,80 +41,46 @@
 
   <!--product-list-->
   <div class="product-list">
+    <th:block th:each="e : ${result.dtoList}">
     <div class="product">
       <img src="/images/XL.jpeg" alt="product">
       <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
+        <p th:text="${e.title}"></p>
+        <p th:text="${e.username}"></p>
+        <p th:text="${e.price}"></p>
+        <p class='date' th:text="${e.regDate}"></p>
       </div>
     </div>
-    <div class="product">
-      <img src="/images/XL.jpeg" alt="product">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
+    </th:block>
   </div>
 </div>
+<script  th:inline="javascript">
+  /*<![CDATA[*/ /*]]>*/
+  let dtoList = [[${result.dtoList}]]
+  console.log(dtoList)
+
+  const dateElements = document.querySelectorAll(".date");
+  const dates = [];
+
+  dateElements.forEach(dateElement => {
+    dates.push(dateElement.innerText);
+  });
+
+  console.log(dates);
+
+  for(let i=0; i < dates.length; i++){
+    const dateObject = new Date(dates[i]);
+    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // 월 (0부터 시작하므로 +1 필요)
+    const day = dateObject.getDate().toString().padStart(2, '0'); // 일
+
+    const extractedDate = `${month}-${day}`;
+
+    dateElements[i].innerText=extractedDate;
+  }
+
+
+  /*]]>*/
+</script>
 
 </body>
 </html>

@@ -26,7 +26,7 @@
   padding: 0 16px;
 }
 .header_start{
-margin-left: 50px;   
+  margin-left: 50px;
 }
 .header_center{
   width: 60%;
@@ -79,7 +79,6 @@ margin-left: 50px;
 
 .product{
   width: 60%;
-  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -91,6 +90,7 @@ margin-left: 50px;
   font-size: 30px;
   padding: 10px;
   border-bottom: 3px solid black;
+  width: 100%;
 }
 
 
@@ -98,6 +98,7 @@ margin-left: 50px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  width: 100%;
 }
 
 .filebox .upload-name {
@@ -116,12 +117,11 @@ margin-left: 50px;
   padding: 10px;
   align-items: center;
   margin: 20px;
-
 }
 
 .filebox div{
   width: 59%;
-  
+
 }
 
 .filebox h2{
@@ -153,7 +153,6 @@ margin-left: 50px;
   padding: 10px;
   margin: 20px;
   font-size: 20px;
-
   display: flex;
   justify-content:space-between;
 }
@@ -161,4 +160,63 @@ margin-left: 50px;
 .data input{
   width: 50%;
   height: 30px;
+}
+
+.submitButton{
+  margin:  20px auto;
+  width: 20%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #96B6C5;
+  transition: all 0.5s ease-out ;
+}
+
+.submitButton:hover{
+  background-color: #4795b9;
+}
+
+@media ( max-width: 1800px ) {
+  body {
+    font-size: 15px;
+  }
+  .filebox .upload-name {
+    width: 60%;
+
+  }
+  .data:last-of-type{
+    flex-direction: column;
+  }
+
+  .data:last-of-type label{
+    margin-bottom: 20px;
+  }
+}
+@media ( max-width: 1440px ) {
+  body {
+    font-size: 15px;
+  }
+
+
+  .filebox .upload-name {
+    width: 50%;
+
+  }
+  .data:last-of-type{
+    flex-direction: column;
+  }
+
+  .data:last-of-type label{
+    margin-bottom: 20px;
+  }
+}
+@media ( max-width: 1100px ) {
+  body {
+    font-size: 10px;
+  }
+
+  .data, .filebox h2{
+    font-size: 1.1rem;
+  }
+
 }

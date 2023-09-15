@@ -29,6 +29,10 @@ public class UserController {
     public String loginPage() {
         return "/user/login";
     }
+    @GetMapping("/addProduct")
+    public String addProductPage() {
+        return "/user/addProduct";
+    }
     @GetMapping("/mypage")
     public String myPage(PageRequestDTO pageRequestDTO, Model model) {
 //        model.addAttribute("result", articleService.get)
