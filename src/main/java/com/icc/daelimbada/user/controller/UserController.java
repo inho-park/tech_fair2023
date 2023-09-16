@@ -55,7 +55,7 @@ public class UserController {
     public String login(LoginDTO loginDTO) {
         try {
             log.info(userService.register(loginDTO));
-            return "redirect:/article/main";
+            return "redirect:/article/list";
         } catch(Exception e) {
             e.printStackTrace();
             return null;

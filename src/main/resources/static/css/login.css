@@ -32,12 +32,23 @@
   border: none;
   margin-bottom: 25px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .login form button:first-of-type{
   background-color: #C4B0FF;
 }
 
-.login form button:last-of-type{
+.joinButton{
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 25px;
+  font-size: 16px;
   background-color: #96B6C5;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: center;
 }
