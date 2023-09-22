@@ -1,4 +1,4 @@
-package com.icc.daelimbada.article.dto;
+package com.icc.daelimbada.common.dto;
 
 import lombok.Data;
 import org.springframework.data.domain.Page;

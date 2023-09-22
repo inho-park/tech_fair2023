@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +8,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/css/index.css">
   <script defer src="/js/MajorList.js"></script>
+
   <title>Document</title>
 </head>
 <body>
+<script th:inline="javascript">
+  let product = [[${result}]]
+  console.log(product)
+</script>
+
+
 <div id="container">
   <!--Header-->
   <header class="header">
     <div class="header_wrapper">
       <h1 class="header_start">
-        <a href="/"><img class="header_logo" src="./images/logo.png" alt="logo" width="180px" height="auto"></a>
+        <a href="/"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
       </h1>
       <div class="header_center">
         <form class="header_form" onsubmit="return false"></form>
@@ -26,9 +34,9 @@
         <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
       </div>
       <div class="header_end">
-        <h1 class="header_end_login"><a href="/user/login.html">로그인</a></h1>
-        <h1 class="header_end_signup"><a href="/user/join.html">회원가입</a></h1>
-        <h1 class="header_end_myPage"><a href="/user/mypage.html">마이페이지</a></h1>
+        <h1 class="header_end_login"><a href="/user/login">로그인</a></h1>
+        <h1 class="header_end_signup"><a href="/user/join">회원가입</a></h1>
+        <h1 class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
       </div>
     </div>
   </header>

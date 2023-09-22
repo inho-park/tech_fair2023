@@ -3,14 +3,15 @@ package com.icc.daelimbada.article.service;
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.article.domain.Major;
 import com.icc.daelimbada.article.dto.ArticleDTO;
-import com.icc.daelimbada.article.dto.PageRequestDTO;
-import com.icc.daelimbada.article.dto.PageResultDTO;
+import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
+import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.user.domain.User;
 
 public interface ArticleService {
+    void checkUser(Long articleId, Long userId);
     Long saveArticle(ArticleDTO articleDTO);
     ArticleDTO getArticle(Long articleId);
-    PageResultDTO<ArticleDTO, Object[]> getList(PageRequestDTO requestDTO);
+    PageResultDTO<ArticleDTO, Object[]> getList(ArticlePageRequestDTO requestDTO);
     Long remove(Long articleId);
     Long modify(ArticleDTO dto);
 
