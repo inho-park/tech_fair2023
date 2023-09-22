@@ -1,4 +1,4 @@
-package com.icc.daelimbada.article.dto;
+package com.icc.daelimbada.reply.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,14 +10,14 @@ import org.springframework.data.domain.Sort;
 @Data
 @Builder
 @AllArgsConstructor
-public class PageRequestDTO {
-
+public class ReplyPageRequestDTO {
+    private Long replyId;
     private int page;
     private int size;
     private String type;
     private String keyword;
 
-    public PageRequestDTO() {
+    public ReplyPageRequestDTO() {
         this.page = 1;
         this.size = 10;
     }

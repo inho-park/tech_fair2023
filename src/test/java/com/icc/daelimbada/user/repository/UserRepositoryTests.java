@@ -13,11 +13,13 @@ public class UserRepositoryTests {
 
     @Test
     public void 회원등록() {
-        userRepository.save(User.builder()
-                .email("201930340@email.daelim.ac.kr")
-                .username("박준성")
-                .password("password")
-                .build()
-        );
+        for (int i = 1; i <= 10; i++) {
+            userRepository.save(User.builder()
+                    .email(i + "@email.daelim.ac.kr")
+                    .username("username" + i)
+                    .password("password" + i)
+                    .build()
+            );
+        }
     }
 }

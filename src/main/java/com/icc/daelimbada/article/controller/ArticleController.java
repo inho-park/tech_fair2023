@@ -1,7 +1,7 @@
 package com.icc.daelimbada.article.controller;
 
 import com.icc.daelimbada.article.dto.ArticleDTO;
-import com.icc.daelimbada.article.dto.PageRequestDTO;
+import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,14 +24,14 @@ public class ArticleController {
 
     @GetMapping({"/read", "/modify"})
     public void read(long id,
-                     @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
+                     @ModelAttribute("requestDTO") ArticlePageRequestDTO requestDTO,
                      Model model) {
 
         model.addAttribute("articleDTO", articleService.getArticle(id));
     }
 
     @GetMapping("/list")
-    public void list (PageRequestDTO pageRequestDTO, Model model) {
+    public void list (ArticlePageRequestDTO pageRequestDTO, Model model) {
 
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
@@ -44,7 +44,7 @@ public class ArticleController {
 
     @PutMapping("/modify")
     public String modify(ArticleDTO articleDTO,
-                         @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
+                         @ModelAttribute("requestDTO") ArticlePageRequestDTO requestDTO,
                          RedirectAttributes redirectAttributes) {
 
         articleService.modify(articleDTO);
