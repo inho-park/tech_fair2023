@@ -36,7 +36,7 @@ public class ArticleController {
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/ register")
     public void register(ArticleDTO articleDTO, RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
