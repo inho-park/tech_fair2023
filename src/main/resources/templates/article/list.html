@@ -19,9 +19,7 @@
   <!--Header-->
   <header class="header">
     <div class="header_wrapper">
-      <h1 class="header_start">
-        <a href="/"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-      </h1>
+        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
       <div class="header_center">
         <form class="header_form" onsubmit="return false"></form>
         <input class="header__input--text" type="text" placeholder="검색">
@@ -31,7 +29,6 @@
         <h1 class="header_end_login"><a href="/user/login">로그인</a></h1>
         <h1 class="header_end_signup"><a href="/user/join">회원가입</a></h1>
         <h1 class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
-        <h1 class="header_end_addProductPage"><a href="/user/addProduct">상품등록</a></h1>
       </div>
     </div>
   </header>
@@ -53,6 +50,10 @@
     </div>
     </th:block>
   </div>
+
+  <a class="addProduct" href="/user/addProduct">
+    <span class="material-symbols-outlined">add_circle</span>
+  </a>
 </div>
 <script  th:inline="javascript">
   /*<![CDATA[*/ /*]]>*/
@@ -81,6 +82,7 @@
 
   /*]]>*/
 </script>
+
 
 </body>
 </html>

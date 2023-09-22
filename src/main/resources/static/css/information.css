@@ -143,11 +143,12 @@ input#menu:checked + nav#main_nav{
     width: 70%;
     display: block;
     float: left;
+    margin-bottom: 20%;
 }
 .Ginformation_top {
     display: flex;
     width: 100%;
-    height: 60%;
+    height: 45%;
     justify-content: center;
 }
 .Ginformation_img {
@@ -158,25 +159,23 @@ input#menu:checked + nav#main_nav{
 }
 .Ginformation_img > img {
     width: 60%;
-
 }
 .Ginformation_info {
     margin-top: 5%;
     width: 25%;
-
 }
 
 .Ginformation_dc {
     width: 100%;
     height: 40%;
 }
-.userName{
+.userName, .dc-userName{
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
-.userName .initial{
+.userName .initial, .dc-userName .initial{
     width: 40px;
     height: 40px;
     text-align: center;
@@ -187,7 +186,7 @@ input#menu:checked + nav#main_nav{
     margin: 0 15px 0 10px;
 }
 
-.userName h2{
+.userName h2 ,.dc-userName h2{
     font-size: 20px;
 }
 
@@ -239,47 +238,79 @@ input#menu:checked + nav#main_nav{
     font-size: 1.5rem;
 }
 .Ginformation_dc-text {
-    display: flex;
+
     margin-left: 10%;
     align-items: center;
+    padding: 20px;
+    border: 1px black solid;
+}
+
+.dc-userName{
+    margin-left: 7%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10%;
+
+}
+.dc-userName h2{
+    width: 60%;
+
+}
+.dc-userName input{
+    width:75%;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-left: 5%;
     padding: 10px;
 }
+
+.dc-userName button{
+    width: 60px;
+    margin-left: 10px;
+    height: 35px;
+    margin-top: 20px;
+}
 /*댓글창 css*/
-.comment {
+.user-comments{
+    width: 90%;
+    margin: 5% 0 0 10%;
+}
+.user-comments h1{
+    border-bottom: 2px black solid;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.comment{
     display: flex;
-    width: 100%;
-    height: 300px;
-    justify-content: center;
-}
-.comment_wrapper {
-    display: block;
-    width: 45%;
-    float: left;
-    margin-left: 90px;
-    border-top: 5px solid black;
-}
-.comment_chat{
-    margin: 5% 0 0 5%;
-    width: 100%;
-    height: 20%;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-.comment_box {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    margin-left: 5%;
     align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
     border-bottom: 1px solid black;
 }
-.comment_profile {
-    width: 25px;
-    height: 25px;
+.comment .initial{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #96B6C5 ;
     border-radius: 50%;
-    background-color: #E2E2E2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
+    font-size: 20px;
+
 }
+.comment h2{
+    font-size: 18px;
+}
+.comment h2:last-of-type{
+    width: 80%;
+    margin-left: 10px;
+
+}
+.comment p {
+    margin: 5px 0 0 5%;
+    padding: 10px;
+}
+
+
