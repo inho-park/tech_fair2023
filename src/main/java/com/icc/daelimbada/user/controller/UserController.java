@@ -29,6 +29,10 @@ public class UserController {
     public String loginPage() {
         return "/user/login";
     }
+    @GetMapping("/addProduct")
+    public String addProductPage() {
+        return "/user/addProduct";
+    }
     @GetMapping("/mypage")
     public String myPage(ArticlePageRequestDTO pageRequestDTO, Model model) {
 //        model.addAttribute("result", articleService.get)
@@ -51,7 +55,7 @@ public class UserController {
     public String login(LoginDTO loginDTO) {
         try {
             log.info(userService.register(loginDTO));
-            return "redirect:/article/main";
+            return "redirect:/article/list";
         } catch(Exception e) {
             e.printStackTrace();
             return null;

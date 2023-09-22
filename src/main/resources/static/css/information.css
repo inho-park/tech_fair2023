@@ -1,0 +1,285 @@
+#container{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+/* 해더 */
+
+.header{
+    position: fixed;
+    top: 0;
+    width: 70%;
+    background-color: #fff;
+    box-shadow: 0 0 3px #000;
+    z-index: 20;
+    margin: 0 auto;
+
+}
+.header_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+}
+.header_start{
+    margin-left: 50px;
+}
+.header_center{
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+.header_form{
+    display: flex;
+    max-width: 100%;
+}
+.header__input--text{
+    width: calc(100% - 60px);
+    height: 30px;
+    padding: 0 6px;
+    border: 1px solid #8f8f8f;
+    border-radius: 40px;
+}
+.header__input--button{
+    width: 55px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+.header_end{
+    width: 13%;
+    display: flex;
+    justify-content: space-between;
+}
+.header_end_login{
+    max-width: 50%;
+    font-size: 1rem;
+}
+.header_end_signup{
+    max-width: 50%;
+    font-size: 1rem;
+}
+.header_end_signup > a{
+    text-decoration: none;
+}
+.header_end_login > a{
+    text-decoration: none;
+}
+
+/*상품 판매완료 및 삭제 수정 css */
+.bar{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin-top: 70px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.bar_wrapper{
+    display: block;
+    width: 45%;
+    margin-left: 90px;
+    border-bottom: 3px solid black;
+}
+.bar_menu{
+    float: right;
+    margin-top: 24px;
+    font-size: 2rem;
+    width: 13%;
+
+}
+#main_nav{
+    display: flex;
+    width: 6%;
+    text-align: center;
+}
+#main_nav > ul{
+    width: 100%;
+}
+#main_nav > ul > li > a {
+    text-decoration-line: none;
+    color: black;
+    font-size: 1rem;
+}
+label.menu{
+    position: relative;
+    float: right;
+}
+input.menu{
+    display: none;
+}
+input#menu{
+    display: none;
+}
+nav#main_nav{
+    display: none;
+    position: absolute;
+    margin-top: 40px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+}
+input#menu:checked + nav#main_nav{
+    display: block;
+}
+/*상품 사진 및 정보 css */
+
+.Ginformation{
+    margin: 0 auto;
+
+    display: flex;
+}
+
+.Ginformation_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    height: 700px;
+}
+.Ginformation_item{
+    width: 70%;
+    display: block;
+    float: left;
+}
+.Ginformation_top {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+}
+.Ginformation_img {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+.Ginformation_img > img {
+    width: 60%;
+
+}
+.Ginformation_info {
+    margin-top: 5%;
+    width: 25%;
+
+}
+
+.Ginformation_dc {
+    width: 100%;
+    height: 40%;
+}
+.userName{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.userName .initial{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 45px;
+    background-color: #96B6C5 ;
+    border-radius: 50%;
+    font-size: 25px;
+    margin: 0 15px 0 10px;
+}
+
+.userName h2{
+    font-size: 20px;
+}
+
+
+.Ginformation_text--title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 20px 0 20px 10px;
+}
+
+.Ginformation_text--pay {
+    height: 10%;
+    font-size: 1rem;
+    margin: 15px 0 20px 15px;
+
+}
+.Ginformation_text--tp {
+    font-size: 1rem;
+    margin: 40px 0 20px 10px;
+}
+.Ginformation_text--tp > span {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.Ginformation_text--tp > ul {
+    font-size: 0.9rem;
+    margin: 13px 0 0 10px;
+}
+.Ginformation_text--tpday {
+    margin: 40px 0 20px 10px;
+}
+.Ginformation_text--tpday > span {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.Ginformation_text--tpday > ul {
+    margin: 10px 0 0 10px;
+}
+/* 위 | 오른쪽 | 아래 | 왼쪽 */
+.Ginformation_dc {
+    display: block;
+    width: 70%;
+    height: 30%;
+    margin: 2% auto 0 auto;
+}
+.Ginformation_dc > p {
+    font-weight: bold;
+    margin: 0 0 10px 11%;
+    font-size: 1.5rem;
+}
+.Ginformation_dc-text {
+    display: flex;
+    margin-left: 10%;
+    align-items: center;
+    padding: 10px;
+}
+/*댓글창 css*/
+.comment {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+}
+.comment_wrapper {
+    display: block;
+    width: 45%;
+    float: left;
+    margin-left: 90px;
+    border-top: 5px solid black;
+}
+.comment_chat{
+    margin: 5% 0 0 5%;
+    width: 100%;
+    height: 20%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.comment_box {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.comment_profile {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #E2E2E2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
