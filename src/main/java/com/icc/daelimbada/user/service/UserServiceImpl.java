@@ -3,6 +3,7 @@ package com.icc.daelimbada.user.service;
 import com.icc.daelimbada.user.domain.User;
 import com.icc.daelimbada.user.dto.JoinDTO;
 import com.icc.daelimbada.user.dto.LoginDTO;
+import com.icc.daelimbada.user.exception.NoUserException;
 import com.icc.daelimbada.user.exception.PasswordException;
 import com.icc.daelimbada.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,23 +27,25 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             return user.getEmail();
             // email 검증 로직 필요
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public String register(LoginDTO loginDTO) {
+    public String login(LoginDTO loginDTO) {
         try {
-            User user = userRepository.findByEmail(loginDTO.getUsername()).orElseThrow();
+            User user = userRepository.findByUsername(loginDTO.getUsername()).orElseThrow(NoUserException::new);
             String password = user.getPassword();
-            if (passwordEncoder.encode(loginDTO.getPassword()).equals(password)) {
+            if (passwordEncoder.matches(password, loginDTO.getPassword())) {
                 return user.getUsername();
             } else {
                 throw new PasswordException("비밀번호 불일치");
             }
-        } catch(PasswordException e) {
+        } catch (NoUserException e) {
+            throw e;
+        } catch (PasswordException e) {
             throw e;
         }
     }

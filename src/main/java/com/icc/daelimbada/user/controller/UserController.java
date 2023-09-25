@@ -8,10 +8,11 @@ import com.icc.daelimbada.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Log4j2
 @Controller
@@ -52,10 +53,18 @@ public class UserController {
 
 
     @PostMapping(value = "/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String login(LoginDTO loginDTO) {
+    public String login(LoginDTO loginDTO, HttpSession session) {
         try {
-            log.info(userService.register(loginDTO));
-            return "redirect:/article/list";
+            String result = userService.login(loginDTO);
+
+            if (result != null) {
+                // login 성공
+                session.setAttribute("login username", result);
+                return "redirect:/article/list";
+            } else {
+                // login 실패
+                return "user/login";
+            }
         } catch(Exception e) {
             e.printStackTrace();
             return null;
