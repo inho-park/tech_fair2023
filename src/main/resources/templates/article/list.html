@@ -19,9 +19,7 @@
   <!--Header-->
   <header class="header">
     <div class="header_wrapper">
-      <h1 class="header_start">
-        <a href="/"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-      </h1>
+        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
       <div class="header_center">
         <form class="header_form" onsubmit="return false"></form>
         <input class="header__input--text" type="text" placeholder="검색">
@@ -33,6 +31,7 @@
         <h1 th:if="${session.username==''}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
         <h1 th:if="${session.username!=''}" class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
         <h1 th:if="${session.username!=''}" class="header_end_addProductPage"><a href="/user/addProduct">상품등록</a></h1>
+
       </div>
     </div>
   </header>
@@ -41,19 +40,33 @@
   </div>
 
   <!--product-list-->
-  <div class="product-list">
-    <th:block th:each="e : ${result.dtoList}">
-    <div class="product">
-      <img src="/images/XL.jpeg" alt="product">
-      <div class="data">
-        <p th:text="${e.title}"></p>
-        <p th:text="${e.username}"></p>
-        <p th:text="${e.price}"></p>
-        <p class='date' th:text="${e.regDate}"></p>
-      </div>
+  <div class="product-page">
+    <div class="product-list">
+      <th:block th:each="e : ${result.dtoList}">
+        <a href="'/article/information?' + ${e.id}" class="product-link">
+          <div class="product">
+            <img src="/images/XL.jpeg" alt="product">
+            <div class="data">
+              <p th:text="${e.title}"></p>
+              <p th:text="${e.username}"></p>
+              <p th:text="${e.price}"></p>
+              <p class='date' th:text="${e.regDate}"></p>
+            </div>
+          </div>
+        </a>
+      </th:block>
     </div>
-    </th:block>
+
+    <div class="pagination">
+      <span id="prev-page" class="material-symbols-outlined page">chevron_left</span>
+      <span id="page-numbers"></span>
+      <span id="next-page" class="material-symbols-outlined page">chevron_right</span>
+    </div>
   </div>
+
+  <a class="addProduct" href="/user/addProduct">
+    <span class="material-symbols-outlined">add_circle</span>
+  </a>
 </div>
 <script  th:inline="javascript">
   /*<![CDATA[*/ /*]]>*/
@@ -80,8 +93,73 @@
   }
 
 
+
+  const productElements = document.querySelectorAll(".product");
+  const prevPageButton = document.getElementById("prev-page");
+  const nextPageButton = document.getElementById("next-page");
+  const pageNumberContainer = document.getElementById("page-numbers");
+
+  let currentPage = 1;
+  const itemsPerPage = 12;
+
+  function showPage(pageNumber) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    productElements.forEach((element, index) => {
+      if (index >= startIndex && index < endIndex) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    });
+  }
+
+  function updatePageNumbers() {
+    const totalPages = Math.ceil(productElements.length / itemsPerPage);
+    pageNumberContainer.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+      const pageNumberButton = document.createElement("span");
+      pageNumberButton.textContent = i;
+      pageNumberButton.className = "page-number";
+      pageNumberButton.addEventListener("click", () => {
+        currentPage = i;
+        showPage(currentPage);
+        updatePageNumbers();
+      });
+      pageNumberContainer.appendChild(pageNumberButton);
+    }
+  }
+
+  // 이전 페이지로 이동
+  prevPageButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+      updatePageNumbers();
+    }
+  });
+
+  // 다음 페이지로 이동
+  nextPageButton.addEventListener("click", () => {
+    const totalPages = Math.ceil(productElements.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage(currentPage);
+      updatePageNumbers();
+    }
+  });
+
+  // 페이지 초기화
+  showPage(currentPage);
+  updatePageNumbers();
+
+
+
   /*]]>*/
 </script>
+
 
 </body>
 </html>

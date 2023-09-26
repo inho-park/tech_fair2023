@@ -27,6 +27,7 @@ public interface ArticleService {
     }
     default ArticleDTO entityToDTO(Article article, User user) {
         return ArticleDTO.builder()
+                .id(article.getId())
                 .title(article.getTitle())
                 .majorCode(article.getMajor().getCode())
                 .content(article.getContent())

@@ -3,7 +3,7 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-
+  position: relative;
 }
 /* 해더 */
 
@@ -64,9 +64,11 @@
 }
 .header_end_signup > a{
   text-decoration: none;
+  color: black;
 }
 .header_end_login > a{
   text-decoration: none;
+  color: black;
 }
 
 /* 전공 사이드바 */
@@ -122,15 +124,20 @@
 }
 
 /* 상품리스트 */
+.product-page{
+  display: flex;
+  flex-direction: column;
+}
 .product-list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   width: 1000px;
-  height: 650px;
   margin-left: 150px;
   margin-top: 150px;
+}
 
+.product-link {
+  text-decoration: none;
 }
 
 .product-list .product{
@@ -165,4 +172,97 @@
   bottom: 5px;
   color: #9d9d9d;
   font-size: 12px;
+}
+
+/* 상품 리스트 페이지 번호 버튼 */
+.pagination{
+  position: absolute;
+  left: 45%;
+  bottom: -100px;
+  padding: 20px;
+  display: flex;
+}
+
+.page-number:first-of-type{
+  margin-left: 10px;
+}
+
+#page-numbers{
+  padding-top: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+.page-number{
+  margin-right: 10px;
+  cursor: pointer;
+  border-right: 1px solid black;
+  padding-right: 10px;
+
+}
+
+.page-number:last-of-type{
+  border: none;
+  padding-right: 0px;
+}
+
+.material-symbols-outlined.page{
+  font-size: 50px;
+}
+
+
+
+
+
+.addProduct{
+  position: absolute;
+  right: 0;
+  top: 70px;
+  text-decoration: none;
+
+}
+.addProduct span{
+  font-size: 50px;
+  color: #11009E;
+}
+
+@media screen and (max-width: 1900px){
+  .product-list{
+    width: 48vw;
+    margin-left: 8vw;
+  }
+  .product-list .product{
+    width: 12vw;
+  }
+}
+@media screen and (max-width: 1440px){
+  .product-list{
+    width: 47vw;
+    margin-left: 6vw;
+  }
+  .product-list .product{
+    width: 15vw;
+  }
+  .header_end_login > a{
+    font-size: 0.8rem;
+  }
+  .header_end_signup > a{
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 1100px){
+  .product-list{
+    width: 47vw;
+  }
+  .product-list .product{
+    width: 21vw;
+  }
+  .header_end_login > a{
+    font-size: 0.8rem;
+  }
+  .header_end_signup > a{
+    font-size: 0.8rem;
+  }
 }
