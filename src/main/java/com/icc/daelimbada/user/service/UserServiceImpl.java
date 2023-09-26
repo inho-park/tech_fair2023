@@ -8,6 +8,7 @@ import com.icc.daelimbada.user.exception.PasswordException;
 import com.icc.daelimbada.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +17,13 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
     @Override
     public String saveUser(JoinDTO joinDTO) {
         try {
             User user = dtoToEntity(joinDTO);
-            user.encodingPassword(passwordEncoder.encode(user.getPassword()));
+//            user.encodingPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
             return user.getEmail();
             // email 검증 로직 필요
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
     public String login(LoginDTO loginDTO) {
         try {
             User user = userRepository.findByUsername(loginDTO.getUsername()).orElseThrow(NoUserException::new);
-            String password = user.getPassword();
-            if (passwordEncoder.matches(password, loginDTO.getPassword())) {
+//            String password = user.getPassword();
+//            if (passwordEncoder.matches(password, loginDTO.getPassword())) {
                 return user.getUsername();
-            } else {
-                throw new PasswordException("비밀번호 불일치");
-            }
+//            } else {
+//                throw new PasswordException("비밀번호 불일치");
+//            }
         } catch (NoUserException e) {
             throw e;
         } catch (PasswordException e) {

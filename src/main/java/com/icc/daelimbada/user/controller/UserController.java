@@ -59,7 +59,7 @@ public class UserController {
 
             if (result != null) {
                 // login 성공
-                session.setAttribute("login username", result);
+                session.setAttribute("username", result);
                 return "redirect:/article/list";
             } else {
                 // login 실패
