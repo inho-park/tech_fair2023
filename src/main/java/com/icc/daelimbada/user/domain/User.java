@@ -24,4 +24,11 @@ public class User extends BaseTime {
 
     @Column(unique = true, nullable = false, length = 100)
     private String email;
+
+    @Column
+    private String role;
+
+    public void encodingPassword(String encoded) {
+        this.password = encoded;
+    }
 }

@@ -7,7 +7,7 @@ import com.icc.daelimbada.user.dto.LoginDTO;
 public interface UserService {
     String saveUser(JoinDTO joinDTO);
 
-    String register(LoginDTO loginDTO) throws Exception;
+    String login(LoginDTO loginDTO) throws Exception;
 
     default User dtoToEntity(JoinDTO dto) {
         return User.builder()
