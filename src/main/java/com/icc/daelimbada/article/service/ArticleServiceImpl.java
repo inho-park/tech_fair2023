@@ -70,8 +70,13 @@ public class ArticleServiceImpl implements ArticleService {
                         (User) entity[1]
                 )
         );
-        Page<Object[]> result = articleRepository.getArticlesBySold(requestDTO.getPageable(Sort.by("id").descending()), false);
-        log.info(result.toString());
+        Page<Object[]> result = null;
+        log.info(requestDTO.getKeyword());
+        if (requestDTO.getKeyword().equals("")) result = articleRepository.getArticlesBySold(
+                requestDTO.getPageable(Sort.by("id").descending()), false);
+        else result = articleRepository.getArticlesByTitleLike(
+                requestDTO.getPageable(Sort.by("id").descending()), requestDTO.getKeyword()
+        );
         return new PageResultDTO<>(result, fn);
     }
 

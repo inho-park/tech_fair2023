@@ -1,5 +1,6 @@
 package com.icc.daelimbada.reply.service;
 
+import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.common.dto.StatusDTO;
 import com.icc.daelimbada.reply.dto.ReplyDTO;
 import com.icc.daelimbada.reply.repository.ReplyRepository;
@@ -15,7 +16,8 @@ public class ReplyServiceImpl implements ReplyService {
     final private ReplyRepository replyRepository;
 
     @Override
-    public ReplyDTO getReply(Long replyId) {
+    public PageResultDTO getList(Long articleId) {
+        
         return null;
     }
 
