@@ -75,6 +75,11 @@ public class ArticleServiceImpl implements ArticleService {
         return new PageResultDTO<>(result, fn);
     }
 
+    @Override
+    public PageResultDTO<ArticleDTO, Object[]> searchList(ArticlePageRequestDTO requestDTO) {
+        return null;
+    }
+
     /**
      * 게시글 삭제
      * @param articleId
@@ -82,7 +87,13 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Long remove(Long articleId) {
-        return null;
+        try {
+            articleRepository.deleteById(articleId);
+            return 1l;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     /**

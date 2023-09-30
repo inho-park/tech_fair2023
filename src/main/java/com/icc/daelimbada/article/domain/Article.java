@@ -2,12 +2,14 @@ package com.icc.daelimbada.article.domain;
 
 import com.icc.daelimbada.common.domain.BaseTime;
 import com.icc.daelimbada.common.domain.BooleanToYNConverter;
+import com.icc.daelimbada.reply.domain.Reply;
 import com.icc.daelimbada.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * 1. img 를 2개 이상 사용하려면 해당 ERD 구조로는 해겳 불가능

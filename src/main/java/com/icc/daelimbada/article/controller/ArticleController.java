@@ -3,6 +3,7 @@ package com.icc.daelimbada.article.controller;
 import com.icc.daelimbada.article.dto.ArticleDTO;
 import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.article.service.ArticleService;
+import com.icc.daelimbada.reply.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/article")
 public class ArticleController {
     private final ArticleService articleService;
+    private final ReplyService replyService;
 
     @GetMapping("/")
     public String home() {
@@ -36,13 +38,13 @@ public class ArticleController {
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
 
-    @PostMapping("/ register")
+    @PostMapping("/register")
     public void register(ArticleDTO articleDTO, RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
     }
 
-    @PutMapping("/modify")
+    @PostMapping("/modify")
     public String modify(ArticleDTO articleDTO,
                          @ModelAttribute("requestDTO") ArticlePageRequestDTO requestDTO,
                          RedirectAttributes redirectAttributes) {
@@ -55,5 +57,12 @@ public class ArticleController {
         redirectAttributes.addAttribute("keyword", requestDTO.getKeyword());
 
         return "redirect:/article/read";
+    }
+
+    @PostMapping("/delete")
+    public String delete(long id) {
+        replyService.deleteAll(id);
+        articleService.remove(id);
+        return "redirect:/user/myPage";
     }
 }

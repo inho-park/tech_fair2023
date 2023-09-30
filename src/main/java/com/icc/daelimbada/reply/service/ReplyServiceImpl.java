@@ -33,4 +33,15 @@ public class ReplyServiceImpl implements ReplyService {
     public StatusDTO updateReply(Long replyId, String content) {
         return null;
     }
+
+    @Override
+    public StatusDTO deleteAll(Long articleId) {
+        try {
+            replyRepository.deleteAllByArticle_Id(articleId);
+            return StatusDTO.builder().status("article id : " + articleId).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return StatusDTO.builder().status(e.getMessage()).build();
+        }
+    }
 }

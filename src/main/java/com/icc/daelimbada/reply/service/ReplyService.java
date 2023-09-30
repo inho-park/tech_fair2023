@@ -8,4 +8,5 @@ public interface ReplyService {
     ReplyDTO saveReply(ReplyDTO replyDTO);
     StatusDTO deleteReply(Long replyId);
     StatusDTO updateReply(Long replyId, String content);
+    StatusDTO deleteAll(Long articleId);
 }
