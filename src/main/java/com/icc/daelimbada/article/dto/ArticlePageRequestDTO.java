@@ -14,13 +14,15 @@ public class ArticlePageRequestDTO {
 
     private int page;
     private int size;
-    private String type;
+    private int type;
     private String keyword;
+    private String username;
 
     public ArticlePageRequestDTO() {
         this.page = 1;
         this.size = 12;
         this.keyword = "";
+        this.type = 0;
     }
 
     public Pageable getPageable(Sort sort) {

@@ -1,6 +1,7 @@
 package com.icc.daelimbada.article.service;
 
 import com.icc.daelimbada.article.domain.Article;
+import com.icc.daelimbada.article.domain.Major;
 import com.icc.daelimbada.article.dto.ArticleDTO;
 import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.common.dto.PageResultDTO;
@@ -71,18 +72,56 @@ public class ArticleServiceImpl implements ArticleService {
                 )
         );
         Page<Object[]> result = null;
-        log.info(requestDTO.getKeyword());
-        if (requestDTO.getKeyword().equals("")) result = articleRepository.getArticlesBySold(
-                requestDTO.getPageable(Sort.by("id").descending()), false);
-        else result = articleRepository.getArticlesByTitleLike(
-                requestDTO.getPageable(Sort.by("id").descending()), requestDTO.getKeyword()
-        );
+        if (requestDTO.getType() == 0) result = articleRepository.getArticlesBySold(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                false);
+        else result = articleRepository.getArticlesBySoldAndMajor(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                Major.getMajor(requestDTO.getType()).getName(),
+                false);
         return new PageResultDTO<>(result, fn);
     }
 
     @Override
     public PageResultDTO<ArticleDTO, Object[]> searchList(ArticlePageRequestDTO requestDTO) {
-        return null;
+        Function<Object[], ArticleDTO> fn = (
+                entity -> entityToDTO(
+                        (Article) entity[0],
+                        (User) entity[1]
+                )
+        );
+        Page<Object[]> result = null;
+        if (requestDTO.getKeyword().equals("")) result = articleRepository.getArticlesBySold(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                false);
+        else {
+            if (requestDTO.getType() == 0) result = articleRepository.getArticlesByTitleLike(
+                    requestDTO.getPageable(Sort.by("id").descending()),
+                    requestDTO.getKeyword(),
+                    false);
+            else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
+                    requestDTO.getPageable(Sort.by("id").descending()),
+                    requestDTO.getKeyword(),
+                    Major.getMajor(requestDTO.getType()).getName(),
+                    false);
+        }
+
+        return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
+    public PageResultDTO<ArticleDTO, Object[]> getMyList(ArticlePageRequestDTO requestDTO) {
+        Function<Object[], ArticleDTO> fn = (
+                entity -> entityToDTO(
+                        (Article) entity[0],
+                        (User) entity[1]
+                )
+        );
+        Page<Object[]> result = articleRepository.getArticlesByUser_Username(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                requestDTO.getUsername());
+
+        return new PageResultDTO<>(result, fn);
     }
 
     /**
@@ -108,6 +147,12 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Long modify(ArticleDTO dto) {
-        return null;
+        try {
+            articleRepository.save(dtoToEntity(dto, userRepository.findByUsername(dto.getUsername()).orElseThrow()));
+            return dto.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

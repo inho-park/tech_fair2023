@@ -2,7 +2,6 @@ package com.icc.daelimbada.article.domain;
 
 import com.icc.daelimbada.common.domain.BaseTime;
 import com.icc.daelimbada.common.domain.BooleanToYNConverter;
-import com.icc.daelimbada.reply.domain.Reply;
 import com.icc.daelimbada.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

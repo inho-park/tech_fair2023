@@ -34,7 +34,6 @@ public class ArticleController {
 
     @GetMapping("/list")
     public void list (ArticlePageRequestDTO pageRequestDTO, Model model) {
-
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
 

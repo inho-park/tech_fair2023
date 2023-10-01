@@ -13,7 +13,7 @@ public class ArticleDTO {
     private Long price;
     private String content;
     private boolean isSold;
-    private Long majorCode;
+    private int majorCode;
     private String username;
     private LocalDateTime regDate, modDate;
 }
