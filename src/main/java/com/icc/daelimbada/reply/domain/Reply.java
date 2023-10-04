@@ -3,17 +3,14 @@ package com.icc.daelimbada.reply.domain;
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.common.domain.BaseTime;
 import com.icc.daelimbada.user.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 /**
  * 대댓글도 추가할건지 의논해봐야함
  */
-@Data
+@Getter
 @Entity
 @Builder
 @NoArgsConstructor
