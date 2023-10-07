@@ -9,15 +9,14 @@ import java.util.List;
 
 public interface ImageService {
     ImageDTO getImage(Long articleId);
-    List<ImageDTO> getList(Long articleId);
-    List<ImageDTO> postImages(Long articleId, MultipartFile[] multipartFiles);
-    List<ImageDTO> modifyImages(Long articleId, MultipartFile[] multipartFiles);
+//    List<ImageDTO> getList(Long articleId);
+    ImageDTO postImages(Long articleId, MultipartFile multipartFile);
+    ImageDTO modifyImages(Long articleId, MultipartFile multipartFile);
     void deleteImages(Long articleId);
 
     default Image dtoToEntity(ImageDTO imageDTO, Article article) {
         return Image.builder()
                 .uuid(imageDTO.getUuid())
-                .number(imageDTO.getNumber())
                 .article(article)
                 .build();
     }
@@ -25,7 +24,6 @@ public interface ImageService {
     default ImageDTO entityToDTO(Image image) {
         return ImageDTO.builder()
                 .uuid(image.getUuid())
-                .number(image.getNumber())
                 .build();
     }
 }

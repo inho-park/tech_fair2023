@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 @Builder
 @AllArgsConstructor
 public class ReplyPageRequestDTO {
-    private Long replyId;
+    private Long articleId;
     private int page;
     private int size;
     private String type;

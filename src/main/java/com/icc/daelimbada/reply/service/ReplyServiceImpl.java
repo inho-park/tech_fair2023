@@ -17,7 +17,6 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public PageResultDTO getList(Long articleId) {
-        
         return null;
     }
 
