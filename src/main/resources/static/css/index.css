@@ -54,6 +54,10 @@
   display: flex;
   justify-content: space-between;
 }
+.header_end_userName{
+  font-size: 1rem;
+  line-height: 2rem;
+}
 .header_end_login{
   max-width: 50%;
   font-size: 1rem;
@@ -69,6 +73,15 @@
 .header_end_login > a{
   text-decoration: none;
   color: black;
+}
+.header_end_myPage > a{
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+.header_end_myPage > a span{
+  font-size: 2rem;
+  display: block;
 }
 
 /* 전공 사이드바 */
