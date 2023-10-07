@@ -3,10 +3,8 @@ package com.icc.daelimbada.article.domain;
 import com.icc.daelimbada.common.domain.BaseTime;
 import com.icc.daelimbada.common.domain.BooleanToYNConverter;
 import com.icc.daelimbada.user.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 
 /**
@@ -15,7 +13,7 @@ import javax.persistence.*;
  *      (2번 문제는 Enum 으로 처리하는 방식이 효율적으로 보임)
  */
 
-@Data
+@Getter
 @Entity
 @Builder
 @NoArgsConstructor

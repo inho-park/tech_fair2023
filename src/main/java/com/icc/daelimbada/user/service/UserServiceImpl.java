@@ -8,8 +8,6 @@ import com.icc.daelimbada.user.exception.PasswordException;
 import com.icc.daelimbada.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -48,5 +46,10 @@ public class UserServiceImpl implements UserService {
         } catch (PasswordException e) {
             throw e;
         }
+    }
+
+    @Override
+    public String getEmail(String username) {
+        return userRepository.findUserEmailByUsername(username);
     }
 }

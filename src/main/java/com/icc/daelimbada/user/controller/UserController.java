@@ -35,8 +35,10 @@ public class UserController {
         return "/user/addProduct";
     }
     @GetMapping("/mypage")
-    public String myPage(ArticlePageRequestDTO pageRequestDTO, Model model) {
-//        model.addAttribute("result", articleService.get)
+    public String myPage(ArticlePageRequestDTO pageRequestDTO, Model model, HttpSession session) {
+        pageRequestDTO.setUsername((String) session.getAttribute("username"));
+        model.addAttribute("result", articleService.getMyList(pageRequestDTO));
+        model.addAttribute("email", userService.getEmail(pageRequestDTO.getUsername()));
         return "/user/mypage";
     }
 

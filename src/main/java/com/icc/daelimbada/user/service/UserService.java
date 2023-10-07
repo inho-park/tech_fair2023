@@ -9,6 +9,8 @@ public interface UserService {
 
     String login(LoginDTO loginDTO) throws Exception;
 
+    String getEmail(String username);
+
     default User dtoToEntity(JoinDTO dto) {
         return User.builder()
                 .email(dto.getEmail())

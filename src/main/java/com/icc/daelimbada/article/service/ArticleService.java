@@ -12,6 +12,8 @@ public interface ArticleService {
     Long saveArticle(ArticleDTO articleDTO);
     ArticleDTO getArticle(Long articleId);
     PageResultDTO<ArticleDTO, Object[]> getList(ArticlePageRequestDTO requestDTO);
+    PageResultDTO<ArticleDTO, Object[]> searchList(ArticlePageRequestDTO requestDTO);
+    PageResultDTO<ArticleDTO, Object[]> getMyList(ArticlePageRequestDTO requestDTO);
     Long remove(Long articleId);
     Long modify(ArticleDTO dto);
 
@@ -38,4 +40,5 @@ public interface ArticleService {
                 .regDate(article.getRegDate())
                 .build();
     }
+
 }
