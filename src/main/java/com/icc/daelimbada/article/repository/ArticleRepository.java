@@ -1,6 +1,7 @@
 package com.icc.daelimbada.article.repository;
 
 import com.icc.daelimbada.article.domain.Article;
+import com.icc.daelimbada.article.domain.Major;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,10 +21,10 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query(
             "SELECT a, a.user " +
                     "FROM Article a " +
-                    "WHERE a.isSold=:isSold AND a.major=:type"
+                    "WHERE a.isSold=:isSold AND a.major=:major"
     )
     Page<Object[]> getArticlesBySoldAndMajor(Pageable pageable,
-                                             @Param("type") String type,
+                                             @Param("major") Major major,
                                              @Param("isSold") boolean isSold);
     @Query(
             value = "SELECT a, a.user " +
@@ -37,11 +38,11 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query(
             value = "SELECT a, a.user " +
                     "FROM Article a " +
-                    "WHERE a.title LIKE %:word% AND a.major=:type AND a.isSold=:isSold"
+                    "WHERE a.title LIKE %:word% AND a.major=:major AND a.isSold=:isSold"
     )
     Page<Object[]> getArticlesByTitleLikeaAndMajorAndSold(Pageable pageable,
                                                    @Param("word") String word,
-                                                   @Param("type") String type,
+                                                   @Param("major") Major major,
                                                    @Param("isSold") boolean isSold);
 
     @Query(
