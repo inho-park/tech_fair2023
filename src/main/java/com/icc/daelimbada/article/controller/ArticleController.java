@@ -37,6 +37,7 @@ public class ArticleController {
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
 
+
     @PostMapping("/register")
     public void register(ArticleDTO articleDTO, RedirectAttributes redirectAttributes) {
 
