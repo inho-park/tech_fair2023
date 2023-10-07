@@ -11,11 +11,37 @@
   <link rel="stylesheet" href="/css/index.css">
   <script defer src="/js/MajorList.js"></script>
 
+
   <title>Document</title>
 </head>
 <body>
 
 <div id="container">
+  <div include-html="header.html"></div>
+<!--  <script>-->
+<!--    function includeHTML() {-->
+<!--      var z, i, elmnt, file, xhttp;-->
+<!--      z = document.getElementsByTagName("*");-->
+<!--      for (i = 0; i < z.length; i++) {-->
+<!--        elmnt = z[i];-->
+<!--        file = elmnt.getAttribute("include-html");-->
+<!--        if (file) {-->
+<!--          xhttp = new XMLHttpRequest();-->
+<!--          xhttp.onreadystatechange = function() {-->
+<!--            if (this.readyState == 4 && this.status == 200) {-->
+<!--              elmnt.innerHTML = this.responseText;-->
+<!--              elmnt.removeAttribute("include-html");-->
+<!--              includeHTML();-->
+<!--            }-->
+<!--          }-->
+<!--          xhttp.open("GET", file, true);-->
+<!--          xhttp.send();-->
+<!--          return;-->
+<!--        }-->
+<!--      }-->
+<!--    }-->
+<!--    includeHTML();-->
+<!--  </script>-->
   <!--Header-->
   <header class="header">
     <div class="header_wrapper">
@@ -26,12 +52,14 @@
         <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
       </div>
       <div class="header_end">
-        <h1 th:text="${session.username}"></h1>
-        <h1 th:if="${session.username==''}" class="header_end_login"><a href="/user/login">로그인</a></h1>
-        <h1 th:if="${session.username==''}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-        <h1 th:if="${session.username!=''}" class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
-        <h1 th:if="${session.username!=''}" class="header_end_addProductPage"><a href="/user/addProduct">상품등록</a></h1>
-
+        <h1 th:text="${session.username}" class="header_end_userName"></h1>
+        <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
+        <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
+        <h1 th:if="${session.username!=null}" class="header_end_myPage">
+          <a href="/user/mypage">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+        </h1>
       </div>
     </div>
   </header>
@@ -64,9 +92,13 @@
     </div>
   </div>
 
-  <a class="addProduct" href="/user/addProduct">
-    <span class="material-symbols-outlined">add_circle</span>
-  </a>
+  <h1 th:if="${session.username!=null}" class="header_end_addProductPage">
+    <a class="addProduct" href="/user/addProduct">
+      <span class="material-symbols-outlined">add_circle</span>
+    </a>
+  </h1>
+
+
 </div>
 <script  th:inline="javascript">
   /*<![CDATA[*/ /*]]>*/
