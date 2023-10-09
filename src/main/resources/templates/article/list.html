@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/index.css">
   <script defer src="/js/MajorList.js"></script>
+  <script defer src="/js/productDate.js"></script>
 
 
   <title>Document</title>
@@ -71,8 +72,8 @@
   <div class="product-page">
     <div class="product-list">
       <th:block th:each="e : ${result.dtoList}">
-        <a href="'/article/read?' + ${e.id}" class="product-link">
           <div class="product">
+            <a th:href="@{/article/read(id=${e.id})}" class="product-link">
             <img src="/images/XL.jpeg" alt="product">
             <div class="data">
               <p th:text="${e.title}"></p>
@@ -80,8 +81,9 @@
               <p th:text="${e.price}"></p>
               <p class='date' th:text="${e.regDate}"></p>
             </div>
+            </a>
           </div>
-        </a>
+
       </th:block>
     </div>
 
@@ -104,26 +106,6 @@
   /*<![CDATA[*/ /*]]>*/
   let dtoList = [[${result.dtoList}]]
   console.log(dtoList)
-
-  const dateElements = document.querySelectorAll(".date");
-  const dates = [];
-
-  dateElements.forEach(dateElement => {
-    dates.push(dateElement.innerText);
-  });
-
-  console.log(dates);
-
-  for(let i=0; i < dates.length; i++){
-    const dateObject = new Date(dates[i]);
-    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // 월 (0부터 시작하므로 +1 필요)
-    const day = dateObject.getDate().toString().padStart(2, '0'); // 일
-
-    const extractedDate = `${month}-${day}`;
-
-    dateElements[i].innerText=extractedDate;
-  }
-
 
 
   const productElements = document.querySelectorAll(".product");
