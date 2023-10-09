@@ -19,9 +19,6 @@ public class Image extends BaseTime {
     @Column(length = 100, unique = true, nullable = false)
     private String uuid;
 
-    @Column(nullable = false)
-    private int number;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Article article;
 }

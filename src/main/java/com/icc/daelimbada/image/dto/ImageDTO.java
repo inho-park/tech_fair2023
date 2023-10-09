@@ -7,5 +7,4 @@ import lombok.Data;
 @Builder
 public class ImageDTO {
     private String uuid;
-    private int number;
 }

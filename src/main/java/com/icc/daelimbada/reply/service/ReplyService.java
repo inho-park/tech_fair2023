@@ -10,4 +10,6 @@ public interface ReplyService {
     StatusDTO deleteReply(Long replyId);
     StatusDTO updateReply(Long replyId, String content);
     StatusDTO deleteAll(Long articleId);
+
+
 }

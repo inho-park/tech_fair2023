@@ -62,11 +62,15 @@ const majors = [
       <button class="material-symbols-outlined remove">remove</button>
       <hr>
       <ul class="major">
-        ${majorData.list.map((majorName) => `<li>${majorName.major}</li>`).join("")}
+        ${majorData.list.map((majorName) => `<a class="major_aTag" href="list?type=${majorName.code}"><li class="major_item">${majorName.major}</li></a>`).join("")}
+        
       </ul>
     `;
   
     majorList.appendChild(majorContainer);
+
+
+
   
     const addButton = majorContainer.querySelector(".add");
     const removeButton = majorContainer.querySelector(".remove");
@@ -84,6 +88,6 @@ const majors = [
       major.classList.toggle("none");
     });
   });
-  
+
   
   

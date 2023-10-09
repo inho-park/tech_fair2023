@@ -54,6 +54,10 @@
   display: flex;
   justify-content: space-between;
 }
+.header_end_userName{
+  font-size: 1rem;
+  line-height: 2rem;
+}
 .header_end_login{
   max-width: 50%;
   font-size: 1rem;
@@ -69,6 +73,15 @@
 .header_end_login > a{
   text-decoration: none;
   color: black;
+}
+.header_end_myPage > a{
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+.header_end_myPage > a span{
+  font-size: 2rem;
+  display: block;
 }
 
 /* 전공 사이드바 */
@@ -90,7 +103,6 @@
   color: #11009E;
 
 }
-
 .major-list  button{
   display: inline;
   position: absolute;
@@ -104,6 +116,9 @@
 .major{
   max-height: 400px;
   transition: all 0.5s ease-out ;
+}
+.major_aTag{
+  text-decoration: none;
 }
 .majors hr{
   border-bottom: 1.5px solid black;
@@ -121,6 +136,7 @@
   margin: 15px;
   cursor: pointer;
   font-size: 12px;
+  color: black;
 }
 
 /* 상품리스트 */
@@ -148,7 +164,7 @@
   width: 160px;
   position: relative;
   padding: 5px;
-
+  color: black;
 }
 
 .product-list .product img{

@@ -77,7 +77,7 @@ public class ArticleServiceImpl implements ArticleService {
                 false);
         else result = articleRepository.getArticlesBySoldAndMajor(
                 requestDTO.getPageable(Sort.by("id").descending()),
-                Major.getMajor(requestDTO.getType()).getName(),
+                Major.getMajor(requestDTO.getType()),
                 false);
         return new PageResultDTO<>(result, fn);
     }
@@ -102,7 +102,7 @@ public class ArticleServiceImpl implements ArticleService {
             else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
                     requestDTO.getPageable(Sort.by("id").descending()),
                     requestDTO.getKeyword(),
-                    Major.getMajor(requestDTO.getType()).getName(),
+                    Major.getMajor(requestDTO.getType()),
                     false);
         }
 

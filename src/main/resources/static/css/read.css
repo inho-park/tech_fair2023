@@ -81,7 +81,7 @@
 }
 .bar_wrapper{
     display: block;
-    width: 45%;
+    width: 70%;
     margin-left: 90px;
     border-bottom: 3px solid black;
 }
@@ -140,7 +140,7 @@ input#menu:checked + nav#main_nav{
     height: 700px;
 }
 .Ginformation_item{
-    width: 70%;
+    width: 100%;
     display: block;
     float: left;
     margin-bottom: 20%;
@@ -148,26 +148,29 @@ input#menu:checked + nav#main_nav{
 .Ginformation_top {
     display: flex;
     width: 100%;
-    height: 45%;
+    height: 25%;
     justify-content: center;
+    margin-top: 4%;
+
 }
 .Ginformation_img {
     display: flex;
     width: 40%;
     justify-content: center;
     align-items: center;
+    height: 400px;
 }
 .Ginformation_img > img {
     width: 60%;
 }
 .Ginformation_info {
-    margin-top: 5%;
-    width: 25%;
+    width: 50%;
 }
 
 .Ginformation_dc {
     width: 100%;
     height: 40%;
+    margin: 0 auto;
 }
 .userName, .dc-userName{
     display: flex;
@@ -176,55 +179,53 @@ input#menu:checked + nav#main_nav{
 }
 
 .userName .initial, .dc-userName .initial{
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     text-align: center;
-    line-height: 45px;
+    line-height: 30px;
     background-color: #96B6C5 ;
     border-radius: 50%;
-    font-size: 25px;
-    margin: 0 15px 0 10px;
+    font-size: 15px;
+    margin: 0 10px 0 10px;
 }
 
 .userName h2 ,.dc-userName h2{
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
-
+.Ginformation_text--content{
+    margin-left: 5%;
+}
 .Ginformation_text--title {
-    font-size: 1.3rem;
+    font-size: 2.0rem;
     font-weight: bold;
-    margin: 20px 0 20px 10px;
 }
-
+.Ginformation_text--userData{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
 .Ginformation_text--pay {
     height: 10%;
-    font-size: 1rem;
-    margin: 15px 0 20px 15px;
+    font-size: 2.5rem;
+    margin-top: 30px;
+}
+.content-name{
+    margin: 40px auto 20px  auto;
+    font-size: 1.5rem;
+}
+.Ginformation_dc-text {
+    align-items: center;
+    padding: 20px;
+    border: 1px black solid;
+    height: 200px;
+    width: 80%;
+}
+.content{
+    font-size: 1.0rem;
+}
 
-}
-.Ginformation_text--tp {
-    font-size: 1rem;
-    margin: 40px 0 20px 10px;
-}
-.Ginformation_text--tp > span {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-.Ginformation_text--tp > ul {
-    font-size: 0.9rem;
-    margin: 13px 0 0 10px;
-}
-.Ginformation_text--tpday {
-    margin: 40px 0 20px 10px;
-}
-.Ginformation_text--tpday > span {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-.Ginformation_text--tpday > ul {
-    margin: 10px 0 0 10px;
-}
+
 /* 위 | 오른쪽 | 아래 | 왼쪽 */
 .Ginformation_dc {
     display: block;
@@ -237,20 +238,14 @@ input#menu:checked + nav#main_nav{
     margin: 0 0 10px 11%;
     font-size: 1.5rem;
 }
-.Ginformation_dc-text {
 
-    margin-left: 10%;
-    align-items: center;
-    padding: 20px;
-    border: 1px black solid;
-}
 
 .dc-userName{
-    margin-left: 7%;
+    margin-left: 9%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 10%;
+    margin-top: 20%;
 
 }
 .dc-userName h2{
@@ -258,7 +253,7 @@ input#menu:checked + nav#main_nav{
 
 }
 .dc-userName input{
-    width:75%;
+    width:80%;
     height: 40px;
     margin-top: 20px;
     border-radius: 10px;
@@ -276,6 +271,7 @@ input#menu:checked + nav#main_nav{
 .user-comments{
     width: 90%;
     margin: 5% 0 0 10%;
+    padding-bottom: 10%;
 }
 .user-comments h1{
     border-bottom: 2px black solid;
