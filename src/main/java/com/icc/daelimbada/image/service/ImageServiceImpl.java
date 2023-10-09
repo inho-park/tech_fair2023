@@ -6,12 +6,15 @@ import com.icc.daelimbada.image.dto.ImageDTO;
 import com.icc.daelimbada.image.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Log4j2
 @Service
@@ -46,15 +49,19 @@ public class ImageServiceImpl implements ImageService {
 //    }
 
     @Override
-    public ImageDTO postImages(Long articleId, MultipartFile multipartFile) {
-        //            String uuid = imageUploader.upload(multipartFile, "static");
+    public String postImages(Long articleId, MultipartFile multipartFile) {
+        ClassPathResource resource = new ClassPathResource("clients");
+        String folderPath = resource.getPath() + "/clients/";
+        String fileName = UUID.randomUUID() + multipartFile.getOriginalFilename();
+        String filePath = folderPath + fileName;
         imageRepository.save(
                 Image.builder()
-//                            .uuid(uuid)
+                        .filePath(filePath)
                         .article(articleRepository.findById(articleId).orElseThrow())
                         .build()
         );
-        return null;
+        new File(folderPath, fileName);
+        return "/clients/" + fileName;
     }
 
     @Override
