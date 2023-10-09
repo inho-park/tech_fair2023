@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/mypage.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <script defer src="/js/productDate.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -21,72 +23,30 @@
       <p>이메일</p>
       <p th:text="${email}"></p>
     </div>
-    <div class="data">
-      <p>비밀번호</p>
-      <p>******</p>
-      <button>비밀번호 변경</button>
-    </div>
-
-<!--    <div class="data">-->
-<!--      <p>닉네임</p>-->
-<!--      <p>흑우난민</p>-->
-<!--      <button>닉네임 변경</button>-->
-<!--    </div>-->
+  </div>
 
     <div class="upLoadProduct">
       <div class="title">
         <h1>내가 올린 게시물</h1>
-        <button>더보기</button>
-      </div>
-      <div class="productList">
-        <div class="product" alt="product">
-          <th:block th:each="e : ${result.dtoList}">
-            <a href="'/article/read?' + ${e.id}" class="product-link">
-              <img src="/images/XL.jpeg" alt="product">
-              <div class="data">
-                <p th:text="${e.title}"></p>
-                <p th:text="${e.username}"></p>
-                <p th:text="${e.price}"></p>
-                <p class='date' th:text="${e.regDate}"></p>
-              </div>
-            </a>
-          </th:block>
-        </div>
-    </div>
 
-    <div class="likeProduct">
-      <div class="title">
-        <h1>찜한 게시물</h1>
-        <button>더보기</button>
       </div>
-      <div class="productList">
-        <div class="product" alt="product">
-          <img src="/images/XL.jpeg">
-          <p>혼자공부하는 자바</p>
-          <p>한빛미디어</p>
-          <p>32000원</p>
-        </div>
-        <div class="product" alt="product">
-          <img src="/images/XL.jpeg">
-          <p>혼자공부하는 자바</p>
-          <p>한빛미디어</p>
-          <p>32000원</p>
-        </div>
-        <div class="product" alt="product">
-          <img src="/images/XL.jpeg">
-          <p>혼자공부하는 자바</p>
-          <p>한빛미디어</p>
-          <p>32000원</p>
-        </div>
-        <div class="product" alt="product">
-          <img src="/images/XL.jpeg">
-          <p>혼자공부하는 자바</p>
-          <p>한빛미디어</p>
-          <p>32000원</p>
-        </div>
-      </div>
+      <div class="product-list">
+          <th:block th:each="e : ${result.dtoList}">
+            <div class="product">
+              <a th:href="@{/article/read(id=${e.id})}" class="product-link">
+                <img src="/images/XL.jpeg" alt="product">
+                <div class="productData">
+                  <p th:text="${e.title}"></p>
+                  <p th:text="${e.username}"></p>
+                  <p th:text="${e.price}"></p>
+                  <p class='date' th:text="${e.regDate}"></p>
+                </div>
+              </a>
+            </div>
+          </th:block>
     </div>
   </div>
+</div>
 </div>
 </body>
 </html>

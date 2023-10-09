@@ -62,7 +62,8 @@ const majors = [
       <button class="material-symbols-outlined remove">remove</button>
       <hr>
       <ul class="major">
-        ${majorData.list.map((majorName) => `<a href="list?type=${majorName.code}"><li class="major_item">${majorName.major}</li></a>`).join("")}
+        ${majorData.list.map((majorName) => `<a class="major_aTag" href="list?type=${majorName.code}"><li class="major_item">${majorName.major}</li></a>`).join("")}
+        
       </ul>
     `;
   

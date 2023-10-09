@@ -8,7 +8,10 @@
 .userName{
   display: flex;
   align-items: center;
+}
 
+.userName{
+  font-size: 1.5rem;
 }
 
 .userName .initial{
@@ -24,7 +27,11 @@
 
 .userData{
   width: 100%;
+}
 
+.userData h1{
+  font-size: 1.5rem;
+  margin: 50px 0 40px 0;
 }
 
 .data{
@@ -58,28 +65,54 @@
   border: none;
 }
 
-.upLoadProduct .title, .likeProduct .title{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.upLoadProduct .title{
+  font-size: 1.5rem;
   padding: 5px;
   border-bottom: 2px solid #ccc;
 }
 
-.upLoadProduct .title button, .likeProduct .title button{
-  width: 150px;
-  height: 40px;
-  background-color: #C4B0FF;
-  border: none;
-}
 
-.productList{
+.product-list{
   display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.product-link {
+  text-decoration: none;
+}
+
+.product-list .product{
+  width: 200px;
+}
+
+.product-list .product .productData{
+  width: 160px;
+  position: relative;
+  padding: 5px;
+  color: black;
+}
+
+.product-list .product img{
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.product-list .product p {
+  margin-bottom: 15px;
+}
+
+.product-list .product p:nth-child(2){
+  font-size: 12px;
+  color: #9d9d9d;
 }
 
 
-.productList .product img{
-  width: 130px;
+.product-list .product p:last-of-type {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  color: #9d9d9d;
+  font-size: 12px;
 }

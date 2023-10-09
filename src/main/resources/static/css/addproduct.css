@@ -42,7 +42,6 @@
   height: 30px;
   padding: 0 6px;
   border: 1px solid #8f8f8f;
-  border-width: none;
   border-radius: 40px;
 }
 .header__input--button{
@@ -56,6 +55,10 @@
   display: flex;
   justify-content: space-between;
 }
+.header_end_userName{
+  font-size: 1rem;
+  line-height: 2rem;
+}
 .header_end_login{
   max-width: 50%;
   font-size: 1rem;
@@ -64,15 +67,22 @@
   max-width: 50%;
   font-size: 1rem;
 }
-.header_end_myPage{
-  max-width: 50%;
-  font-size: 1rem;
-}
 .header_end_signup > a{
   text-decoration: none;
+  color: black;
 }
 .header_end_login > a{
   text-decoration: none;
+  color: black;
+}
+.header_end_myPage > a{
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+.header_end_myPage > a span{
+  font-size: 2rem;
+  display: block;
 }
 
 /* product */
