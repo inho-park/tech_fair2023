@@ -12,7 +12,13 @@
   <script defer src="/js/MajorList.js"></script>
   <script defer src="/js/productDate.js"></script>
 
-
+  <!-- 이거 삭제하고 css 에 스타일 따로 만드시면 될 듯 -->
+  <style>
+    .pagination span {
+      margin: 0 10px;
+    }
+  </style>
+  <!----------------------------------------------------------------------------------->
   <title>Document</title>
 </head>
 <body>
@@ -64,6 +70,7 @@
       </div>
     </div>
   </header>
+
   <!--major sidebar-->
   <div class="major-list">
   </div>
@@ -88,9 +95,27 @@
     </div>
 
     <div class="pagination">
-      <span id="prev-page" class="material-symbols-outlined page">chevron_left</span>
-      <span id="page-numbers"></span>
-      <span id="next-page" class="material-symbols-outlined page">chevron_right</span>
+      <span id="prev-page" class="material-symbols-outlined page" th:if="${result.prev}">
+        <a th:href="@{/article/list(
+                                        page = ${result.start -1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}" tabindex="-1">chevron_left</a>
+      </span>
+      <span id="page-numbers" th:class="'page-item ' + ${result.page==page?'active':''}"  th:each="page:${result.pageList}">
+        <a th:href="@{/article/list(
+                                        page = ${page},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">[[${page}]]</a>
+      </span>
+      <span id="next-page" class="material-symbols-outlined page" th:if="${result.next}">
+        <a th:href="@{/article/list(
+                                        page = ${result.end + 1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">chevron_right</a>
+      </span>
     </div>
   </div>
 
