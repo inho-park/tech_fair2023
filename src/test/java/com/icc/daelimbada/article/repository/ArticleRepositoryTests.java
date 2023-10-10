@@ -19,11 +19,11 @@ public class ArticleRepositoryTests {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 articleRepository.save(Article.builder()
-                                .title("자료구조" + i + 0 + j)
-                                .content("알고리즘 공부 강추")
-                                .price(30000l + i)
+                                .title("아무튼 책" + i + 0 + j)
+                                .content("싸게 팜")
+                                .price(10000l + i)
                                 .isSold(false)
-                                .major(Major.getMajor(101 + j))
+                                .major(Major.getMajor(103 + j))
                                 .user(userRepository.getReferenceById(i + 1l))
                         .build()
                 );
