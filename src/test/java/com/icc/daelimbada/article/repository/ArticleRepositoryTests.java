@@ -23,7 +23,7 @@ public class ArticleRepositoryTests {
                                 .content("싸게 팜")
                                 .price(10000l + i)
                                 .isSold(false)
-                                .major(Major.getMajor(103 + j))
+                                .major(Major.getMajor(101 + j))
                                 .user(userRepository.getReferenceById(i + 1l))
                         .build()
                 );
