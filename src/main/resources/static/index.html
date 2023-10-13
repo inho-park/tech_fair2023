@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,117 +9,177 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/css/index.css">
+  <script defer src="/js/MajorList.js"></script>
+  <script defer src="/js/productDate.js"></script>
 
-
+  <!-- 이거 삭제하고 css 에 스타일 따로 만드시면 될 듯 -->
+  <style>
+    .pagination span {
+      margin: 0 10px;
+    }
+  </style>
+  <!----------------------------------------------------------------------------------->
   <title>Document</title>
 </head>
 <body>
-<script th:inline="javascript">
-  let product = [[${result}]]
-  console.log(product)
-</script>
-
 
 <div id="container">
-  <!--Header-->
-  <header class="header">
-    <div class="header_wrapper">
-      <h1 class="header_start">
-        <a href="/"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-      </h1>
-      <div class="header_center">
-        <form class="header_form" onsubmit="return false"></form>
-        <input class="header__input--text" type="text" placeholder="검색">
-        <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
-      </div>
-      <div class="header_end">
-        <h1 class="header_end_login"><a href="/user/login">로그인</a></h1>
-        <h1 class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-        <h1 class="header_end_myPage"><a href="/user/mypage">마이페이지</a></h1>
-      </div>
-    </div>
-  </header>
+  <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+
+  <th:block th:fragment="content"></th:block>
+  <!--  <header class="header">-->
+  <!--    <div class="header_wrapper">-->
+  <!--        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>-->
+  <!--      <div class="header_center">-->
+  <!--        <form class="header_form" onsubmit="return false"></form>-->
+  <!--        <input class="header__input&#45;&#45;text" type="text" placeholder="검색">-->
+  <!--        <button class="header__input&#45;&#45;button" type="button">&lt;!&ndash;<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">&ndash;&gt;</button>-->
+  <!--      </div>-->
+  <!--      <div class="header_end">-->
+  <!--        <h1 th:text="${session.username}" class="header_end_userName"></h1>-->
+  <!--        <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>-->
+  <!--        <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>-->
+  <!--        <h1 th:if="${session.username!=null}" class="header_end_myPage">-->
+  <!--          <a href="/user/mypage">-->
+  <!--            <span class="material-symbols-outlined">person</span>-->
+  <!--          </a>-->
+  <!--        </h1>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </header>-->
+
   <!--major sidebar-->
   <div class="major-list">
   </div>
 
   <!--product-list-->
-  <div class="product-list">
-    <div class="product">
-      <img src="/images/XL.jpeg" alt="product">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
+  <div class="product-page">
+    <div class="product-list">
+      <th:block th:each="e : ${result.dtoList}">
+        <div class="product">
+          <a th:href="@{/article/read(id=${e.id})}" class="product-link">
+            <img th:if="${e.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
+            <img th:unless="${e.filePath == ''}" th:src="@{${e.filePath}}" alt="product" />
+            <div class="data">
+              <p th:text="${e.title}"></p>
+              <p th:text="${e.username}"></p>
+              <p th:text="${e.price}"></p>
+              <p class='date' th:text="${e.regDate}"></p>
+            </div>
+          </a>
+        </div>
+
+      </th:block>
     </div>
-    <div class="product">
-      <img src="/images/XL.jpeg" alt="product">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
-    </div>
-    <div class="product" alt="product">
-      <img src="/images/XL.jpeg">
-      <div class="data">
-        <p>혼자공부하는 자바</p>
-        <p>한빛미디어</p>
-        <p>32000원</p>
-        <p>2주 전</p>
-      </div>
+
+    <div class="pagination">
+      <span id="prev-page" class="material-symbols-outlined page" th:if="${result.prev}">
+        <a th:href="@{/article/list(
+                                        page = ${result.start -1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}" tabindex="-1">chevron_left</a>
+      </span>
+      <span id="page-numbers" th:class="'page-item ' + ${result.page==page?'active':''}"  th:each="page:${result.pageList}">
+        <a th:href="@{/article/list(
+                                        page = ${page},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">[[${page}]]</a>
+      </span>
+      <span id="next-page" class="material-symbols-outlined page" th:if="${result.next}">
+        <a th:href="@{/article/list(
+                                        page = ${result.end + 1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">chevron_right</a>
+      </span>
     </div>
   </div>
+
+  <h1 th:if="${session.username!=null}" class="header_end_addProductPage">
+    <a class="addProduct" href="/user/addProduct">
+      <span class="material-symbols-outlined">add_circle</span>
+    </a>
+  </h1>
+
+
 </div>
+</body>
+</html>
+<script  th:inline="javascript">
+  /*<![CDATA[*/ /*]]>*/
+  let dtoList = [[${result.dtoList}]]
+  console.log(dtoList)
+
+
+  const productElements = document.querySelectorAll(".product");
+  const prevPageButton = document.getElementById("prev-page");
+  const nextPageButton = document.getElementById("next-page");
+  const pageNumberContainer = document.getElementById("page-numbers");
+
+  let currentPage = 1;
+  const itemsPerPage = 12;
+
+  function showPage(pageNumber) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    productElements.forEach((element, index) => {
+      if (index >= startIndex && index < endIndex) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    });
+  }
+
+  function updatePageNumbers() {
+    const totalPages = Math.ceil(productElements.length / itemsPerPage);
+    pageNumberContainer.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+      const pageNumberButton = document.createElement("span");
+      pageNumberButton.textContent = i;
+      pageNumberButton.className = "page-number";
+      pageNumberButton.addEventListener("click", () => {
+        currentPage = i;
+        showPage(currentPage);
+        updatePageNumbers();
+      });
+      pageNumberContainer.appendChild(pageNumberButton);
+    }
+  }
+
+  // 이전 페이지로 이동
+  prevPageButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+      updatePageNumbers();
+    }
+  });
+
+  // 다음 페이지로 이동
+  nextPageButton.addEventListener("click", () => {
+    const totalPages = Math.ceil(productElements.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage(currentPage);
+      updatePageNumbers();
+    }
+  });
+
+  // 페이지 초기화
+  showPage(currentPage);
+  updatePageNumbers();
+
+
+
+  /*]]>*/
+</script>
+
+
 </body>
 </html>

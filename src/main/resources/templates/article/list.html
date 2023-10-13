@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,52 +25,29 @@
 <body>
 
 <div id="container">
-  <div include-html="header.html"></div>
-<!--  <script>-->
-<!--    function includeHTML() {-->
-<!--      var z, i, elmnt, file, xhttp;-->
-<!--      z = document.getElementsByTagName("*");-->
-<!--      for (i = 0; i < z.length; i++) {-->
-<!--        elmnt = z[i];-->
-<!--        file = elmnt.getAttribute("include-html");-->
-<!--        if (file) {-->
-<!--          xhttp = new XMLHttpRequest();-->
-<!--          xhttp.onreadystatechange = function() {-->
-<!--            if (this.readyState == 4 && this.status == 200) {-->
-<!--              elmnt.innerHTML = this.responseText;-->
-<!--              elmnt.removeAttribute("include-html");-->
-<!--              includeHTML();-->
-<!--            }-->
-<!--          }-->
-<!--          xhttp.open("GET", file, true);-->
-<!--          xhttp.send();-->
-<!--          return;-->
-<!--        }-->
-<!--      }-->
-<!--    }-->
-<!--    includeHTML();-->
-<!--  </script>-->
-  <!--Header-->
-  <header class="header">
-    <div class="header_wrapper">
-        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-      <div class="header_center">
-        <form class="header_form" onsubmit="return false"></form>
-        <input class="header__input--text" type="text" placeholder="검색">
-        <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
-      </div>
-      <div class="header_end">
-        <h1 th:text="${session.username}" class="header_end_userName"></h1>
-        <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
-        <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-        <h1 th:if="${session.username!=null}" class="header_end_myPage">
-          <a href="/user/mypage">
-            <span class="material-symbols-outlined">person</span>
-          </a>
-        </h1>
-      </div>
-    </div>
-  </header>
+<th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+
+  <th:block th:fragment="content"></th:block>
+<!--  <header class="header">-->
+<!--    <div class="header_wrapper">-->
+<!--        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>-->
+<!--      <div class="header_center">-->
+<!--        <form class="header_form" onsubmit="return false"></form>-->
+<!--        <input class="header__input&#45;&#45;text" type="text" placeholder="검색">-->
+<!--        <button class="header__input&#45;&#45;button" type="button">&lt;!&ndash;<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">&ndash;&gt;</button>-->
+<!--      </div>-->
+<!--      <div class="header_end">-->
+<!--        <h1 th:text="${session.username}" class="header_end_userName"></h1>-->
+<!--        <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>-->
+<!--        <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>-->
+<!--        <h1 th:if="${session.username!=null}" class="header_end_myPage">-->
+<!--          <a href="/user/mypage">-->
+<!--            <span class="material-symbols-outlined">person</span>-->
+<!--          </a>-->
+<!--        </h1>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </header>-->
 
   <!--major sidebar-->
   <div class="major-list">
@@ -128,6 +106,8 @@
 
 
 </div>
+</body>
+</html>
 <script  th:inline="javascript">
   /*<![CDATA[*/ /*]]>*/
   let dtoList = [[${result.dtoList}]]

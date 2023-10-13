@@ -7,6 +7,10 @@
   <title>Document</title>
 </head>
 <body>
+
+<th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+
+<th:block th:fragment="content"></th:block>
   <div class="join">
     <a href="/article/list"><img class="logo" src="/images/Logo.png"></a>
       <form action="/user/signup" method="post">
