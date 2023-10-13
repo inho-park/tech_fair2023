@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.UUID;
+import java.io.IOException;
 
 @Log4j2
 @Controller
@@ -44,8 +44,12 @@ public class ArticleController {
 
     @PostMapping("/register")
     public String register(ArticleDTO articleDTO, MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
-        imageService.postImages(articleDTO.getId(), multipartFile);
         redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
+        try {
+            imageService.postImages(articleDTO.getId(), multipartFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         return "redirect:/article/list";
     }

@@ -15,5 +15,6 @@ public class ArticleDTO {
     private boolean isSold;
     private int majorCode;
     private String username;
+    private String filePath;
     private LocalDateTime regDate, modDate;
 }

@@ -6,7 +6,7 @@ import com.icc.daelimbada.image.dto.ImageDTO;
 import com.icc.daelimbada.image.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,38 +20,31 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
+    @Value("${upload-path}")
+    private String uploadPath;
     final private ImageRepository imageRepository;
     final private ArticleRepository articleRepository;
-//    final private S3Uploader imageUploader;
 
     @Override
-    public ImageDTO getImage(Long articleId) {
+    public List<ImageDTO> getImages(Long articleId) {
         try {
-            return entityToDTO(imageRepository.findByArticle_Id(articleId).orElseThrow());
+            List<ImageDTO> list = new ArrayList<>();
+            List<Image> images = imageRepository.findByArticle_Id(articleId);
+            if (!images.isEmpty()) images.forEach(
+                    i -> {
+                        list.add(ImageDTO.builder().filePath(i.getFilePath()).build());
+                    }
+            );
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
     }
 
-//    @Override
-//    public List<ImageDTO> getList(Long articleId) {
-//        try {
-//            List<ImageDTO> list = new ArrayList<>();
-//            imageRepository.findAllByArticle_Id(articleId).forEach(
-//                    i -> list.add(entityToDTO(i))
-//            );
-//            return list;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            throw e;
-//        }
-//    }
-
     @Override
-    public String postImages(Long articleId, MultipartFile multipartFile) {
-        ClassPathResource resource = new ClassPathResource("clients");
-        String folderPath = resource.getPath() + "/clients/";
+    public String postImages(Long articleId, MultipartFile multipartFile) throws IOException {
+        String folderPath = "/clients/";
         String fileName = UUID.randomUUID() + multipartFile.getOriginalFilename();
         String filePath = folderPath + fileName;
         imageRepository.save(
@@ -60,8 +53,10 @@ public class ImageServiceImpl implements ImageService {
                         .article(articleRepository.findById(articleId).orElseThrow())
                         .build()
         );
-        new File(folderPath, fileName);
-        return "/clients/" + fileName;
+        File file = new File(uploadPath + fileName);
+        multipartFile.transferTo(file);
+
+        return filePath;
     }
 
     @Override

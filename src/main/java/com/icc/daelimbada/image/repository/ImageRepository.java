@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
-    Optional<Image> findByArticle_Id(Long articleId);
+    List<Image> findByArticle_Id(Long articleId);
 //    List<Image> findAllByArticle_Id(Long articleId);
     void deleteAllByArticle_Id(Long articleId);
+
+    Optional<Image> findTopByArticle_IdOrderByIdDesc(Long articleId);
 }
