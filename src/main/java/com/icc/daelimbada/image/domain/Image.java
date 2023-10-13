@@ -17,7 +17,7 @@ public class Image extends BaseTime {
     private Long id;
 
     @Column(length = 100, unique = true, nullable = false)
-    private String uuid;
+    private String filePath;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Article article;

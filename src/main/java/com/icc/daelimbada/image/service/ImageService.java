@@ -10,20 +10,20 @@ import java.util.List;
 public interface ImageService {
     ImageDTO getImage(Long articleId);
 //    List<ImageDTO> getList(Long articleId);
-    ImageDTO postImages(Long articleId, MultipartFile multipartFile);
+    String postImages(Long articleId, MultipartFile multipartFile);
     ImageDTO modifyImages(Long articleId, MultipartFile multipartFile);
     void deleteImages(Long articleId);
 
     default Image dtoToEntity(ImageDTO imageDTO, Article article) {
         return Image.builder()
-                .uuid(imageDTO.getUuid())
+                .filePath(imageDTO.getUuid())
                 .article(article)
                 .build();
     }
 
     default ImageDTO entityToDTO(Image image) {
         return ImageDTO.builder()
-                .uuid(image.getUuid())
+                .uuid(image.getFilePath())
                 .build();
     }
 }
