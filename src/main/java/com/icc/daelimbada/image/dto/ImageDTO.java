@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @Builder
 public class ImageDTO {
-    private String uuid;
+    private String filePath;
 }
