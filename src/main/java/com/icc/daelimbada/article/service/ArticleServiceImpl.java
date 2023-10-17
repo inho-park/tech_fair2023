@@ -107,20 +107,17 @@ public class ArticleServiceImpl implements ArticleService {
                 )
         );
         Page<Object[]> result = null;
-        if (requestDTO.getKeyword().equals("")) result = articleRepository.getArticlesBySold(
+        // major 를 정하지 않고 검색했을 시
+        if (requestDTO.getType() == 0) result = articleRepository.getArticlesByTitleLike(
                 requestDTO.getPageable(Sort.by("id").descending()),
+                requestDTO.getKeyword(),
                 false);
-        else {
-            if (requestDTO.getType() == 0) result = articleRepository.getArticlesByTitleLike(
-                    requestDTO.getPageable(Sort.by("id").descending()),
-                    requestDTO.getKeyword(),
-                    false);
-            else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
-                    requestDTO.getPageable(Sort.by("id").descending()),
-                    requestDTO.getKeyword(),
-                    Major.getMajor(requestDTO.getType()),
-                    false);
-        }
+        // major 를 정하고 검색했을 시
+        else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                requestDTO.getKeyword(),
+                Major.getMajor(requestDTO.getType()),
+               false);
 
         return new PageResultDTO<>(result, fn);
     }

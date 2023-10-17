@@ -56,6 +56,8 @@
   <!--product-list-->
   <div class="product-page">
     <div class="product-list">
+<!--      <h1 th:if="${articlePageRequestDTO.type==null}" class="header_end_signup"></h1>-->
+<!--      <h1 th:if="${articlePageRequestDTO.type!=null}" class="header_end_myPage" th:text="${articlePageRequestDTO.type}"></h1>-->
       <th:block th:each="e : ${result.dtoList}">
           <div class="product">
             <a th:href="@{/article/read(id=${e.id})}" class="product-link">
