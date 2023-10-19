@@ -24,7 +24,7 @@ public class ArticleController {
     final private ReplyService replyService;
     final private ImageService imageService;
 
-    @GetMapping("/")
+    @GetMapping({"/", ""})
     public String home() {
         return "redirect:/article/list";
     }
