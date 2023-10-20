@@ -49,9 +49,10 @@ public class ArticleController {
     @PostMapping(value = "/register")
     public String register(ArticleDTO articleDTO,MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
         // 처리 로직
-        redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
+        Long articleId = articleService.saveArticle(articleDTO);
+        redirectAttributes.addFlashAttribute("result", articleId);
         try {
-            imageService.postImages(articleDTO.getId(), multipartFile);
+            imageService.postImages(articleId, multipartFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
