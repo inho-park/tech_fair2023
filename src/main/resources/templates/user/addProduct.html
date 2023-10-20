@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/addproduct.css">
-    <link rel="stylesheet" href="/css/header.css.css">
+    <link rel="stylesheet" href="/css/header.css">
   <script defer src="/js/addProduct.js"></script>
   <title>상품등록</title>
 </head>
@@ -42,13 +42,11 @@
     <div class="product">
      <h1>기본정보</h1>
      
-<<<<<<< HEAD
-     <form action="" class="productData" method="post" enctype="multipart/form-data" id="data-form">
-=======
+
      <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="articleDTO.username" th:value="${session.username}">
+         <input type="hidden" name="username" th:value="${session.username}">
          <input type="hidden" name="isSold" class="form_isSold" value="false">
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
+
       <div class="filebox">
         <h2>상품이미지</h2>
         <div>
@@ -60,24 +58,16 @@
 
       <div class="data">
         <label for="productTitle">제목</label>
-<<<<<<< HEAD
-        <input type="text" id="productTitle">
+        <input type="text" id="productTitle" name="title">
       </div>
 
-=======
-        <input type="text" id="productTitle" name="articleDTO.title">
-      </div>
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
 
       <div class="data">
         <label for="productPrice">가격</label>
-        <input type="text" id="productPrice" name="articleDTO.price">
+        <input type="text" id="productPrice" name="price">
       </div>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
      <div class="data">
       <label for="classificationSelect">소속학과</label>
       <div>
@@ -85,7 +75,7 @@
               <!-- 대분류 옵션들은 여기서 생성됩니다 -->
           </select>
 
-          <select id="majorSelect" name="articleDTO.majorCode">
+          <select id="majorSelect" name="majorCode">
               <!-- 소분류 옵션들은 여기서 생성됩니다 -->
           </select>
       </div>
@@ -93,14 +83,12 @@
 
       <div class="data">
         <label for="productExplanation">상품설명</label>
-        <textarea name="articleDTO.content" id="productExplanation" cols="60" rows="10"></textarea>
+        <textarea name="content" id="productExplanation" cols="60" rows="10"></textarea>
       </div>
 
-<<<<<<< HEAD
-      <button type="button" onclick="submitData()">등록하기</button>
-=======
+
       <button type="submit" onclick="submitData()" >등록하기</button>
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
+
      </form>
 
     </div>

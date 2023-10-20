@@ -149,10 +149,6 @@
   font-size: 50px;
 }
 
-
-
-
-
 .addProduct{
   position: absolute;
   right: 0;
@@ -163,6 +159,14 @@
 .addProduct span{
   font-size: 50px;
   color: #11009E;
+}
+.page-item a{
+   text-decoration: none;
+  color: black;
+}
+
+.page-item a:active{
+  color: red;
 }
 
 @media screen and (max-width: 1900px){

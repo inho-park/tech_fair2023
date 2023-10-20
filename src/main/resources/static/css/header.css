@@ -45,9 +45,22 @@
     display: flex;
     justify-content: space-between;
 }
+.userName{
+    display: flex;
+}
 .header_end_userName{
     font-size: 1rem;
     line-height: 2rem;
+}
+.userName .initial{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #96B6C5 ;
+    border-radius: 50%;
+    font-size: 15px;
+    margin: 0 5px 0 5px;
 }
 .header_end_login{
     max-width: 50%;

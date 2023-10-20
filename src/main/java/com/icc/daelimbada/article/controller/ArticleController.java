@@ -44,7 +44,7 @@ public class ArticleController {
     }
 
     @PostMapping(value = "/register")
-    public String register(@ModelAttribute ArticleDTO articleDTO, @RequestParam("multipartFile") MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
+    public String register(ArticleDTO articleDTO,MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
         // 처리 로직
         redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
         try {
