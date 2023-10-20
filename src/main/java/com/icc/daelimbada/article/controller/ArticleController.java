@@ -43,8 +43,9 @@ public class ArticleController {
         model.addAttribute("result", articleService.getList(pageRequestDTO));
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String register(@RequestBody ArticleDTO articleDTO, MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
+    @PostMapping(value = "/register")
+    public String register(@ModelAttribute ArticleDTO articleDTO, @RequestParam("multipartFile") MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
+        // 처리 로직
         redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
         try {
             imageService.postImages(articleDTO.getId(), multipartFile);
