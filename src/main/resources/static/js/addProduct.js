@@ -95,3 +95,42 @@ const majors = [
       const fileName = fileInput.value;
       uploadNameInput.value = fileName;
   });
+
+
+
+
+
+
+
+
+
+
+function submitData() {
+    const title = document.getElementById('productTitle').value;
+    const priceString = document.getElementById('productPrice').value; //price로 입력된값 문자열로 받아오는 코드
+    const price = parseInt(priceString, 10); // priceString로 받은 문자열 값을 숫자로 변환
+    const content = document.getElementById('productExplanation').value;
+    let username = [[${session.username}]];
+
+    const data = {
+        username:username,
+        title: title,
+        price: price,
+        content:content
+    };
+
+    // 서버 URL 설정
+    const serverUrl = '/article/register';
+
+    // AJAX 또는 fetch API를 사용하여 데이터 전송
+    fetch(serverUrl, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+
+    })
+    console.log(data);
+
+}

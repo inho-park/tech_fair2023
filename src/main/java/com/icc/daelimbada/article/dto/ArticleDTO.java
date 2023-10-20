@@ -18,3 +18,4 @@ public class ArticleDTO {
     private String filePath;
     private LocalDateTime regDate, modDate;
 }
+
