@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/join.css">
+
   <title>Document</title>
 </head>
 <body>
 
-<th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
-<th:block th:fragment="content"></th:block>
   <div class="join">
     <a href="/article/list"><img class="logo" src="/images/Logo.png"></a>
       <form action="/user/signup" method="post">

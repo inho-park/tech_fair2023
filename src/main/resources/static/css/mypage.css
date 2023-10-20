@@ -1,6 +1,14 @@
+#container{
+  width: 70%;
+  margin: 0 auto;
+
+  flex-wrap: wrap;
+  position: relative;
+}
+
 .myPage{
   width: 800px;
-  margin: 0 auto;
+  margin: 100px auto;
   background-color: #eeeeee;
   padding: 50px;
 }

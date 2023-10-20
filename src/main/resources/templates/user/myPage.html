@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/mypage.css">
+  <link rel="stylesheet" href="/css/header.css">
   <script defer src="/js/productDate.js"></script>
   <title>Document</title>
 </head>
@@ -16,8 +17,9 @@
 
 
 <div id="container">
-<th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
-<th:block th:fragment="content"></th:block>
+  <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+  <th:block th:fragment="content"></th:block>
+
 <div class="myPage">
 
   <div class="userName">
