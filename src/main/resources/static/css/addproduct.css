@@ -185,6 +185,18 @@
 .submitButton:hover{
   background-color: #4795b9;
 }
+.button_wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+#formdata-Btn{
+  background-color: #999999;
+  border: 1px solid #999999;
+  height: 50px;
+  width: 250px;
+  color: white;
+  font-weight: bold;
+}
 
 @media ( max-width: 1800px ) {
   body {
@@ -206,7 +218,6 @@
   body {
     font-size: 15px;
   }
-
 
   .filebox .upload-name {
     width: 50%;

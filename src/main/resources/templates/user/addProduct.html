@@ -1,112 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/addproduct.css">
-    <link rel="stylesheet" href="/css/header.css.css">
-  <script defer src="/js/addProduct.js"></script>
-  <title>상품등록</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <script defer src="/js/addProduct.js"></script>
+    <title>상품등록</title>
 </head>
 <body>
 
-  <div id="container">
+<div id="container">
 
     <!--Header-->
     <header class="header">
-      <div class="header_wrapper">
+        <div class="header_wrapper">
             <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-        <div class="header_center">
-          <form class="header_form" onsubmit="return false"></form>
-            <input class="header__input--text" type="text" placeholder="검색">
-            <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
+            <div class="header_center">
+                <form class="header_form" onsubmit="return false"></form>
+                <input class="header__input--text" type="text" placeholder="검색">
+                <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
+            </div>
+            <div class="header_end">
+                <h1 th:text="${session.username}" class="header_end_userName"></h1>
+                <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
+                <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
+                <h1 th:if="${session.username!=null}" class="header_end_myPage">
+                    <a href="/user/mypage">
+                        <span class="material-symbols-outlined">person</span>
+                    </a>
+                </h1>
+            </div>
         </div>
-        <div class="header_end">
-            <h1 th:text="${session.username}" class="header_end_userName"></h1>
-            <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
-            <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-            <h1 th:if="${session.username!=null}" class="header_end_myPage">
-                <a href="/user/mypage">
-                    <span class="material-symbols-outlined">person</span>
-                </a>
-            </h1>
-        </div>
-      </div>
     </header>
 
     <div class="product">
-     <h1>기본정보</h1>
-     
-<<<<<<< HEAD
-     <form action="" class="productData" method="post" enctype="multipart/form-data" id="data-form">
-=======
-     <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="articleDTO.username" th:value="${session.username}">
-         <input type="hidden" name="isSold" class="form_isSold" value="false">
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
-      <div class="filebox">
-        <h2>상품이미지</h2>
-        <div>
-          <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-          <label for="file-input">파일찾기</label>
-          <input type="file" id="file-input" readonly name="multipartFile">
-        </div>
-      </div>
+        <h1>기본정보</h1>
 
-      <div class="data">
-        <label for="productTitle">제목</label>
-<<<<<<< HEAD
-        <input type="text" id="productTitle">
-      </div>
 
-=======
-        <input type="text" id="productTitle" name="articleDTO.title">
-      </div>
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
+        <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="articleDTO.username" th:value="${session.username}">
+            <input type="hidden" name="isSold" class="form_isSold" value="false">
 
-      <div class="data">
-        <label for="productPrice">가격</label>
-        <input type="text" id="productPrice" name="articleDTO.price">
-      </div>
+            <div class="filebox">
+                <h2>상품이미지</h2>
+                <div>
+                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                    <label for="file-input">파일찾기</label>
+                    <input type="file" id="file-input" readonly name="multipartFile">
+                </div>
+            </div>
 
-<<<<<<< HEAD
+            <div class="data">
+                <label for="productTitle">제목</label>
+                <input type="text" id="productTitle" name="articleDTO.title">
+            </div>
 
-=======
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
-     <div class="data">
-      <label for="classificationSelect">소속학과</label>
-      <div>
-          <select id="classificationSelect">
-              <!-- 대분류 옵션들은 여기서 생성됩니다 -->
-          </select>
 
-          <select id="majorSelect" name="articleDTO.majorCode">
-              <!-- 소분류 옵션들은 여기서 생성됩니다 -->
-          </select>
-      </div>
-     </div>
+            <div class="data">
+                <label for="productPrice">가격</label>
+                <input type="text" id="productPrice" name="articleDTO.price">
+            </div>
 
-      <div class="data">
-        <label for="productExplanation">상품설명</label>
-        <textarea name="articleDTO.content" id="productExplanation" cols="60" rows="10"></textarea>
-      </div>
 
-<<<<<<< HEAD
-      <button type="button" onclick="submitData()">등록하기</button>
-=======
-      <button type="submit" onclick="submitData()" >등록하기</button>
->>>>>>> c6c552b75c3d086689a0d9649036502417804f62
-     </form>
+            <div class="data">
+                <label for="classificationSelect">소속학과</label>
+                <div>
+                    <select id="classificationSelect">
+                        <!-- 대분류 옵션들은 여기서 생성됩니다 -->
+                    </select>
+
+                    <select id="majorSelect" name="articleDTO.majorCode">
+                        <!-- 소분류 옵션들은 여기서 생성됩니다 -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="data">
+                <label for="productExplanation">상품설명</label>
+                <textarea name="articleDTO.content" id="productExplanation" cols="60" rows="10"></textarea>
+            </div>
+
+            <div class="button_wrapper">
+                <button type="submit" onclick="submitData()" id="formdata-Btn">등록하기</button>
+            </div>
+        </form>
 
     </div>
 
 
-  </div>
+</div>
 </body>
 
 <script th:inline="javascript">
@@ -117,47 +105,47 @@
 
     function submitData() {
 
-      const data = document.querySelector(".productData").value;
+        const data = document.querySelector(".productData").value;
 
-      console.log(data)
-   //      if (fileInput.files.length > 0) {
-   //          const formData = new FormData();
-   //          formData.append('image', fileInput.files[0]);
-   //
-   //          const title = document.getElementById('productTitle').value;
-   //          const priceString = document.getElementById('productPrice').value; //price로 입력된값 문자열로 받아오는 코드
-   //          const price = parseInt(priceString,10); // priceString로 받은 문자열 값을 숫자로 변환
-   //          const content = document.getElementById('productExplanation').value;
-   //          const majorCode = document.querySelector("#majorSelect").value;
-   //
-   //          const data = {
-   //              title: title,
-   //              price: price,
-   //              content: content,
-   //              isSold: false,
-   //              majorCode: majorCode,
-   //              username: username,
-   //              multipartFile: formData,
-   //          };
-   //
-   //          // 서버 URL 설정
-   //          const serverUrl = '/article/register';
-   //
-   //          // AJAX 또는 fetch API를 사용하여 데이터 전송
-   //          fetch(serverUrl, {
-   //              method: 'post',
-   //              headers: {
-   //                  'Content-Type': 'multipart/form-data'
-   //              },
-   //              body: JSON.stringify(data)
-   //
-   //
-   //          })
-   //
-   //          console.log(data);
-   //
-   //      }
-   //
+        console.log(data)
+             if (fileInput.files.length > 0) {
+                  const formData = new FormData();
+                  formData.append('image', fileInput.files[0]);
+
+                  const title = document.getElementById('productTitle').value;
+                  const priceString = document.getElementById('productPrice').value; //price로 입력된값 문자열로 받아오는 코드
+                  const price = parseInt(priceString,10); // priceString로 받은 문자열 값을 숫자로 변환
+                  const content = document.getElementById('productExplanation').value;
+                  const majorCode = document.querySelector("#majorSelect").value;
+
+                  const data = {
+                      title: title,
+                      price: price,
+                      content: content,
+                      isSold: false,
+                      majorCode: majorCode,
+                      username: username,
+                      multipartFile: formData,
+                  };
+
+                  // 서버 URL 설정
+                  const serverUrl = '/article/register';
+
+                  // AJAX 또는 fetch API를 사용하여 데이터 전송
+                  fetch(serverUrl, {
+                      method: 'post',
+                      headers: {
+                          'Content-Type': 'multipart/form-data'
+                      },
+                      body: JSON.stringify(data)
+
+
+                  })
+
+                      console.log(data);
+
+              }
+
     }
 </script>
 </html>
