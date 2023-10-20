@@ -25,7 +25,7 @@ public class ArticleController {
     final private ReplyService replyService;
     final private ImageService imageService;
 
-    @GetMapping("/")
+    @GetMapping({"/", ""})
     public String home() {
         return "redirect:/article/list";
     }
@@ -40,7 +40,10 @@ public class ArticleController {
 
     @GetMapping("/list")
     public void list (ArticlePageRequestDTO pageRequestDTO, Model model) {
-        model.addAttribute("result", articleService.getList(pageRequestDTO));
+        if (pageRequestDTO.getKeyword() == null || pageRequestDTO.getKeyword().equals(""))
+            model.addAttribute("result", articleService.getList(pageRequestDTO));
+        else model.addAttribute("result", articleService.searchList(pageRequestDTO));
+
     }
 
     @PostMapping(value = "/register")

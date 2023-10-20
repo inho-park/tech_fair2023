@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,28 +16,9 @@
 <body>
 
   <div id="container">
+      <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
-    <!--Header-->
-    <header class="header">
-      <div class="header_wrapper">
-            <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-        <div class="header_center">
-          <form class="header_form" onsubmit="return false"></form>
-            <input class="header__input--text" type="text" placeholder="검색">
-            <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
-        </div>
-        <div class="header_end">
-            <h1 th:text="${session.username}" class="header_end_userName"></h1>
-            <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
-            <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-            <h1 th:if="${session.username!=null}" class="header_end_myPage">
-                <a href="/user/mypage">
-                    <span class="material-symbols-outlined">person</span>
-                </a>
-            </h1>
-        </div>
-      </div>
-    </header>
+      <th:block th:fragment="content"></th:block>
 
     <div class="product">
      <h1>기본정보</h1>

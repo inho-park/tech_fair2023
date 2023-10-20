@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/mypage.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/mypage.css">
   <script defer src="/js/productDate.js"></script>
   <title>Document</title>
 </head>
 <body>
 
+
+<div id="container">
+<th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+<th:block th:fragment="content"></th:block>
 <div class="myPage">
 
   <div class="userName">
@@ -44,8 +52,9 @@
               </a>
             </div>
           </th:block>
+      </div>
     </div>
-  </div>
+</div>
 </div>
 </div>
 </body>
