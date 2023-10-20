@@ -1,5 +1,7 @@
 package com.icc.daelimbada.article.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,6 +9,8 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ArticleDTO {
     private Long id;
     private String title;
@@ -18,4 +22,3 @@ public class ArticleDTO {
     private String filePath;
     private LocalDateTime regDate, modDate;
 }
-

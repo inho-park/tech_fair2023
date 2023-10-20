@@ -25,7 +25,7 @@ public class ArticleController {
     final private ReplyService replyService;
     final private ImageService imageService;
 
-    @GetMapping("/")
+    @GetMapping({"/", ""})
     public String home() {
         return "redirect:/article/list";
     }
@@ -40,15 +40,19 @@ public class ArticleController {
 
     @GetMapping("/list")
     public void list (ArticlePageRequestDTO pageRequestDTO, Model model) {
-        model.addAttribute("result", articleService.getList(pageRequestDTO));
+        if (pageRequestDTO.getKeyword() == null || pageRequestDTO.getKeyword().equals(""))
+            model.addAttribute("result", articleService.getList(pageRequestDTO));
+        else model.addAttribute("result", articleService.searchList(pageRequestDTO));
+
     }
 
     @PostMapping(value = "/register")
-    public String register(@ModelAttribute ArticleDTO articleDTO, @RequestParam("multipartFile") MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
+    public String register(ArticleDTO articleDTO,MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
         // 처리 로직
-        redirectAttributes.addFlashAttribute("result", articleService.saveArticle(articleDTO));
+        Long articleId = articleService.saveArticle(articleDTO);
+        redirectAttributes.addFlashAttribute("result", articleId);
         try {
-            imageService.postImages(articleDTO.getId(), multipartFile);
+            imageService.postImages(articleId, multipartFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
