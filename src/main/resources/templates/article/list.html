@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/header.css">
   <script defer src="/js/MajorList.js"></script>
   <script defer src="/js/productDate.js"></script>
 
@@ -25,6 +26,7 @@
 <body>
 
 <div id="container">
+
 <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
   <th:block th:fragment="content"></th:block>
@@ -142,9 +144,10 @@
     pageNumberContainer.innerHTML = "";
 
     for (let i = 1; i <= totalPages; i++) {
-      const pageNumberButton = document.createElement("span");
+      const pageNumberButton = document.createElement("a");
       pageNumberButton.textContent = i;
       pageNumberButton.className = "page-number";
+      pageNumberButton.href=`list?page=${i}`
       pageNumberButton.addEventListener("click", () => {
         currentPage = i;
         showPage(currentPage);

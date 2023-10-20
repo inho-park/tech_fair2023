@@ -5,85 +5,6 @@
   flex-wrap: wrap;
   position: relative;
 }
-/* 해더 */
-
-.header{
-  position: fixed;
-  top: 0;
-  width: 70%;
-  background-color: #fff;
-  box-shadow: 0 0 3px #000;
-  z-index: 20;
-  margin: 0 auto;
-
-}
-.header_wrapper{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 0 16px;
-}
-.header_start{
-  margin-left: 50px;
-}
-.header_center{
-  width: 60%;
-  display: flex;
-  align-items: center;
-}
-.header_form{
-  display: flex;
-  max-width: 100%;
-}
-.header__input--text{
-  width: calc(100% - 60px);
-  height: 30px;
-  padding: 0 6px;
-  border: 1px solid #8f8f8f;
-  border-radius: 40px;
-}
-.header__input--button{
-  width: 55px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-}
-.header_end{
-  width: 13%;
-  display: flex;
-  justify-content: space-between;
-}
-.header_end_userName{
-  font-size: 1rem;
-  line-height: 2rem;
-}
-.header_end_login{
-  max-width: 50%;
-  font-size: 1rem;
-}
-.header_end_signup{
-  max-width: 50%;
-  font-size: 1rem;
-}
-.header_end_signup > a{
-  text-decoration: none;
-  color: black;
-}
-.header_end_login > a{
-  text-decoration: none;
-  color: black;
-}
-.header_end_myPage > a{
-  text-decoration: none;
-  color: black;
-  display: block;
-}
-.header_end_myPage > a span{
-  font-size: 2rem;
-  display: block;
-}
-
 /* 전공 사이드바 */
 .major-list{
   width: 180px;
@@ -228,10 +149,6 @@
   font-size: 50px;
 }
 
-
-
-
-
 .addProduct{
   position: absolute;
   right: 0;
@@ -242,6 +159,14 @@
 .addProduct span{
   font-size: 50px;
   color: #11009E;
+}
+.page-item a{
+   text-decoration: none;
+  color: black;
+}
+
+.page-item a:active{
+  color: red;
 }
 
 @media screen and (max-width: 1900px){

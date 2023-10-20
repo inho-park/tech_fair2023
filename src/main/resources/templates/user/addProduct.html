@@ -8,11 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/addproduct.css">
+    <link rel="stylesheet" href="/css/addproduct.css">
+    <link rel="stylesheet" href="/css/header.css">
   <script defer src="/js/addProduct.js"></script>
   <title>상품등록</title>
 </head>
 <body>
+
   <div id="container">
       <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
@@ -21,40 +23,31 @@
     <div class="product">
      <h1>기본정보</h1>
      
-     <form action="" class="productData" method="post" enctype="multipart/form-data">
+
+     <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="username" th:value="${session.username}">
+         <input type="hidden" name="isSold" class="form_isSold" value="false">
+
       <div class="filebox">
         <h2>상품이미지</h2>
         <div>
           <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-          <label for="file">파일찾기</label> 
-          <input type="file" id="file" readonly>
+          <label for="file-input">파일찾기</label>
+          <input type="file" id="file-input" readonly name="multipartFile">
         </div>
       </div>
 
       <div class="data">
         <label for="productTitle">제목</label>
-        <input type="text" id="productTitle">
+        <input type="text" id="productTitle" name="title">
       </div>
 
-      <div class="data">
-        <label for="productName">상품명</label>
-        <input type="text" id="productName">
-      </div>
 
       <div class="data">
         <label for="productPrice">가격</label>
-        <input type="text" id="productPrice">
+        <input type="text" id="productPrice" name="price">
       </div>
 
-      <div class="data">
-        <label for="productLocation">거래위치</label>
-        <input type="text" id="productLocation">
-      </div>
-
-     <div class="data">
-      <label for="productTime">거래날짜</label>
-      <input type="date" id="productTime">
-     </div>
 
      <div class="data">
       <label for="classificationSelect">소속학과</label>
@@ -63,7 +56,7 @@
               <!-- 대분류 옵션들은 여기서 생성됩니다 -->
           </select>
 
-          <select id="majorSelect">
+          <select id="majorSelect" name="majorCode">
               <!-- 소분류 옵션들은 여기서 생성됩니다 -->
           </select>
       </div>
@@ -71,14 +64,69 @@
 
       <div class="data">
         <label for="productExplanation">상품설명</label>
-        <textarea name="" id="productExplanation" cols="60" rows="10"></textarea>
+        <textarea name="content" id="productExplanation" cols="60" rows="10"></textarea>
       </div>
 
-      <button type="submit">등록하기</button>
+
+      <button type="submit" onclick="submitData()" >등록하기</button>
+
      </form>
+
     </div>
 
 
   </div>
 </body>
+
+<script th:inline="javascript">
+
+
+
+
+
+    function submitData() {
+
+      const data = document.querySelector(".productData").value;
+
+      console.log(data)
+   //      if (fileInput.files.length > 0) {
+   //          const formData = new FormData();
+   //          formData.append('image', fileInput.files[0]);
+   //
+   //          const title = document.getElementById('productTitle').value;
+   //          const priceString = document.getElementById('productPrice').value; //price로 입력된값 문자열로 받아오는 코드
+   //          const price = parseInt(priceString,10); // priceString로 받은 문자열 값을 숫자로 변환
+   //          const content = document.getElementById('productExplanation').value;
+   //          const majorCode = document.querySelector("#majorSelect").value;
+   //
+   //          const data = {
+   //              title: title,
+   //              price: price,
+   //              content: content,
+   //              isSold: false,
+   //              majorCode: majorCode,
+   //              username: username,
+   //              multipartFile: formData,
+   //          };
+   //
+   //          // 서버 URL 설정
+   //          const serverUrl = '/article/register';
+   //
+   //          // AJAX 또는 fetch API를 사용하여 데이터 전송
+   //          fetch(serverUrl, {
+   //              method: 'post',
+   //              headers: {
+   //                  'Content-Type': 'multipart/form-data'
+   //              },
+   //              body: JSON.stringify(data)
+   //
+   //
+   //          })
+   //
+   //          console.log(data);
+   //
+   //      }
+   //
+    }
+</script>
 </html>
