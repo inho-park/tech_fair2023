@@ -160,9 +160,10 @@
     pageNumberContainer.innerHTML = "";
 
     for (let i = 1; i <= totalPages; i++) {
-      const pageNumberButton = document.createElement("span");
+      const pageNumberButton = document.createElement("a");
       pageNumberButton.textContent = i;
       pageNumberButton.className = "page-number";
+      pageNumberButton.href=`list?page=${i}`
       pageNumberButton.addEventListener("click", () => {
         currentPage = i;
         showPage(currentPage);
