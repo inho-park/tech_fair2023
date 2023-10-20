@@ -44,7 +44,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public String postImages(Long articleId, MultipartFile multipartFile) throws IOException {
-        String folderPath = "/static/clients/";
+        String folderPath = "/clients/";
         String fileName = UUID.randomUUID() + multipartFile.getOriginalFilename();
         String filePath = folderPath + fileName;
         imageRepository.save(
