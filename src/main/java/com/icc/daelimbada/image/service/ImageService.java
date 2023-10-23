@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ImageService {
 
-    List<ImageDTO> getImages(Long articleId);
-    String postImages(Long articleId, MultipartFile multipartFile) throws IOException;
+    ImageDTO getImage(Long articleId);
+    String postImage(Long articleId, MultipartFile multipartFile) throws IOException;
     ImageDTO modifyImages(Long articleId, MultipartFile multipartFile);
     void deleteImages(Long articleId);
 
