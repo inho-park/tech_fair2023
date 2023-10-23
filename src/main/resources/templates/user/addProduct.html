@@ -26,7 +26,7 @@
      <h1>기본정보</h1>
 
      <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="articleDTO.username" th:value="${session.username}">
+         <input type="hidden" name="username" th:value="${session.username}">
          <input type="hidden" name="isSold" class="form_isSold" value="false">
 
       <div class="filebox">
@@ -46,7 +46,7 @@
 
       <div class="data">
         <label for="productPrice">가격</label>
-        <input type="text" id="productPrice" name=".price">
+        <input type="text" id="productPrice" name="price">
       </div>
 
      <div class="data">
@@ -56,7 +56,7 @@
               <!-- 대분류 옵션들은 여기서 생성됩니다 -->
           </select>
 
-          <select id="majorSelect" name="articleDTO.majorCode">
+          <select id="majorSelect" name="majorCode">
               <!-- 소분류 옵션들은 여기서 생성됩니다 -->
           </select>
       </div>

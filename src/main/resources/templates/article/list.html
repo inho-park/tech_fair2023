@@ -38,7 +38,7 @@
           <div class="product">
             <a th:href="@{/article/read(id=${e.id})}" class="product-link">
             <img th:if="${e.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
-            <img th:unless="${e.filePath == ''}" th:src="@{${e.filePath}}" alt="product" />
+            <img th:unless="${e.filePath == ''}" th:src="@{image/display/${e.filePath}}" alt="product" />
             <div class="data">
               <p th:text="${e.title}"></p>
               <p th:text="${e.username}"></p>

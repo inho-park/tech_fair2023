@@ -46,6 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
+    @Transactional
     public Long saveArticle(ArticleDTO articleDTO) {
         User user = userRepository.findByUsername(articleDTO.getUsername()).orElseThrow();
         return articleRepository.save(dtoToEntity(articleDTO, user)).getId();
@@ -89,7 +90,7 @@ public class ArticleServiceImpl implements ArticleService {
                 i -> {
                     Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
                     if (imageOptional.isPresent()) {
-                        i.setFilePath(imageOptional.get().getFilePath());
+                        i.setFilePath(imageOptional.get().getFileName());
                     } else {
                         i.setFilePath("");
                     }
