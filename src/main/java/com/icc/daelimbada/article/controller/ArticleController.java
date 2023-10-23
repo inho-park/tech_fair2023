@@ -36,6 +36,7 @@ public class ArticleController {
                      Model model) {
 
         model.addAttribute("articleDTO", articleService.getArticle(id));
+        model.addAttribute("imageDTO", imageService.getImage(id));
     }
 
     @GetMapping("/list")
@@ -52,7 +53,7 @@ public class ArticleController {
         Long articleId = articleService.saveArticle(articleDTO);
         redirectAttributes.addFlashAttribute("result", articleId);
         try {
-            imageService.postImages(articleId, multipartFile);
+            imageService.postImage(articleId, multipartFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

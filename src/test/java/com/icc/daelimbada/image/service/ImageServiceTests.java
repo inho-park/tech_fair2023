@@ -19,7 +19,7 @@ public class ImageServiceTests {
         try {
             MockMultipartFile multipartFile = getMockMultipartFile("변신", "jpg",
                     "D:\\tech_fair2023\\변신.jpg");
-            System.out.println(imageService.postImages(200L, multipartFile));
+            System.out.println(imageService.postImage(200L, multipartFile));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- page 별 header 및 css 적용 -->
 <th:block th:fragment="setContent(content)">
+    <head>
+        <link rel="stylesheet" href="/css/header.css">
+    </head>
 <header class="header">
     <div class="header_wrapper">
         <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
         <div class="header_center">
             <form class="header_form" onsubmit="return false"></form>
-            <input class="header__input--text" type="text" placeholder="검색">
+            <input class="header__input--text" type="text" placeholder="검색" name="keywordd">
             <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
         </div>
         <div class="header_end">

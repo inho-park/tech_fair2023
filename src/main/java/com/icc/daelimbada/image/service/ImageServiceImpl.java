@@ -12,8 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Log4j2
@@ -26,16 +25,28 @@ public class ImageServiceImpl implements ImageService {
     final private ArticleRepository articleRepository;
 
     @Override
-    public List<ImageDTO> getImages(Long articleId) {
+    public ImageDTO getImage(Long articleId) {
         try {
-            List<ImageDTO> list = new ArrayList<>();
-            List<Image> images = imageRepository.findByArticle_Id(articleId);
-            if (!images.isEmpty()) images.forEach(
-                    i -> {
-                        list.add(ImageDTO.builder().filePath(i.getFilePath()).build());
-                    }
-            );
-            return list;
+            // image 를 여러 장 올렸을 때
+//            List<ImageDTO> list = new ArrayList<>();
+//            List<Image> images = imageRepository.findByArticle_Id(articleId);
+//            if (!images.isEmpty()) images.forEach(
+//                    i -> {
+//                        list.add(ImageDTO.builder().filePath(i.getFilePath()).build());
+//                    }
+//            );
+//            return list;
+
+
+            Optional<Image> optional = imageRepository.findByArticle_Id(articleId);
+            if (optional.isPresent())
+                return ImageDTO.builder()
+                        .filePath(optional.get().getFileName())
+                        .build();
+            else return ImageDTO.builder()
+                    .filePath("")
+                    .build();
+
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -43,13 +54,13 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public String postImages(Long articleId, MultipartFile multipartFile) throws IOException {
-        String folderPath = "/clients/";
+    public String postImage(Long articleId, MultipartFile multipartFile) throws IOException {
+        // 확장자 분리 로직 구현하기
         String fileName = UUID.randomUUID() + multipartFile.getOriginalFilename();
-        String filePath = folderPath + fileName;
+        String filePath = uploadPath + fileName;
         imageRepository.save(
                 Image.builder()
-                        .filePath(filePath)
+                        .fileName(fileName)
                         .article(articleRepository.findById(articleId).orElseThrow())
                         .build()
         );
