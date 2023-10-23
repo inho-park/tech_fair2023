@@ -45,14 +45,14 @@
     display: flex;
     justify-content: space-between;
 }
-.userName{
+.header-username{
     display: flex;
 }
 .header_end_userName{
     font-size: 1rem;
     line-height: 2rem;
 }
-.userName .initial{
+.header-username .initial{
     width: 25px;
     height: 25px;
     text-align: center;

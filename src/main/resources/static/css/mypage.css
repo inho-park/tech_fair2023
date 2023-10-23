@@ -1,6 +1,14 @@
+#container{
+  width: 70%;
+  margin: 0 auto;
+
+  flex-wrap: wrap;
+  position: relative;
+}
+
 .myPage{
   width: 800px;
-  margin: 0 auto;
+  margin: 100px auto;
   background-color: #eeeeee;
   padding: 50px;
 }
@@ -96,6 +104,7 @@
 
 .product-list .product img{
   width: 160px;
+  height: 180px;
   margin-bottom: 20px;
 }
 
@@ -111,7 +120,7 @@
 
 .product-list .product p:last-of-type {
   position: absolute;
-  right: 0;
+  right: 20px;
   bottom: 5px;
   color: #9d9d9d;
   font-size: 12px;

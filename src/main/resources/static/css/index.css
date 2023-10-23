@@ -90,6 +90,7 @@
 
 .product-list .product img{
   width: 160px;
+  height: 180px;
   margin-bottom: 20px;
 }
 
@@ -105,7 +106,7 @@
 
 .product-list .product p:last-of-type {
   position: absolute;
-  right: 0;
+  right: 10px;
   bottom: 5px;
   color: #9d9d9d;
   font-size: 12px;
@@ -114,37 +115,56 @@
 /* 상품 리스트 페이지 번호 버튼 */
 .pagination{
   position: absolute;
-  left: 45%;
+  left: 26%;
   bottom: -100px;
-  padding: 20px;
   display: flex;
+  margin-bottom: 20px;
+  height: 40px;
 }
-
-.page-number:first-of-type{
-  margin-left: 10px;
-}
-
-#page-numbers{
-  padding-top: 16px;
-  font-size: 20px;
+.page-item{
+  padding: 14px 11px 0 19px;
+  font-size: 15px;
   font-weight: bold;
-}
-
-
-
-.page-number{
-  margin-right: 10px;
+  width: 20px;
   cursor: pointer;
+  margin-right: 20px;
+}
+
+.page-item a{
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.active{
+
+  border-radius: 4px;
+  background-color: #3d29ef;
+}
+.active a{
+  color: white;
+}
+
+.page-item:last-of-type{
+  border-right: none;
+}
+
+.page a , .page a{
+  padding: 6px 10px;
+  display: block;
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.previousButton{
   border-right: 1px solid black;
-  padding-right: 10px;
-
 }
 
-.page-number:last-of-type{
-  border: none;
-  padding-right: 0px;
-}
 
+/* 상품 추가 버튼 */
 .material-symbols-outlined.page{
   font-size: 50px;
 }
@@ -160,14 +180,7 @@
   font-size: 50px;
   color: #11009E;
 }
-.page-item a{
-   text-decoration: none;
-  color: black;
-}
 
-.page-item a:active{
-  color: red;
-}
 
 @media screen and (max-width: 1900px){
   .product-list{

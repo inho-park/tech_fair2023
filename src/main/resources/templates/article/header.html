@@ -14,7 +14,10 @@
             <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
         </div>
         <div class="header_end">
-            <h1 th:text="${session.username}"></h1>
+            <div class="header-username">
+                <h1 class="initial" th:if="${session.username!=null}">Y</h1>
+                <h1 th:text="${session.username}" class="header_end_userName"></h1>
+            </div>
             <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
             <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
             <h1 th:if="${session.username!=null}" class="header_end_myPage">
