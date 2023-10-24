@@ -4,39 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/dalimbada.ico">
     <link rel="stylesheet" href="/css/read.css">
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,200" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,200" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,200" />
     <title>대림바다</title>
 </head>
 
 <body>
 
 <div id="container">
-    <header class="header">
-        <div class="header_wrapper">
-            <h1 class="header_start">
-                <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
-            </h1>
-            <div class="header_center">
-                <form class="header_form" onsubmit="return false"></form>
-                <input class="header__input--text" type="text" placeholder="검색">
-                <button class="header__input--button" type="button"></button>
-            </div>
+    <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
-            <div class="header_end">
-                <h1 th:text="${session.username}" class="header_end_userName"></h1>
-                <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
-                <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
-                <h1 th:if="${session.username!=null}" class="header_end_myPage">
-                    <a href="/user/mypage">
-                        <span class="material-symbols-outlined">person</span>
-                    </a>
-                </h1>
-            </div>
-        </div>
-    </header>
+    <th:block th:fragment="content"></th:block>
+  
     <div class="bar">
         <div class="bar_wrapper">
             <div class="bar_menu">
@@ -46,9 +35,18 @@
                 <input id="menu" type="checkbox">
                 <nav id="main_nav">
                     <ul>
-                        <li><a href="">판매완료</a></li>
-                        <li><a href="">수정</a></li>
-                        <li><a href="">삭제</a></li>
+                        <li class="soldoutdtn">
+                            <a href="">판매완료</a>
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </li>
+                        <li>
+                            <a href="">수정</a>
+                            <span class="material-symbols-outlined">contract_edit</span>
+                        </li>
+                        <li class="deletebtn">
+                            <a href="">삭제</a>
+                            <span class="material-symbols-outlined">delete</span>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -60,7 +58,8 @@
                 <div class="Ginformation_item">
                     <div class="Ginformation_top">
                         <div class="Ginformation_img">
-                            <img src="/images/XL.jpeg" alt="">
+                            <img th:if="${imageDTO.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
+                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{'http://localhost:8080/image/' + ${imageDTO.filePath}}" alt="product" />
                         </div>
                         <div class="Ginformation_info">
                             <div class="Ginformation_text">

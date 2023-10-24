@@ -5,25 +5,26 @@ import com.icc.daelimbada.image.domain.Image;
 import com.icc.daelimbada.image.dto.ImageDTO;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ImageService {
+
     ImageDTO getImage(Long articleId);
-//    List<ImageDTO> getList(Long articleId);
-    ImageDTO postImages(Long articleId, MultipartFile multipartFile);
+    String postImage(Long articleId, MultipartFile multipartFile) throws IOException;
     ImageDTO modifyImages(Long articleId, MultipartFile multipartFile);
     void deleteImages(Long articleId);
 
     default Image dtoToEntity(ImageDTO imageDTO, Article article) {
         return Image.builder()
-                .uuid(imageDTO.getUuid())
+                .fileName(imageDTO.getFilePath())
                 .article(article)
                 .build();
     }
 
     default ImageDTO entityToDTO(Image image) {
         return ImageDTO.builder()
-                .uuid(image.getUuid())
+                .filePath(image.getFileName())
                 .build();
     }
 }

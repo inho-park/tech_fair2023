@@ -6,69 +6,6 @@
 
 }
 
-/* 해더 */
-
-.header{
-    position: fixed;
-    top: 0;
-    width: 70%;
-    background-color: #fff;
-    box-shadow: 0 0 3px #000;
-    z-index: 20;
-    margin: 0 auto;
-
-}
-.header_wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    padding: 0 16px;
-}
-.header_start{
-    margin-left: 50px;
-}
-.header_center{
-    width: 60%;
-    display: flex;
-    align-items: center;
-}
-.header_form{
-    display: flex;
-    max-width: 100%;
-}
-.header__input--text{
-    width: calc(100% - 60px);
-    height: 30px;
-    padding: 0 6px;
-    border: 1px solid #8f8f8f;
-    border-radius: 40px;
-}
-.header__input--button{
-    width: 55px;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-}
-.header_end{
-    width: 13%;
-    display: flex;
-    justify-content: space-between;
-}
-.header_end_login{
-    max-width: 50%;
-    font-size: 1rem;
-}
-.header_end_signup{
-    max-width: 50%;
-    font-size: 1rem;
-}
-.header_end_signup > a{
-    text-decoration: none;
-}
-.header_end_login > a{
-    text-decoration: none;
-}
 
 /*상품 판매완료 및 삭제 수정 css */
 .bar{
@@ -89,21 +26,44 @@
     float: right;
     margin-top: 24px;
     font-size: 2rem;
-    width: 13%;
+    width: 17%;
 
 }
+
 #main_nav{
     display: flex;
-    width: 6%;
+    width: 8%;
     text-align: center;
 }
 #main_nav > ul{
     width: 100%;
+    background-color: white;
+    border: 1px solid black;
+}
+#main_nav > ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    border-bottom: 1px solid gray;
+}
+#main_nav > ul > li > span {
+    margin-right: 5px;
 }
 #main_nav > ul > li > a {
+    display: flex;
     text-decoration-line: none;
     color: black;
     font-size: 1rem;
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+}
+.deletebtn{
+    color: red;
+}
+.soldoutdtn{
+    color: green;
 }
 label.menu{
     position: relative;

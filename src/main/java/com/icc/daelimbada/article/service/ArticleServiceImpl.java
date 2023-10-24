@@ -6,6 +6,8 @@ import com.icc.daelimbada.article.dto.ArticleDTO;
 import com.icc.daelimbada.article.dto.ArticlePageRequestDTO;
 import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.article.repository.ArticleRepository;
+import com.icc.daelimbada.image.domain.Image;
+import com.icc.daelimbada.image.repository.ImageRepository;
 import com.icc.daelimbada.user.domain.User;
 import com.icc.daelimbada.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 
@@ -25,6 +28,7 @@ import java.util.function.Function;
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final UserRepository userRepository;
+    private final ImageRepository imageRepository;
 
     /**
      * get 요청 외에는 유저가 해당 게시글의 주인인지 확인해야함
@@ -42,6 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
+    @Transactional
     public Long saveArticle(ArticleDTO articleDTO) {
         User user = userRepository.findByUsername(articleDTO.getUsername()).orElseThrow();
         return articleRepository.save(dtoToEntity(articleDTO, user)).getId();
@@ -79,7 +84,19 @@ public class ArticleServiceImpl implements ArticleService {
                 requestDTO.getPageable(Sort.by("id").descending()),
                 Major.getMajor(requestDTO.getType()),
                 false);
-        return new PageResultDTO<>(result, fn);
+
+        PageResultDTO<ArticleDTO, Object[]> pageResultDTO = new PageResultDTO<>(result, fn);
+        pageResultDTO.getDtoList().forEach(
+                i -> {
+                    Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
+                    if (imageOptional.isPresent()) {
+                        i.setFilePath(imageOptional.get().getFileName());
+                    } else {
+                        i.setFilePath("");
+                    }
+                }
+        );
+        return pageResultDTO;
     }
 
     @Override
@@ -91,20 +108,17 @@ public class ArticleServiceImpl implements ArticleService {
                 )
         );
         Page<Object[]> result = null;
-        if (requestDTO.getKeyword().equals("")) result = articleRepository.getArticlesBySold(
+        // major 를 정하지 않고 검색했을 시
+        if (requestDTO.getType() == 0) result = articleRepository.getArticlesByTitleLike(
                 requestDTO.getPageable(Sort.by("id").descending()),
+                requestDTO.getKeyword(),
                 false);
-        else {
-            if (requestDTO.getType() == 0) result = articleRepository.getArticlesByTitleLike(
-                    requestDTO.getPageable(Sort.by("id").descending()),
-                    requestDTO.getKeyword(),
-                    false);
-            else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
-                    requestDTO.getPageable(Sort.by("id").descending()),
-                    requestDTO.getKeyword(),
-                    Major.getMajor(requestDTO.getType()),
-                    false);
-        }
+        // major 를 정하고 검색했을 시
+        else result = articleRepository.getArticlesByTitleLikeaAndMajorAndSold(
+                requestDTO.getPageable(Sort.by("id").descending()),
+                requestDTO.getKeyword(),
+                Major.getMajor(requestDTO.getType()),
+               false);
 
         return new PageResultDTO<>(result, fn);
     }
