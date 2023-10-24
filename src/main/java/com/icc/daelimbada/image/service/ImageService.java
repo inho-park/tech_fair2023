@@ -17,14 +17,14 @@ public interface ImageService {
 
     default Image dtoToEntity(ImageDTO imageDTO, Article article) {
         return Image.builder()
-                .filePath(imageDTO.getFilePath())
+                .fileName(imageDTO.getFilePath())
                 .article(article)
                 .build();
     }
 
     default ImageDTO entityToDTO(Image image) {
         return ImageDTO.builder()
-                .filePath(image.getFilePath())
+                .filePath(image.getFileName())
                 .build();
     }
 }

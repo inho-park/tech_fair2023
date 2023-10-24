@@ -89,7 +89,7 @@ public class ArticleServiceImpl implements ArticleService {
                 i -> {
                     Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
                     if (imageOptional.isPresent()) {
-                        i.setFilePath(imageOptional.get().getFilePath());
+                        i.setFilePath(imageOptional.get().getFileName());
                     } else {
                         i.setFilePath("");
                     }

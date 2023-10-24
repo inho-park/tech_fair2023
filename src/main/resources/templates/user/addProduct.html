@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/css/addproduct.css">
   <script defer src="/js/addProduct.js"></script>
   <title>상품등록</title>
+    <style>
+        .header_end_addProductPage{
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -66,8 +71,9 @@
         <label for="productExplanation">상품설명</label>
         <textarea name="content" id="productExplanation" cols="60" rows="10"></textarea>
       </div>
-
-      <button type="submit" onclick="submitData()" >등록하기</button>
+         <div class="button_wrapper">
+            <button type="submit" onclick="submitData()" id="formdata-Btn">등록하기</button>
+         </div>
      </form>
     </div>
   </div>
