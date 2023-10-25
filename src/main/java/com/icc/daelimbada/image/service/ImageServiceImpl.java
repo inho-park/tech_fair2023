@@ -64,7 +64,7 @@ public class ImageServiceImpl implements ImageService {
                         .article(articleRepository.findById(articleId).orElseThrow())
                         .build()
         );
-        File file = new File(uploadPath + fileName);
+        File file = new File(filePath);
         multipartFile.transferTo(file);
 
         return filePath;

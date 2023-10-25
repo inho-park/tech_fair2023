@@ -59,7 +59,9 @@
                     <div class="Ginformation_top">
                         <div class="Ginformation_img">
                             <img th:if="${imageDTO.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
-                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{'http://localhost:8080/image/' + ${imageDTO.filePath}}" alt="product" />
+                            <img th:unless="${imageDTO.filePath == ''}"
+                                 th:src="@{/image/display/} + ${imageDTO.filePath}"
+                                 alt="product" />
                         </div>
                         <div class="Ginformation_info">
                             <div class="Ginformation_text">
