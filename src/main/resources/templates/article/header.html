@@ -9,9 +9,10 @@
     <div class="header_wrapper">
         <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
         <div class="header_center">
-            <form class="header_form" onsubmit="return false"></form>
-            <input class="header__input--text" type="text" placeholder="검색" name="keywordd">
-            <button class="header__input--button" type="button"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
+            <form class="header_form" action="/article/list" onsubmit="return false"></form>
+            <input class="header__input--text" type="text" placeholder="검색" name="keyword">
+            <input type="hidden" name="type" th:value="${articlePageRequestDTO.type}" />
+            <button class="header__input--button" type="submit"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
         </div>
         <div class="header_end">
             <div class="header-username">
