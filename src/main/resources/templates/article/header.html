@@ -4,15 +4,17 @@
 <th:block th:fragment="setContent(content)">
     <head>
         <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     </head>
 <header class="header">
     <div class="header_wrapper">
         <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
         <div class="header_center">
-            <form class="header_form" action="/article/list" onsubmit="return false"></form>
+            <form class="header_form" onsubmit="return false"></form>
             <input class="header__input--text" type="text" placeholder="검색" name="keyword">
-            <input type="hidden" name="type" th:value="${articlePageRequestDTO.type}" />
-            <button class="header__input--button" type="submit"><!--<img src="/img/headerbutton.png" alt="button" width="10px" height="10px">--></button>
+            <button class="header__input--button" type="submit">
+                <span class="material-symbols-outlined">search</span>
+            </button>
         </div>
         <div class="header_end">
             <div class="header-username">
@@ -26,8 +28,21 @@
                     <span class="material-symbols-outlined">person</span>
                 </a>
             </h1>
+            <h1 th:if="${session.username!=null}" class="header_end_addProductPage">
+                <a class="addProduct" href="/user/addProduct">
+                    <span class="material-symbols-outlined">assignment_add</span>
+                    상품 등록
+                </a>
+            </h1>
         </div>
     </div>
+
 </header>
 <th:block th:replace="${content}"></th:block>
 </th:block>
+
+<script>
+    if(location.href.indexOf('local:8080/user/addProduct') > -1){ // location.href 로 현재 페이지 주소를 가져옵니다.
+        document.getElementById('header_end_addProductPage').style.display = 'none'; //매칭된 페이지에 한해 특정 요소에 스타일을 부여합니다.
+    }
+</script>

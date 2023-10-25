@@ -41,12 +41,13 @@
     background-color: transparent;
 }
 .header_end{
-    width: 13%;
+    width: 20%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .header-username{
     display: flex;
+    align-items: center;
 }
 .header_end_userName{
     font-size: 1rem;
@@ -86,4 +87,18 @@
 .header_end_myPage > a span{
     font-size: 2rem;
     display: block;
+}
+.addProduct{
+    right: 0;
+    top: 70px;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    width: 100px;
+    height: 35px;
+    color: black;
+    justify-content: space-around;
+}
+.addProduct span{
+    color: black;
 }
