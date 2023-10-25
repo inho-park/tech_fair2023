@@ -120,7 +120,18 @@ public class ArticleServiceImpl implements ArticleService {
                 Major.getMajor(requestDTO.getType()),
                false);
 
-        return new PageResultDTO<>(result, fn);
+        PageResultDTO<ArticleDTO, Object[]> pageResultDTO = new PageResultDTO<>(result, fn);
+        pageResultDTO.getDtoList().forEach(
+                i -> {
+                    Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
+                    if (imageOptional.isPresent()) {
+                        i.setFilePath(imageOptional.get().getFileName());
+                    } else {
+                        i.setFilePath("");
+                    }
+                }
+        );
+        return pageResultDTO;
     }
 
     @Override
