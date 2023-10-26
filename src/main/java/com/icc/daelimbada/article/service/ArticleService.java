@@ -40,5 +40,4 @@ public interface ArticleService {
                 .regDate(article.getRegDate())
                 .build();
     }
-
 }
