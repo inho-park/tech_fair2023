@@ -7,7 +7,6 @@ import com.icc.daelimbada.image.service.ImageService;
 import com.icc.daelimbada.reply.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

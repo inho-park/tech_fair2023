@@ -19,6 +19,7 @@ public class ArticlePageRequestDTO {
     private String username;
 
     public ArticlePageRequestDTO() {
+        this.type = 0;
         this.page = 1;
         this.size = 12;
     }
