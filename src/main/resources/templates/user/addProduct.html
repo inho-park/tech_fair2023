@@ -49,19 +49,18 @@
             </div>
           <input class="upload-name" value="첨부파일" placeholder="첨부파일">
           <label for="file-input">파일찾기</label>
-          <input type="file" id="file-input" readonly name="multipartFile" onchange="setThumbnail(event);">
+          <input type="file" id="file-input" readonly name="multipartFile" onchange="setThumbnail(event);" accept="image/*">
         </div>
       </div>
 
       <div class="data">
         <label for="productTitle">제목 <a>*</a></label>
-
-        <input type="text" id="productTitle" name="title">
+        <input type="text" id="productTitle" name="title" placeholder="제목을 입력하시오">
       </div>
 
       <div class="data">
         <label for="productPrice">가격 <a>*</a></label>
-        <input type="text" id="productPrice" name=".price">
+        <input type="text" id="productPrice" name=".price" placeholder="가격을 입력하시오">
       </div>
 
      <div class="data">
