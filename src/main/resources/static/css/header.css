@@ -33,7 +33,7 @@
     width: 80%;
     height: 30px;
     padding: 0 6px;
-    border: 3px solid blue;
+    border: 3px solid #5858ad;
     border-radius: 40px;
 }
 .header__input--button{
@@ -41,7 +41,7 @@
     height: 40px;
     border: none;
     background-color: transparent;
-    color: blue;
+    color: #5858ad;
 }
 .header_end{
     width: 30%;
@@ -124,4 +124,17 @@
         font-size: 0.8rem;
     }
 
+}
+@media screen and (max-width: 1050px){
+
+
+    .header_wrapper{
+        justify-content: center;
+    }
+    .header__input--text{
+        display: none;
+    }
+    .header__input--button{
+        display: none;
+    }
 }

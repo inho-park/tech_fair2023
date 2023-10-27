@@ -269,4 +269,10 @@ input#menu:checked + nav#main_nav{
     padding: 10px;
 }
 
+@media screen and (max-width: 1050px){
+   .Ginformation_text--pay{
+       font-size: 1.8rem;
+   }
+}
+
 

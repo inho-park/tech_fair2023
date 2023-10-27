@@ -1,7 +1,6 @@
 #container{
   width: 70%;
   margin: 0 auto;
-
   flex-wrap: wrap;
   position: relative;
 }
