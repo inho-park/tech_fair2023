@@ -86,17 +86,7 @@ public class ArticleServiceImpl implements ArticleService {
                 false);
 
         PageResultDTO<ArticleDTO, Object[]> pageResultDTO = new PageResultDTO<>(result, fn);
-        pageResultDTO.getDtoList().forEach(
-                i -> {
-                    Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
-                    if (imageOptional.isPresent()) {
-                        i.setFilePath(imageOptional.get().getFileName());
-                    } else {
-                        i.setFilePath("");
-                    }
-                }
-        );
-        return pageResultDTO;
+        return setImage(pageResultDTO);
     }
 
     @Override
@@ -120,7 +110,8 @@ public class ArticleServiceImpl implements ArticleService {
                 Major.getMajor(requestDTO.getType()),
                false);
 
-        return new PageResultDTO<>(result, fn);
+        PageResultDTO<ArticleDTO, Object[]> pageResultDTO = new PageResultDTO<>(result, fn);
+        return setImage(pageResultDTO);
     }
 
     @Override
@@ -168,5 +159,19 @@ public class ArticleServiceImpl implements ArticleService {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    public PageResultDTO<ArticleDTO, Object[]> setImage(PageResultDTO<ArticleDTO, Object[]> pageResultDTO) {
+        pageResultDTO.getDtoList().forEach(
+                i -> {
+                    Optional<Image> imageOptional = imageRepository.findTopByArticle_IdOrderByIdDesc(i.getId());
+                    if (imageOptional.isPresent()) {
+                        i.setFilePath(imageOptional.get().getFileName());
+                    } else {
+                        i.setFilePath("");
+                    }
+                }
+        );
+        return pageResultDTO;
     }
 }
