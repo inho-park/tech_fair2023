@@ -3,7 +3,6 @@
 <!-- page 별 header 및 css 적용 -->
 <th:block th:fragment="setContent(content)">
     <head>
-        <script defer src="/js/MajorList.js"></script>
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     </head>
@@ -13,6 +12,8 @@
         <div class="header_center">
             <form class="header_form" action="/article/list" method="get" >
                 <input class="header__input--text" type="text" placeholder="검색" name="keyword" />
+                <input th:if="${type==null}" class="header__input--type" type="hidden" name="type" th:value="0"/>
+                <input th:unless="${type==null}" class="header__input--type" type="hidden" name="type" th:value="${type}"/>
                 <button class="header__input--button" type="submit">
                     <span class="material-symbols-outlined">search</span>
                 </button>

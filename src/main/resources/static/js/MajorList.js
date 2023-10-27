@@ -49,45 +49,44 @@ const majors = [
       {code: 310, major: '교양'},
     ]
   },
-  ]
-
-  
-  const majorList = document.querySelector(".major-list");
-
-  majors.forEach((majorData) => {
-    const majorContainer = document.createElement("div");
-    majorContainer.innerHTML = /* html */ `
-      <span class="major-name">${majorData.classification}</span>
-      <button class="material-symbols-outlined add none">add</button>
-      <button class="material-symbols-outlined remove">remove</button>
-      <hr>
-      <ul class="major">
-        ${majorData.list.map((majorName) => `<a class="major_aTag" href="list?type=${majorName.code}"><li class="major_item">${majorName.major}</li></a>`).join("")}
-        
-      </ul>
-    `;
-  
-    majorList.appendChild(majorContainer);
+]
 
 
+const majorList = document.querySelector(".major-list");
 
-  
-    const addButton = majorContainer.querySelector(".add");
-    const removeButton = majorContainer.querySelector(".remove");
-    const major = majorContainer.querySelector(".major");
-  
-    addButton.addEventListener("click", () => {
-      addButton.classList.toggle("none");
-      removeButton.classList.toggle("none");
-      major.classList.toggle("none");
-    });
-  
-    removeButton.addEventListener("click", () => {
-      removeButton.classList.toggle("none");
-      addButton.classList.toggle("none");
-      major.classList.toggle("none");
-    });
+
+majors.forEach((majorData) => {
+  const majorContainer = document.createElement("div");
+  majorContainer.innerHTML = /* html */ `
+    <span class="major-name">${majorData.classification}</span>
+    <button class="material-symbols-outlined add none">add</button>
+    <button class="material-symbols-outlined remove">remove</button>
+    <hr>
+    <ul class="major">
+      ${majorData.list.map((majorName) => `<a class="major_aTag" href="list?type=${majorName.code}"><li class="major_item">${majorName.major}</li></a>`).join("")}
+      
+    </ul>
+  `;
+
+  majorList.appendChild(majorContainer);
+
+
+
+
+  const addButton = majorContainer.querySelector(".add");
+  const removeButton = majorContainer.querySelector(".remove");
+  const major = majorContainer.querySelector(".major");
+
+  addButton.addEventListener("click", () => {
+    addButton.classList.toggle("none");
+    removeButton.classList.toggle("none");
+    major.classList.toggle("none");
   });
 
-  
-  
+  removeButton.addEventListener("click", () => {
+    removeButton.classList.toggle("none");
+    addButton.classList.toggle("none");
+    major.classList.toggle("none");
+  });
+
+});
