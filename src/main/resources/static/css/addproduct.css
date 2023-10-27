@@ -48,7 +48,7 @@
   height: 40px;
   padding: 0 5px 0 10px;
   vertical-align: middle;
-  border: 1px solid gray;
+  border: 1px solid #808080;
   width: 60%;
   color: #999999;
 }
@@ -130,6 +130,7 @@
 }
 .data textarea{
   border: 1px solid #8f8f8f;
+  width: 65%;
 }
 .submitButton{
   margin:  20px auto;
