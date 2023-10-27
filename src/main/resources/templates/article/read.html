@@ -35,17 +35,23 @@
                 <input id="menu" type="checkbox">
                 <nav id="main_nav">
                     <ul>
-                        <li class="soldoutdtn">
-                            <a href="">판매완료</a>
+                        <li>
+                            <a  class="soldoutdtn" href="">
+                                판매완료
                             <span class="material-symbols-outlined">check_circle</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="">수정</a>
+                            <a href="">
+                                수정
                             <span class="material-symbols-outlined">contract_edit</span>
+                            </a>
                         </li>
-                        <li class="deletebtn">
-                            <a href="">삭제</a>
+                        <li>
+                            <a href="" style="color: red">
+                                삭제
                             <span class="material-symbols-outlined">delete</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -59,7 +65,9 @@
                     <div class="Ginformation_top">
                         <div class="Ginformation_img">
                             <img th:if="${imageDTO.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
-                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{'http://localhost:8080/image/' + ${imageDTO.filePath}}" alt="product" />
+                            <img th:unless="${imageDTO.filePath == ''}"
+                                 th:src="@{/image/display/} + ${imageDTO.filePath}"
+                                 alt="product" />
                         </div>
                         <div class="Ginformation_info">
                             <div class="Ginformation_text">
