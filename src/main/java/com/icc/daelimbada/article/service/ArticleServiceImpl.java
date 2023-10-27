@@ -46,6 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
+    @Transactional
     public Long saveArticle(ArticleDTO articleDTO) {
         User user = userRepository.findByUsername(articleDTO.getUsername()).orElseThrow();
         return articleRepository.save(dtoToEntity(articleDTO, user)).getId();
