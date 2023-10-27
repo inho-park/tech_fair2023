@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Log4j2
@@ -49,10 +50,9 @@ public class ArticleController {
     }
 
     @PostMapping(value = "/register")
-    public String register(ArticleDTO articleDTO,MultipartFile multipartFile, RedirectAttributes redirectAttributes) {
+    public String register(ArticleDTO articleDTO, MultipartFile multipartFile) {
         // 처리 로직
         Long articleId = articleService.saveArticle(articleDTO);
-//        redirectAttributes.addFlashAttribute("result", articleId);
         try {
             imageService.postImage(articleId, multipartFile);
         } catch (IOException e) {
