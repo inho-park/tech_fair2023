@@ -8,7 +8,7 @@
     </head>
 <header class="header">
     <div class="header_wrapper">
-        <a href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
+        <a class="logo" href="/article/list"><img class="header_logo" src="/images/logo.png" alt="logo" width="180px" height="auto"></a>
         <div class="header_center">
             <form class="header_form" action="/article/list" method="get" >
                 <input class="header__input--text" type="text" placeholder="검색" name="keyword" />
@@ -27,8 +27,9 @@
             <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
             <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
             <h1 th:if="${session.username!=null}" class="header_end_myPage">
-                <a href="/user/mypage">
+                <a href="/user/mypage" class="myPageIcon">
                     <span class="material-symbols-outlined">person</span>
+                    마이페이지
                 </a>
             </h1>
             <h1 th:if="${session.username!=null}" class="header_end_addProductPage">

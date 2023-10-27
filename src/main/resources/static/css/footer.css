@@ -6,40 +6,53 @@ footer{
 
 .footer_container{
     display: flex;
-    width: 50%;
+    width: 1000px;
     margin: 0 auto;
     padding: 20px;
     justify-content: center;
+    flex-wrap: nowrap;
+    position: relative;
 
 }
-.footer_container div{
-    margin-right: 40px;
+.computer_logo{
+    width: 150px;
+    margin-right: 50px;
 }
 .computer_logo img{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+}
+.school{
+    border-right: 1px white solid;
+    width: 470px;
+    margin-right: 50px;
+    padding: 25px;
 
 }
 .school p{
-    margin: 30px 0;
-    color: white;
+    font-size: 15px;
+    color: #c7c5c5;
+    margin-bottom: 20px;
+    width: 100%;
 }
 .school p:first-of-type{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-
+    color: white;
 }
 
-
+.service{
+    width: 350px;
+}
 .service h1{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     margin-top: 30px;
     color: white;
 }
 
 .service h2{
-    margin-top: 10px;
-    font-size: 20px;
-    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #c7c5c5;
 }

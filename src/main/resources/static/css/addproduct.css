@@ -11,7 +11,7 @@
 /* product */
 
 .product{
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -19,11 +19,20 @@
 
 }
 
-.product h1{
-  font-size: 30px;
-  padding: 10px;
+.top {
   border-bottom: 3px solid black;
   width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+  padding-top: 10px ;
+}
+.top h1 {
+  font-size: 30px;
+}
+.top h2{
+  color: red;
+  padding-left: 25px;
 }
 
 
@@ -39,8 +48,8 @@
   height: 40px;
   padding: 0 5px 0 10px;
   vertical-align: middle;
-  border: 1px solid black;
-  width: 70%;
+  border: 1px solid #808080;
+  width: 60%;
   color: #999999;
 }
 .filebox{
@@ -50,15 +59,37 @@
   padding: 10px;
   align-items: center;
   margin: 20px;
+  height: 300px;
 }
-
+#image_container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  width: 160px;
+  height: 180px;
+  background-color: rgba(0,0,0,0.1);
+  align-items: center;
+  border: 1px solid gray;
+  margin-left: 30px;
+}
+#image_container p{
+  text-align: center;
+}
+#image_container img{
+  width: 160px;
+  height: 180px;
+  position: absolute;
+}
 .filebox div{
-  width: 59%;
+  width: 71%;
 
 }
 
 .filebox h2{
   font-size: 20px;
+}
+.filebox a {
+  color: red;
 }
 
 .filebox label {
@@ -89,12 +120,18 @@
   display: flex;
   justify-content:space-between;
 }
-
-.data input{
-  width: 50%;
-  height: 30px;
+.data a {
+  color: red;
 }
-
+.data input{
+  width: 65%;
+  height: 30px;
+  border: 1px solid #8f8f8f;
+}
+.data textarea{
+  border: 1px solid #8f8f8f;
+  width: 65%;
+}
 .submitButton{
   margin:  20px auto;
   width: 20%;
@@ -110,7 +147,7 @@
 }
 .button_wrapper{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 #formdata-Btn{
   background-color: #999999;
@@ -119,6 +156,13 @@
   width: 250px;
   color: white;
   font-weight: bold;
+}
+
+#classificationSelect{
+  border: none;
+}
+#majorSelect{
+  border: none;
 }
 
 @media ( max-width: 1800px ) {
