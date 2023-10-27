@@ -31,7 +31,7 @@
     width: calc(100% - 60px);
     height: 30px;
     padding: 0 6px;
-    border: 1px solid #8f8f8f;
+    border: 3px solid blue;
     border-radius: 40px;
 }
 .header__input--button{
@@ -39,6 +39,7 @@
     height: 40px;
     border: none;
     background-color: transparent;
+    color: blue;
 }
 .header_end{
     width: 20%;
