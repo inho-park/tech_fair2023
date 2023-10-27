@@ -6,20 +6,43 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
   <link rel="stylesheet" href="/css/login.css">
   <link rel="icon" href="/images/dalimbada.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <title>로그인</title>
 </head>
 <body>
+
   <div class="login">
     <a href="/article/list">
       <img class="logo" src="/images/Logo.png">
     </a>
     <form action="/user/signin" method="post">
       <input type="text" name="email" placeholder="이메일을 입력해 주세요" required>
-      <input type="password" name="password" placeholder="비밀번호를 입력해 주세요" required>
+      <div class="password_toggle">
+        <input type="password" name="password" class="password" placeholder="비밀번호를 입력해 주세요" required>
+        <span class="material-symbols-outlined visibility">visibility</span>
+        <span class="material-symbols-outlined visibility_off none" >visibility_off</span>
+      </div>
       <button  type="submit">로그인</button>
       <a class="joinButton" href="/user/join">회원가입</a>
     </form>
-
   </div>
+  <script>
+    const password = document.querySelector(".password")
+    const visibility_icon = document.querySelector(".visibility");
+    const visibility_off_icon = document.querySelector(".visibility_off");
+
+    visibility_icon.addEventListener("click", ()=>{
+      visibility_icon.classList.toggle("none")
+      visibility_off_icon.classList.toggle("none")
+      password.type = "text"
+    })
+
+    visibility_off_icon.addEventListener("click", ()=>{
+      visibility_off_icon.classList.toggle("none")
+      visibility_icon.classList.toggle("none")
+      password.type = "password"
+    })
+
+  </script>
 </body>
 </html>

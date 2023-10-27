@@ -39,7 +39,7 @@
   background-color: #C4B0FF;
 }
 
-.joinButton{
+.joinButton {
   width: 100%;
   padding: 10px;
   border-radius: 15px;
@@ -52,3 +52,22 @@
   display: block;
   text-align: center;
 }
+
+/*패스워드 아이콘 */
+.password_toggle{
+  width: 94%;
+  position: relative;
+}
+
+.material-symbols-outlined{
+  position: absolute;
+  top: 0.4rem;
+  right: -10px;
+  color: #c5c5c5;
+  cursor: pointer;
+}
+
+.password_toggle .none{
+  display: none;
+}
+
