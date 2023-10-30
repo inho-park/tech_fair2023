@@ -28,35 +28,20 @@ import java.util.function.Function;
 public class ReplyServiceImpl implements ReplyService {
 
     final private ReplyRepository replyRepository;
+    final private UserRepository userRepository;
 
 
    // 한 게시글 댓글 목록 가져오기
     @Override
-    public PageResultDTO getList(Long articleId) {
-        // 아티클 아이디로 해당 아티클에 해당되는 댓글들 가지고 옴
-        Function<Object[], ReplyDTO> fn = (
-                entity -> EntityToDTO(
-                        (Reply) entity[0]
-                )
-        );
-
-        Page<Object[]> result = null;
-        ReplyPageRequestDTO replyPageRequestDTO = null;
-
-        if(articleId == replyRepository.findByReplyId(articleId)) {
-            result = replyRepository.findbyReplyOfArticle(articleId,
-                    replyPageRequestDTO.getPageable(Sort.by("id").descending()));
-        }
-
-        PageResultDTO<ReplyDTO, Object[]> replyPageResultDTO = new PageResultDTO<>(result, fn);
-
-        return replyPageResultDTO;
+    public List<Reply> getList(Long articleId) {
+        List<Reply> result = replyRepository.findAll(articleId);
+        return result;
     }
 
     // 댓글 저장
     @Override
     public ReplyDTO saveReply(ReplyDTO replyDTO) {
-        replyRepository.save(dtoToEntity(replyDTO));
+        replyRepository.save(dtoToEntity(replyDTO, userRepository.findByUsername(replyDTO.getUsername()).orElseThrow()));
         return null;
     }
 

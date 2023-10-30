@@ -31,23 +31,12 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
     @Query(value = "update Reply set content = ?1 where id = ?2")
     void updateReply(String contents, Long replyId);
 
-    @Transactional
-    @Query(value = "select R.id from Reply R, Article A where R.id = A.id AND R.id = ?1")
-    Long findByReplyId(Long id);
 
-    @Transactional
     @Query(value = "select R.id, R.content, R.regDate" +
             " from Reply R, Article A where R.id = A.id AND R.id = ?1")
-    Reply findAll(Long id);
+    List<Reply> findAll(Long id);
 
-    @Transactional
     @Query(value = "select id from Reply where id = ?1")
     Long findbyReplyId(String id);
 
-    @Transactional
-    @Query(value = "select R.content, R.user " +
-            "from Reply R, Article A " +
-            "where R.id = A.id " +
-            "and R.id = ?1")
-    Page<Object[]> findbyReplyOfArticle(@Param("id") Long id, Pageable pageable);
 }

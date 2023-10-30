@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Log4j2
@@ -34,9 +32,10 @@ public class ArticleController {
     public void read(long id,
                      @ModelAttribute("requestDTO") ArticlePageRequestDTO requestDTO,
                      Model model) {
-
-        model.addAttribute("articleDTO", articleService.getArticle(id));
+        ArticleDTO articleDTO = articleService.getArticle(id);
+        model.addAttribute("articleDTO", articleDTO);
         model.addAttribute("imageDTO", imageService.getImage(id));
+        model.addAttribute("replyListDTO", replyService.getList(articleDTO.getId()));
     }
 
     @GetMapping("/list")

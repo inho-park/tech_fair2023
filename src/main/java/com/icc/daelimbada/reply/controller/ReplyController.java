@@ -32,7 +32,6 @@ public class ReplyController {
 
     @GetMapping
     public ResponseEntity getReplyList(@ModelAttribute ReplyPageRequestDTO pageRequestDTO) {
-
         try {
             return new ResponseEntity<>(replyService.getList(pageRequestDTO.getArticleId()), HttpStatus.OK);
         } catch (Exception e) {

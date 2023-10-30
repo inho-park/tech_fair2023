@@ -60,7 +60,7 @@
                     <div class="Ginformation_top">
                         <div class="Ginformation_img">
                             <img th:if="${imageDTO.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
-                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{'http://localhost:8080/image/' + ${imageDTO.filePath}}" alt="product" />
+                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{/image/display/} + ${imageDTO.filePath}" alt="product" />
                         </div>
                         <div class="Ginformation_info">
                             <div class="Ginformation_text">
@@ -93,15 +93,6 @@
                         <!-- 댓글 입력 -->
                         <div class="dc-userName">
                             <h2 class="initial">Y</h2>
-                            <h2 th:text="${e.username}"></h2>
-
-                            <th:block th:each="r : ${replyDTO}">
-                            <input type="hidden" id="articleId" th:value="${e.id}">
-                            <input type="hidden" id="replyUsername" th:value="${e.username}">
-                            <input type="hidden" id="replyRegDate" th:value="${r.regDate}">
-                            </th:block>
-
-                            <input type="text" id="replyContents" placeholder="댓글 입력">
 
                             <button id="replySubmit">입력</button>
                         </div>
@@ -112,10 +103,10 @@
                             <h1>댓글</h1>
                             <div class="comment">
                                 <h2 class="initial">Y</h2>
-                                <th:block th:each="r : ${replyDTO}">
-                                <h2 th:text="${r.username}"></h2>
-                                <p th:text="${r.content}"></p>
-                                <p th:text="${r.regDate}"></p>
+                                <th:block th:each="r : ${replyListDTO}">
+                                    <h2 th:text="${r.username}"></h2>
+                                    <p th:text="${r.content}"></p>
+                                    <p th:text="${r.regDate}"></p>
                                 </th:block>
                             </div>
                         </div>
