@@ -128,16 +128,24 @@
   width: 20px;
   cursor: pointer;
   margin-right: 20px;
+  position: relative;
 }
 
 .page-item a{
+  position: absolute;
+  top: 0;
+  left: 0;
   color: black;
   text-decoration: none;
   font-size: 15px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding-left: 17px;
+  line-height: 40px;
 }
 
 .active{
-
   border-radius: 4px;
   background-color: #3d29ef;
 }
