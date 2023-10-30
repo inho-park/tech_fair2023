@@ -2,6 +2,7 @@ package com.icc.daelimbada.reply.domain;
 
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.common.domain.BaseTime;
+import com.icc.daelimbada.reply.dto.ReplyDTO;
 import com.icc.daelimbada.user.domain.User;
 import lombok.*;
 
@@ -28,4 +29,5 @@ public class Reply extends BaseTime {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Article article;
+
 }

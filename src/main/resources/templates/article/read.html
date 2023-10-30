@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="reply.js"></script>
     <link rel="icon" href="/images/dalimbada.ico">
     <link rel="stylesheet" href="/css/read.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -25,7 +26,7 @@
     <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
     <th:block th:fragment="content"></th:block>
-  
+
     <div class="bar">
         <div class="bar_wrapper">
             <div class="bar_menu">
@@ -35,23 +36,17 @@
                 <input id="menu" type="checkbox">
                 <nav id="main_nav">
                     <ul>
-                        <li>
-                            <a  class="soldoutdtn" href="">
-                                판매완료
+                        <li class="soldoutdtn">
+                            <a href="">판매완료</a>
                             <span class="material-symbols-outlined">check_circle</span>
-                            </a>
                         </li>
                         <li>
-                            <a href="">
-                                수정
+                            <a href="">수정</a>
                             <span class="material-symbols-outlined">contract_edit</span>
-                            </a>
                         </li>
-                        <li>
-                            <a href="" style="color: red">
-                                삭제
+                        <li class="deletebtn">
+                            <a href="">삭제</a>
                             <span class="material-symbols-outlined">delete</span>
-                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -65,9 +60,7 @@
                     <div class="Ginformation_top">
                         <div class="Ginformation_img">
                             <img th:if="${imageDTO.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
-                            <img th:unless="${imageDTO.filePath == ''}"
-                                 th:src="@{/image/display/} + ${imageDTO.filePath}"
-                                 alt="product" />
+                            <img th:unless="${imageDTO.filePath == ''}" th:src="@{'http://localhost:8080/image/' + ${imageDTO.filePath}}" alt="product" />
                         </div>
                         <div class="Ginformation_info">
                             <div class="Ginformation_text">
@@ -91,60 +84,44 @@
 
                         </div>
                     </div>
+
+                    <!-- 댓글 -->
+
                     <div class="Ginformation_dc">
 
+
+                        <!-- 댓글 입력 -->
                         <div class="dc-userName">
                             <h2 class="initial">Y</h2>
                             <h2 th:text="${e.username}"></h2>
-                            <input type="text" placeholder="댓글 입력">
-                            <button>입력</button>
+
+                            <th:block th:each="r : ${replyDTO}">
+                            <input type="hidden" id="articleId" th:value="${e.id}">
+                            <input type="hidden" id="replyUsername" th:value="${e.username}">
+                            <input type="hidden" id="replyRegDate" th:value="${r.regDate}">
+                            </th:block>
+
+                            <input type="text" id="replyContents" placeholder="댓글 입력">
+
+                            <button id="replySubmit">입력</button>
                         </div>
+
+
+                        <!-- 댓글 목록 -->
                         <div class="user-comments">
                             <h1>댓글</h1>
                             <div class="comment">
                                 <h2 class="initial">Y</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
+                                <th:block th:each="r : ${replyDTO}">
+                                <h2 th:text="${r.username}"></h2>
+                                <p th:text="${r.content}"></p>
+                                <p th:text="${r.regDate}"></p>
+                                </th:block>
                             </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-
                         </div>
-                    </div>
 
+
+                    </div>
                 </div>
             </div>
         </th:block>
