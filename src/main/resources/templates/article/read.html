@@ -96,53 +96,14 @@
                         <div class="dc-userName">
                             <h2 class="initial">Y</h2>
                             <h2 th:text="${e.username}"></h2>
-                            <input type="text" placeholder="댓글 입력">
-                            <button>입력</button>
-                        </div>
-                        <div class="user-comments">
-                            <h1>댓글</h1>
-                            <div class="comment">
-                                <h2 class="initial">Y</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
-                            <div class="comment">
-                                <h2 class="initial">Z</h2>
-                                <h2>윤병현</h2>
-                                <p>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
-                            </div>
+                            <form action="" method="post">
+                                <input type="hidden" name="username" th:value="${session.username}">
+                                <input type="text" placeholder="댓글 입력">
+                                <button>입력</button>
+                            </form>
 
                         </div>
+
                     </div>
 
                 </div>

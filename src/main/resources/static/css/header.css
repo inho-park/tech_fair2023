@@ -21,9 +21,6 @@
 }
 .header_center{
     width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .header_form{
     display: flex;

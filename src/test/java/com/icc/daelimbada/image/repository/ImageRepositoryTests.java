@@ -22,7 +22,7 @@ public class ImageRepositoryTests {
             Article article = articleRepository.findById(i).orElseThrow();
             for (int j = 1; j <=3; j++) {
                 imageRepository.save(Image.builder()
-                        .filePath(UUID.randomUUID().toString())
+                        .fileName(UUID.randomUUID().toString())
                         .article(article)
                         .build());
             }
