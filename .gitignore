@@ -1,5 +1,6 @@
 ### daelimbada ###
 src/main/resources/application.yml
+src/main/resources/static/clients
 
 HELP.md
 .gradle
