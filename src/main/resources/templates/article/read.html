@@ -93,7 +93,12 @@
                         <!-- 댓글 입력 -->
                         <div class="dc-userName">
                             <h2 class="initial">Y</h2>
-
+                            <h2 th:text="${e.username}"></h2>
+                            <form action="" method="post">
+                                <input type="hidden" name="username" th:value="${session.username}">
+                                <input type="text" placeholder="댓글 입력">
+                                <button>입력</button>
+                            </form>
                             <button id="replySubmit">입력</button>
                         </div>
 
@@ -110,7 +115,6 @@
                                 </th:block>
                             </div>
                         </div>
-
 
                     </div>
                 </div>

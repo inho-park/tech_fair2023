@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/dalimbada.ico">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/addproduct.css">
-  <script defer src="/js/addProduct.js"></script>
-  <title>상품등록</title>
+    <script defer src="/js/addProduct.js"></script>
+    <title>상품등록</title>
     <style>
         .header_end_addProductPage{
             display: none;
@@ -20,81 +20,81 @@
 </head>
 <body>
 
-  <div id="container">
-      <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
+<div id="container">
+    <th:block th:replace="~{/article/header::setContent(~{this::content})}"></th:block>
 
-      <th:block th:fragment="content"></th:block>
+    <th:block th:fragment="content"></th:block>
     <!--Header-->
 
 
     <div class="product">
         <div class="top">
-        <h1>기본정보</h1>
+            <h1>기본정보</h1>
             <h2>* 필수목록</h2>
         </div>
 
-     <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="username" th:value="${session.username}">
-         <input type="hidden" name="isSold" class="form_isSold" value="false">
+        <form action="/article/register" class="productData" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="username" th:value="${session.username}">
+            <input type="hidden" name="isSold" class="form_isSold" value="false">
 
-      <div class="filebox">
-        <h2>상품이미지 <a>*</a></h2>
-        <div>
-            <div id="image_container">
-                <p>
-                    <span class="material-symbols-outlined">photo_camera</span>
-                    <br>
-                    이미지 미리보기
-                </p>
+            <div class="filebox">
+                <h2>상품이미지 <a>*</a></h2>
+                <div>
+                    <div id="image_container">
+                        <p>
+                            <span class="material-symbols-outlined">photo_camera</span>
+                            <br>
+                            이미지 미리보기
+                        </p>
+                    </div>
+                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                    <label for="file-input">파일찾기</label>
+                    <input type="file" id="file-input" readonly name="multipartFile" onchange="setThumbnail(event);" accept="image/*">
+                </div>
             </div>
-          <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-          <label for="file-input">파일찾기</label>
-          <input type="file" id="file-input" readonly name="multipartFile" onchange="setThumbnail(event);" accept="image/*">
-        </div>
-      </div>
 
-      <div class="data">
-        <label for="productTitle">제목 <a>*</a></label>
-        <input type="text" id="productTitle" name="title" placeholder="제목을 입력하시오">
-      </div>
+            <div class="data">
+                <label for="productTitle">제목 <a>*</a></label>
+                <input type="text" id="productTitle" name="title" placeholder="제목을 입력하시오">
+            </div>
 
-      <div class="data">
-        <label for="productPrice">가격 <a>*</a></label>
-        <input type="text" id="productPrice" name="price" placeholder="가격을 입력하시오">
-      </div>
+            <div class="data">
+                <label for="productPrice">가격 <a>*</a></label>
+                <input type="text" id="productPrice" name="price" placeholder="가격을 입력하시오">
+            </div>
 
-     <div class="data">
-      <label for="classificationSelect">소속학과 <a>*</a></label>
-      <div>
-          <select id="classificationSelect">
-              <!-- 대분류 옵션들은 여기서 생성됩니다 -->
-          </select>
+            <div class="data">
+                <label for="classificationSelect">소속학과 <a>*</a></label>
+                <div>
+                    <select id="classificationSelect">
+                        <!-- 대분류 옵션들은 여기서 생성됩니다 -->
+                    </select>
 
-          <select id="majorSelect" name="majorCode">
-              <!-- 소분류 옵션들은 여기서 생성됩니다 -->
-          </select>
-      </div>
-     </div>
+                    <select id="majorSelect" name="majorCode">
+                        <!-- 소분류 옵션들은 여기서 생성됩니다 -->
+                    </select>
+                </div>
+            </div>
 
-      <div class="data">
-        <label for="productExplanation">상품설명 <a>*</a></label>
-        <textarea name="content" id="productExplanation" cols="60" rows="10"></textarea>
-      </div>
-         <div class="button_wrapper">
-            <button type="submit" onclick="submitData()" id="formdata-Btn">등록하기</button>
-         </div>
-     </form>
+            <div class="data">
+                <label for="productExplanation">상품설명 <a>*</a></label>
+                <textarea name="content" id="productExplanation" cols="60" rows="10"></textarea>
+            </div>
+            <div class="button_wrapper">
+                <button type="submit" onclick="submitData()" id="formdata-Btn">등록하기</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 </body>
 </html>
 
 <script>
     function setThumbnail(event) {
-        var reader = new FileReader();
+        let reader = new FileReader();
 
         reader.onload = function(event) {
-            var img = document.createElement("img");
+            let img = document.createElement("img");
             img.setAttribute("src", event.target.result);
             document.querySelector("div#image_container").appendChild(img);
         };
