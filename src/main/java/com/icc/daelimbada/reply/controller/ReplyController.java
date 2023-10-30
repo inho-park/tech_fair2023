@@ -43,11 +43,8 @@ public class ReplyController {
     // 댓글 저장
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addComment(@RequestBody ReplyDTO replyDTO,
-                                     @PathVariable(value = "id") String id,
-                                     HttpSession session) {
+                                     @PathVariable(value = "id") String id) {
         try {
-            String username = (String) session.getAttribute("username");
-            replyDTO.setUsername(username);
             return new ResponseEntity<>(replyService.saveReply(replyDTO), HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

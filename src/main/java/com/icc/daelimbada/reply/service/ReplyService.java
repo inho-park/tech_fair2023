@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface ReplyService {
 
-    List<Reply> getList(Long articldId);
+    List<ReplyDTO> getList(Long articleId);
     ReplyDTO saveReply(ReplyDTO replyDTO);
     StatusDTO deleteReply(Long replyId);
     StatusDTO updateReply(Long replyId, String content);
@@ -31,7 +31,7 @@ public interface ReplyService {
     }
 
     // Entity -> DTO 변환
-    default ReplyDTO EntityToDTO(Reply reply, User user) {
+    default ReplyDTO entityToDTO(Reply reply, User user) {
         return ReplyDTO.builder()
                 .content(reply.getContent())
                 .username(user.getUsername())
