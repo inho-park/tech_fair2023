@@ -1,5 +1,6 @@
 package com.icc.daelimbada.reply.dto;
 
+import com.icc.daelimbada.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class ReplyDTO {
     private String content;
     private String username;
     private LocalDateTime regDate;
+
 }

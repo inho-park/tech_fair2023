@@ -14,8 +14,6 @@ public class ReplyPageRequestDTO {
     private Long articleId;
     private int page;
     private int size;
-    private String type;
-    private String keyword;
 
     public ReplyPageRequestDTO() {
         this.page = 1;
