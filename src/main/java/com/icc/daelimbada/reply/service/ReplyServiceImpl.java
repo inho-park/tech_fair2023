@@ -17,10 +17,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -33,9 +35,15 @@ public class ReplyServiceImpl implements ReplyService {
 
    // 한 게시글 댓글 목록 가져오기
     @Override
-    public List<Reply> getList(Long articleId) {
-        List<Reply> result = replyRepository.findAll(articleId);
-        return result;
+    public List<ReplyDTO> getList(Long articleId) {
+        List<Object[]> result = replyRepository.findAll(articleId);
+        Function<Object[], ReplyDTO> fn = (
+                entity -> entityToDTO(
+                        (Reply) entity[0],
+                        (User) entity[1]
+                )
+        );
+        return result.stream().map(fn).collect(Collectors.toList());
     }
 
     // 댓글 저장

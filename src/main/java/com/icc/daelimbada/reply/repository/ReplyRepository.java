@@ -21,8 +21,6 @@ import java.util.List;
 @Repository
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
 
-    final UserRepository userRepository = null;
-
     @Modifying
     @Transactional
     void deleteAllByArticle_Id(Long articleId);
@@ -32,9 +30,9 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
     void updateReply(String contents, Long replyId);
 
 
-    @Query(value = "select R.id, R.content, R.regDate" +
-            " from Reply R, Article A where R.id = A.id AND R.id = ?1")
-    List<Reply> findAll(Long id);
+    @Query(value = "select R, R.user " +
+            " from Reply R where R.article.id =:id")
+    List<Object[]> findAll(@Param("id") Long id);
 
     @Query(value = "select id from Reply where id = ?1")
     Long findbyReplyId(String id);
