@@ -1,4 +1,4 @@
-#container{
+  #container{
   width: 70%;
   margin: 0 auto;
   flex-wrap: wrap;
@@ -37,8 +37,9 @@
 }
 
 .userData h1{
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 50px 0 40px 0;
+  font-weight: bold;
 }
 
 .data{
@@ -51,6 +52,7 @@
 
 .data p:first-of-type{
   width: 10%;
+  font-size: 1.5rem;
 }
 
 .data p:last-of-type{
@@ -83,7 +85,10 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 80px;
+  border: 2px solid;
+  padding: 20px;
+  margin-left: -22px;
+  background-color: white;
 }
 
 .product-link {

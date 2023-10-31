@@ -49,6 +49,9 @@
               <p class='date' th:text="${e.regDate}"></p>
             </div>
             </a>
+            <div class="screen">
+              <a>판매완료</a>
+            </div>
           </div>
 
       </th:block>
@@ -137,7 +140,8 @@
       pageNumberButton.className = "page-number";
       pageNumberButton.href=`list?page=${i}`
       pageNumberButton.addEventListener("click", () => {
-        currentPage = i;
+
+
         showPage(currentPage);
         updatePageNumbers();
       });

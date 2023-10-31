@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="reply.js"></script>
+    <script defer src="/js/productDate.js"></script>
     <link rel="icon" href="/images/dalimbada.ico">
     <link rel="stylesheet" href="/css/read.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -37,16 +37,19 @@
                 <nav id="main_nav">
                     <ul>
                         <li class="soldoutdtn">
-                            <a href="">판매완료</a>
-                            <span class="material-symbols-outlined">check_circle</span>
+                            <a href="">판매완료
+                                <span class="material-symbols-outlined">check_circle</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="">수정</a>
-                            <span class="material-symbols-outlined">contract_edit</span>
+                            <a href="">수정
+                                <span class="material-symbols-outlined">contract_edit</span>
+                            </a>
                         </li>
                         <li class="deletebtn">
-                            <a th:href="@{/article/delete(id=${articleDTO.id})}">삭제</a>
-                            <span class="material-symbols-outlined">delete</span>
+                            <a th:href="@{/article/delete(id=${articleDTO.id})}">삭제
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -69,7 +72,7 @@
                                     <div class="Ginformation_text--userData">
                                         <p class="Ginformation_text--pay" th:text="${e.price + '원'}"></p>
                                         <div class="userName">
-                                            <h1 class="initial">W</h1>
+                                            <h1 class="initial"></h1>
                                             <h2 th:text="${e.username}"></h2>
                                         </div>
                                     </div>
@@ -92,25 +95,26 @@
 
                         <!-- 댓글 입력 -->
                         <div class="dc-userName">
-                            <h2 class="initial">Y</h2>
+                            <h2 class="initial"></h2>
                             <h2 th:text="${e.username}"></h2>
-                            <form action="" method="post">
-                                <input type="hidden" name="username" th:value="${session.username}">
-                                <input type="text" placeholder="댓글 입력">
-                                <button>입력</button>
-                            </form>
-                            <button id="replySubmit">입력</button>
+                            <input type="text" placeholder="댓글 입력" class="userReply" size="15">
+                            <button type="submit" class="sumbmitReplyBtn">입력</button>
                         </div>
 
 
                         <!-- 댓글 목록 -->
                         <div class="user-comments">
                             <h1>댓글</h1>
-                            <div class="comment">
+                            <div class="commentBox">
                                 <th:block th:each="r : ${replyListDTO}">
-                                    <h2 th:text="${r.username}"></h2>
-                                    <p th:text="${r.content}"></p>
-                                    <p th:text="${r.regDate}"></p>
+                                    <div class="comment">
+                                        <input type="hidden"  th:value="${r.id}" class="replyId">
+                                        <h2 th:text="${r.username}"></h2>
+                                        <p th:text="${r.content}" class="replyContent"></p>
+                                        <p th:text="${r.regDate}" class="date"></p>
+                                       <span class="material-symbols-outlined replyDelete">delete</span>
+                                    </div>
+
                                 </th:block>
                             </div>
                         </div>
@@ -121,6 +125,66 @@
         </th:block>
     </div>
 </div>
+<script  th:inline="javascript">
+    const userName = [[${session.username}]]
+    const articleId = [[${articleDTO}]]
+
+
+    console.log(userName)
+    console.log(articleId)
+
+
+    let sumbmitReplyBtn = document.querySelector(".sumbmitReplyBtn");
+    let replyDelete = document.querySelector(".replyDelete");
+    let replyId  = document.querySelector(".replyId").value;
+
+    replyDelete.addEventListener("click", ()=>{
+
+        fetch(`/reply/${articleId.id}/${replyId}`, {
+            method: 'DELETE'
+        })
+            .then(data => data.json())
+            .then(data => {
+                window.location.href = `/article/read?id=${articleId.id}`;
+                console.log(data)
+            })
+
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    })
+
+
+    sumbmitReplyBtn.addEventListener("click", ()=>{
+        const userReply = document.querySelector(".userReply").value;
+        console.log(userReply)
+        fetch(`/reply/${articleId.id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "content": userReply,
+                "username": userName,
+
+            })
+        })
+            .then(data => data.json())
+            .then(data => {
+                window.location.href = `/article/read?id=${articleId.id}`;
+                console.log(data)
+
+            })
+
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        userReply.value = ""
+    })
+
+</script>
+
 </body>
 
 </html>

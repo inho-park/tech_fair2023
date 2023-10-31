@@ -21,7 +21,7 @@
         </div>
         <div class="header_end">
             <div class="header-username">
-                <h1 class="initial" th:if="${session.username!=null}">Y</h1>
+                <h1 class="initial" th:if="${session.username!=null}"></h1>
                 <h1 th:text="${session.username}" class="header_end_userName"></h1>
             </div>
             <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
