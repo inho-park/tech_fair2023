@@ -34,12 +34,12 @@ public class UserController {
     public String addProductPage() {
         return "/user/addProduct";
     }
-    @GetMapping("/mypage")
+    @GetMapping("/myPage")
     public String myPage(ArticlePageRequestDTO pageRequestDTO, Model model, HttpSession session) {
         pageRequestDTO.setUsername((String) session.getAttribute("username"));
         model.addAttribute("result", articleService.getMyList(pageRequestDTO));
         model.addAttribute("email", userService.getEmail(pageRequestDTO.getUsername()));
-        return "/user/mypage";
+        return "/user/myPage";
     }
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
