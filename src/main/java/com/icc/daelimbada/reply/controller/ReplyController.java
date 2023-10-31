@@ -43,7 +43,8 @@ public class ReplyController {
     public ResponseEntity addComment(@RequestBody ReplyDTO replyDTO,
                                      @PathVariable(value = "id") String id) {
         try {
-            return new ResponseEntity<>(replyService.saveReply(replyDTO, Long.parseLong(id)), HttpStatus.OK);
+            replyService.saveReply(replyDTO, Long.parseLong(id));
+            return new ResponseEntity<>(replyService.getList(Long.parseLong(id)), HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -58,7 +59,7 @@ public class ReplyController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @GetMapping(value = "/delete/{articleId}/{replyId}")
+    @DeleteMapping(value = "/{articleId}/{replyId}")
     public ResponseEntity deleteComment(@PathVariable(value = "replyId") String replyId, @PathVariable(value = "articleId") String articleId) {
         try {
             replyService.deleteReply(Long.parseLong(replyId));
