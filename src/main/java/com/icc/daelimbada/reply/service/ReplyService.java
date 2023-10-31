@@ -35,6 +35,7 @@ public interface ReplyService {
     // Entity -> DTO 변환
     default ReplyDTO entityToDTO(Reply reply, User user) {
         return ReplyDTO.builder()
+                .id(reply.getId())
                 .content(reply.getContent())
                 .username(user.getUsername())
                 .regDate(reply.getRegDate())
