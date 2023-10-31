@@ -58,7 +58,7 @@ public class ReplyController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @DeleteMapping(value = "/{articleId}/{replyId}")
+    @GetMapping(value = "/delete/{articleId}/{replyId}")
     public ResponseEntity deleteComment(@PathVariable(value = "replyId") String replyId, @PathVariable(value = "articleId") String articleId) {
         try {
             replyService.deleteReply(Long.parseLong(replyId));
