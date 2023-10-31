@@ -29,7 +29,7 @@
 
     <div class="bar">
         <div class="bar_wrapper">
-            <div class="bar_menu">
+            <div th:if="${articleDTO.username==session.username}" class="bar_menu">
                 <label class="menu" for="menu">
                     <span class="material-symbols-outlined">more_vert</span>
                 </label>
@@ -45,7 +45,7 @@
                             <span class="material-symbols-outlined">contract_edit</span>
                         </li>
                         <li class="deletebtn">
-                            <a href="">삭제</a>
+                            <a th:href="@{/article/delete(id=${articleDTO.id})}">삭제</a>
                             <span class="material-symbols-outlined">delete</span>
                         </li>
                     </ul>

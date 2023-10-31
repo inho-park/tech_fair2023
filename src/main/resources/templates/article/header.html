@@ -27,7 +27,7 @@
             <h1 th:if="${session.username==null}" class="header_end_login"><a href="/user/login">로그인</a></h1>
             <h1 th:if="${session.username==null}" class="header_end_signup"><a href="/user/join">회원가입</a></h1>
             <h1 th:if="${session.username!=null}" class="header_end_myPage">
-                <a href="/user/mypage" class="myPageIcon">
+                <a href="/user/myPage" class="myPageIcon">
                     <span class="material-symbols-outlined">person</span>
                     마이페이지
                 </a>

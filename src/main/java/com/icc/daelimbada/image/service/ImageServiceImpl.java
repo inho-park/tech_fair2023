@@ -78,7 +78,12 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void deleteImages(Long articleId) {
         try {
-            imageRepository.deleteAllByArticle_Id(articleId);
+            Optional<Image> optional = imageRepository.findByArticle_Id(articleId);
+            if (optional.isPresent()) {
+                File file = new File(uploadPath + optional.get().getFileName());
+                if (file.exists()) log.info(file.delete()?"파일 삭제 성공":"파일 삭제 실패");
+            }
+            imageRepository.deleteByArticle_Id(articleId);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

@@ -125,8 +125,8 @@ public class ArticleServiceImpl implements ArticleService {
         Page<Object[]> result = articleRepository.getArticlesByUser_Username(
                 requestDTO.getPageable(Sort.by("id").descending()),
                 requestDTO.getUsername());
-
-        return new PageResultDTO<>(result, fn);
+        PageResultDTO<ArticleDTO, Object[]> pageResultDTO = new PageResultDTO<>(result, fn);
+        return setImage(pageResultDTO);
     }
 
     /**

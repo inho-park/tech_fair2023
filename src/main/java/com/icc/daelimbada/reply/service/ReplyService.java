@@ -1,5 +1,6 @@
 package com.icc.daelimbada.reply.service;
 
+import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.common.dto.StatusDTO;
 import com.icc.daelimbada.reply.domain.Reply;
@@ -13,18 +14,19 @@ import java.util.List;
 public interface ReplyService {
 
     List<ReplyDTO> getList(Long articleId);
-    ReplyDTO saveReply(ReplyDTO replyDTO);
+    ReplyDTO saveReply(ReplyDTO replyDTO, Long articleId);
     StatusDTO deleteReply(Long replyId);
     StatusDTO updateReply(Long replyId, String content);
     StatusDTO deleteAll(Long articleId);
 
 
     // DTO -> Entity 변환
-    default Reply dtoToEntity(ReplyDTO replyDTO, User user) {
+    default Reply dtoToEntity(ReplyDTO replyDTO, User user, Article article) {
 
         Reply reply = Reply.builder()
                 .content(replyDTO.getContent())
                 .user(user)
+                .article(article)
                 .build();
 
         return reply;

@@ -2,6 +2,7 @@ package com.icc.daelimbada.reply.service;
 
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.article.dto.ArticleDTO;
+import com.icc.daelimbada.article.repository.ArticleRepository;
 import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.common.dto.StatusDTO;
 import com.icc.daelimbada.reply.domain.Reply;
@@ -31,6 +32,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     final private ReplyRepository replyRepository;
     final private UserRepository userRepository;
+    final private ArticleRepository articleRepository;
 
 
    // 한 게시글 댓글 목록 가져오기
@@ -48,8 +50,10 @@ public class ReplyServiceImpl implements ReplyService {
 
     // 댓글 저장
     @Override
-    public ReplyDTO saveReply(ReplyDTO replyDTO) {
-        replyRepository.save(dtoToEntity(replyDTO, userRepository.findByUsername(replyDTO.getUsername()).orElseThrow()));
+    public ReplyDTO saveReply(ReplyDTO replyDTO, Long articleId) {
+        replyRepository.save(dtoToEntity(replyDTO,
+                userRepository.findByUsername(replyDTO.getUsername()).orElseThrow(),
+                articleRepository.findById(articleId).orElseThrow()));
         return null;
     }
 
