@@ -107,7 +107,6 @@
                         <div class="user-comments">
                             <h1>댓글</h1>
                             <div class="comment">
-                                <h2 class="initial">Y</h2>
                                 <th:block th:each="r : ${replyListDTO}">
                                     <h2 th:text="${r.username}"></h2>
                                     <p th:text="${r.content}"></p>
