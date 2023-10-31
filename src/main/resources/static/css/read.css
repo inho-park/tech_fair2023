@@ -207,7 +207,7 @@ input#menu:checked + nav#main_nav{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 20%;
+    margin-top: 200px;
 
 }
 .dc-userName h2{
@@ -241,34 +241,54 @@ input#menu:checked + nav#main_nav{
     padding: 10px;
 }
 
-.comment{
+.commentBox{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 15px;
     border-bottom: 1px solid black;
 }
-.comment .initial{
+.commentBox .initial {
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 35px;
-    background-color: #96B6C5 ;
+    background-color: #96B6C5;
     border-radius: 50%;
     font-size: 20px;
-
 }
+
+.comment{
+    display: flex;
+    width: 100%;
+
+    margin: 20px 0;
+}
+
 .comment h2{
     font-size: 18px;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
 }
-.comment h2:last-of-type{
-    width: 80%;
-    margin-left: 10px;
 
+.comment .replyContent{
+    width: 70%;
+    font-size: 15px;
+    height: 25px;
+    line-height: 25px;
 }
-.comment p {
-    margin: 5px 0 0 5%;
-    padding: 10px;
+
+.comment .date{
+    font-size: 15px;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 10px;
+}
+
+.replyDelete{
+    cursor: pointer;
+    color: red;
 }
 
 @media screen and (max-width: 1050px){

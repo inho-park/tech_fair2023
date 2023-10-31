@@ -19,7 +19,7 @@ public class ReplyRepositoryTests {
     private ReplyRepository replyRepository;
     @Test
     public void 댓글_등록() {
-        for (long i = 1; i <= 10; i++) {
+        for (long i = 2; i <= 10; i++) {
             User user = userRepository.findById(11 - i).orElseThrow();
             Article article = articleRepository.findById(i).orElseThrow();
             for (long j = 1; j <= 10; j++) {
