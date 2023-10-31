@@ -46,7 +46,10 @@
           <th:block th:each="e : ${result.dtoList}">
             <div class="product">
               <a th:href="@{/article/read(id=${e.id})}" class="product-link">
-                <img src="/images/XL.jpeg" alt="product">
+                <img th:if="${e.filePath == ''}" src="/images/XL.jpeg" alt="product"/>
+                <img th:unless="${e.filePath == ''}"
+                     th:src="@{/image/display/} + ${e.filePath}"
+                     alt="product" />
                 <div class="productData">
                   <p th:text="${e.title}"></p>
                   <p th:text="${e.username}"></p>
@@ -57,6 +60,30 @@
             </div>
           </th:block>
       </div>
+      <div class="pagination">
+      <span id="prev-page" class="material-symbols-outlined page" th:if="${result.prev}">
+        <a th:href="@{/user/myPage(
+                                        page = ${result.start -1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}" tabindex="-1">chevron_left</a>
+      </span>
+        <span id="page-numbers" th:class="'page-item ' + ${result.page==page?'active':''}"  th:each="page:${result.pageList}">
+        <a th:href="@{/user/myPage(
+                                        page = ${page},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">[[${page}]]</a>
+      </span>
+        <span id="next-page" class="material-symbols-outlined page" th:if="${result.next}">
+        <a th:href="@{/user/myPage(
+                                        page = ${result.end + 1},
+                                        type = ${articlePageRequestDTO.type},
+                                        keyword = ${articlePageRequestDTO.keyword}
+                                        )}">chevron_right</a>
+      </span>
+      </div>
+    </div>
     </div>
 </div>
 </div>

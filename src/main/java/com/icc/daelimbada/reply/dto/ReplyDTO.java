@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplyDTO {
+    private Long id;
     private String content;
     private String username;
     private LocalDateTime regDate;

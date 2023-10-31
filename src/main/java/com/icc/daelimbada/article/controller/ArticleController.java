@@ -44,8 +44,6 @@ public class ArticleController {
         if (pageRequestDTO.getKeyword() == null || pageRequestDTO.getKeyword().equals(""))
             model.addAttribute("result", articleService.getList(pageRequestDTO));
         else model.addAttribute("result", articleService.searchList(pageRequestDTO));
-
-
     }
 
     @PostMapping(value = "/register")
@@ -76,10 +74,12 @@ public class ArticleController {
         return "redirect:/article/read";
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public String delete(long id) {
+        imageService.deleteImages(id);
         replyService.deleteAll(id);
         articleService.remove(id);
         return "redirect:/user/myPage";
     }
+
 }

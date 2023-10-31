@@ -140,7 +140,8 @@
       pageNumberButton.className = "page-number";
       pageNumberButton.href=`list?page=${i}`
       pageNumberButton.addEventListener("click", () => {
-        currentPage = i;
+
+
         showPage(currentPage);
         updatePageNumbers();
       });

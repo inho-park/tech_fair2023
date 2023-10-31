@@ -23,17 +23,15 @@ import java.util.Map;
 @RequestMapping("/reply")
 public class ReplyController {
     final private ReplyService replyService;
-    final private ReplyRepository replyRepository;
     /**
      * 해당 게시글의 댓글 리스트 불러오기
-     * @param pageRequestDTO
+     * @param articleId
      * @return ResponseEntity
      */
-
-    @GetMapping
-    public ResponseEntity getReplyList(@ModelAttribute ReplyPageRequestDTO pageRequestDTO) {
+    @GetMapping(value = "/{id}")
+    public ResponseEntity getReplyList(@PathVariable(value = "id") String articleId) {
         try {
-            return new ResponseEntity<>(replyService.getList(pageRequestDTO.getArticleId()), HttpStatus.OK);
+            return new ResponseEntity<>(replyService.getList(Long.parseLong(articleId)), HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -43,12 +41,10 @@ public class ReplyController {
     // 댓글 저장
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addComment(@RequestBody ReplyDTO replyDTO,
-                                     @PathVariable(value = "id") String id,
-                                     HttpSession session) {
+                                     @PathVariable(value = "id") String id) {
         try {
-            String username = (String) session.getAttribute("username");
-            replyDTO.setUsername(username);
-            return new ResponseEntity<>(replyService.saveReply(replyDTO), HttpStatus.OK);
+            replyService.saveReply(replyDTO, Long.parseLong(id));
+            return new ResponseEntity<>(replyService.getList(Long.parseLong(id)), HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -63,14 +59,11 @@ public class ReplyController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteComment(@PathVariable(value = "id") String id) {
-
-        Long deleteId = replyRepository.findbyReplyId(id);
-
+    @DeleteMapping(value = "/{articleId}/{replyId}")
+    public ResponseEntity deleteComment(@PathVariable(value = "replyId") String replyId, @PathVariable(value = "articleId") String articleId) {
         try {
-            return new ResponseEntity<>(replyService.deleteReply(deleteId), HttpStatus.OK);
+            replyService.deleteReply(Long.parseLong(replyId));
+            return ResponseEntity.ok().body(replyService.getList(Long.parseLong(articleId)));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

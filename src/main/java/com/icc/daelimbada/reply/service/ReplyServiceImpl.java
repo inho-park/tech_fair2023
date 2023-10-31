@@ -2,6 +2,7 @@ package com.icc.daelimbada.reply.service;
 
 import com.icc.daelimbada.article.domain.Article;
 import com.icc.daelimbada.article.dto.ArticleDTO;
+import com.icc.daelimbada.article.repository.ArticleRepository;
 import com.icc.daelimbada.common.dto.PageResultDTO;
 import com.icc.daelimbada.common.dto.StatusDTO;
 import com.icc.daelimbada.reply.domain.Reply;
@@ -17,10 +18,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -29,19 +32,28 @@ public class ReplyServiceImpl implements ReplyService {
 
     final private ReplyRepository replyRepository;
     final private UserRepository userRepository;
+    final private ArticleRepository articleRepository;
 
 
    // 한 게시글 댓글 목록 가져오기
     @Override
-    public List<Reply> getList(Long articleId) {
-        List<Reply> result = replyRepository.findAll(articleId);
-        return result;
+    public List<ReplyDTO> getList(Long articleId) {
+        List<Object[]> result = replyRepository.findAll(articleId);
+        Function<Object[], ReplyDTO> fn = (
+                entity -> entityToDTO(
+                        (Reply) entity[0],
+                        (User) entity[1]
+                )
+        );
+        return result.stream().map(fn).collect(Collectors.toList());
     }
 
     // 댓글 저장
     @Override
-    public ReplyDTO saveReply(ReplyDTO replyDTO) {
-        replyRepository.save(dtoToEntity(replyDTO, userRepository.findByUsername(replyDTO.getUsername()).orElseThrow()));
+    public ReplyDTO saveReply(ReplyDTO replyDTO, Long articleId) {
+        replyRepository.save(dtoToEntity(replyDTO,
+                userRepository.findByUsername(replyDTO.getUsername()).orElseThrow(),
+                articleRepository.findById(articleId).orElseThrow()));
         return null;
     }
 
