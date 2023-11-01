@@ -82,4 +82,9 @@ public class ArticleController {
         return "redirect:/user/myPage";
     }
 
+    @GetMapping("/soldout")
+    public String soldOut(long id) {
+        articleService.changeSold(id);
+        return "redirect:/article/read?id=" + id;
+    }
 }
