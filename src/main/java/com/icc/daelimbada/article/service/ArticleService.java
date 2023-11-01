@@ -16,6 +16,7 @@ public interface ArticleService {
     PageResultDTO<ArticleDTO, Object[]> getMyList(ArticlePageRequestDTO requestDTO);
     Long remove(Long articleId);
     Long modify(ArticleDTO dto);
+    Long changeSold(Long id);
 
     default Article dtoToEntity(ArticleDTO dto, User user) {
         return Article.builder()

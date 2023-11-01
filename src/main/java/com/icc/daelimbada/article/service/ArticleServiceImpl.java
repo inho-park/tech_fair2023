@@ -161,6 +161,22 @@ public class ArticleServiceImpl implements ArticleService {
         }
     }
 
+    @Override
+    public Long changeSold(Long id) {
+        Article article = articleRepository.findById(id).orElseThrow();
+        articleRepository.save(Article.builder()
+                        .id(article.getId())
+                        .price(article.getPrice())
+                        .isSold(true)
+                        .title(article.getTitle())
+                        .major(article.getMajor())
+                        .content(article.getContent())
+                        .user(article.getUser())
+                .build()
+        );
+        return id;
+    }
+
     public PageResultDTO<ArticleDTO, Object[]> setImage(PageResultDTO<ArticleDTO, Object[]> pageResultDTO) {
         pageResultDTO.getDtoList().forEach(
                 i -> {
