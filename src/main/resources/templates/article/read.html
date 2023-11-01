@@ -37,16 +37,19 @@
                 <nav id="main_nav">
                     <ul>
                         <li class="soldoutdtn">
-                            <a href="">판매완료</a>
-                            <span class="material-symbols-outlined">check_circle</span>
+                            <a href="">판매완료
+                                <span class="material-symbols-outlined">check_circle</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="">수정</a>
-                            <span class="material-symbols-outlined">contract_edit</span>
+                            <a href="">수정
+                                <span class="material-symbols-outlined">contract_edit</span>
+                            </a>
                         </li>
                         <li class="deletebtn">
-                            <a th:href="@{/article/delete(id=${articleDTO.id})}">삭제</a>
-                            <span class="material-symbols-outlined">delete</span>
+                            <a th:href="@{/article/delete(id=${articleDTO.id})}">삭제
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -69,7 +72,7 @@
                                     <div class="Ginformation_text--userData">
                                         <p class="Ginformation_text--pay" th:text="${e.price + '원'}"></p>
                                         <div class="userName">
-                                            <h1 class="initial">W</h1>
+                                            <h1 class="initial"></h1>
                                             <h2 th:text="${e.username}"></h2>
                                         </div>
                                     </div>
@@ -92,12 +95,11 @@
 
                         <!-- 댓글 입력 -->
                         <div class="dc-userName">
-                            <h2 class="initial">Y</h2>
+                            <h2 class="initial"></h2>
                             <h2 th:text="${e.username}"></h2>
                             <input type="text" placeholder="댓글 입력" class="userReply" size="15">
                             <button type="submit" class="sumbmitReplyBtn">입력</button>
                         </div>
-
 
 
                         <!-- 댓글 목록 -->
@@ -114,7 +116,6 @@
                                     </div>
 
                                 </th:block>
-
                             </div>
                         </div>
 
