@@ -134,24 +134,28 @@
 
 
     let sumbmitReplyBtn = document.querySelector(".sumbmitReplyBtn");
-    let replyDelete = document.querySelector(".replyDelete");
-    let replyId  = document.querySelector(".replyId").value;
 
-    replyDelete.addEventListener("click", ()=>{
 
-        fetch(`/reply/${articleId.id}/${replyId}`, {
-            method: 'DELETE'
-        })
-            .then(data => data.json())
-            .then(data => {
-                window.location.href = `/article/read?id=${articleId.id}`;
-                console.log(data)
-            })
+    const replyDeleteElements = document.querySelectorAll(".replyDelete");
+    if (replyDeleteElements.length > 0) {
+        replyDeleteElements.forEach(replyDelete => {
+            replyDelete.addEventListener("click", () => {
+                let replyId  = document.querySelector(".replyId").value;
 
-            .catch(error => {
-                console.error('Error:', error);
+                fetch(`/reply/${articleId.id}/${replyId}`, {
+                    method: 'DELETE'
+                })
+                    .then(data => data.json())
+                    .then(data => {
+                        window.location.href = `/article/read?id=${articleId.id}`;
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             });
-    })
+        });
+    }
 
 
     sumbmitReplyBtn.addEventListener("click", ()=>{
